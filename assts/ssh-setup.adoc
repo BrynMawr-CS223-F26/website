@@ -144,7 +144,8 @@ Navigate into your new lab1-git-practice folder. Run the following command:
 cat README.md
 ----
 
-You should see a welcome message.
+You should see a welcome message. Show your work to Professor Shiptoski before leaving
+lab.
 
 
 In the coming days/weeks, we will use git to distribute base code for homeworks and labs,
