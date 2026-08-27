@@ -13,7 +13,7 @@
 * Topics: Programming at the command line, Makefiles, From Java to C, strings, arrays, structs, function stack, basic pointers
 * Read: link:https://diveintosystems.org/singlepage/#_appendix_1_chapter_1_for_java_programmers[Chapter 1: From JAVA to C] 
 // * link:assts/asst01.html[Assignment 01]: Due September 4
-* Assignment 01: Due September 4
+// * Assignment 01: Due September 4
 * Lab September 2: link:assts/ssh-setup.html[SSH and Github setup]
 
 |
@@ -31,9 +31,8 @@
 * Topics: More pointers, malloc/free, heap, file I/O, gdb, valgrind, hexedit 
 * Read: link:https://diveintosystems.org/singlepage/#_a_deeper_dive_into_c_programming[Sections 2.1-2.8, 2.9 (Command line arguments only)] 
 * Read: link:https://diveintosystems.org/singlepage/#_c_debugging_tools[Sections 3.1-3.3]
-// * link:assts/asst02.html[Assignment 02]: Due Jan 30
-* Assignment 02: Due September 11
-// * Lab Jan 27: link:assts/code01-s26.html[Code Jam 01]
+// * Assignment 02: Due September 11
+* Assignment 01: Simple C (due September 11)
 * Lab September 9: Code Jam 01
 // Note: this lab is just about basic strings and types.
 |
@@ -50,7 +49,8 @@
 * Topics: Remaining pointer topics, editor design and implementation, linked lists, trees
 * Read: link:https://diveintosystems.org/book/C2-C_depth/structs.html#_self_referential_structs[2.7.5. Self-Referential Structs]
 // * link:assts/asst03.html[Assignment 03]: Due Feb 6
-* Assignment 03: Due September 18
+// * Assignment 03: Due September 18
+* Assignment 02: Strings, Structs, & Arrays (due September 18)
 // * Lab Feb 3: Practice Quiz 01, link:studyguide1.html[Study Guide: Quiz 01]
 * Lab Feb 3: Practice Quiz 01
 
@@ -69,7 +69,8 @@
 * Topics: number systems, integer/float/char binary formats, struct layouts, endianess
 * Read: link:https://diveintosystems.org/singlepage/#_binary_and_data_representation[Chapter 4.1-4.9] 
 // * link:assts/asst04.html[Assignment 04]: Due Feb 13
-* Assignment 04: Due September 25
+// * Assignment 04: Due September 25
+* Assignment 03: Fun with Malloc (due September 25)
 * Lab September 23: **Quiz 01**: 50 minutes 
 
 |
@@ -85,7 +86,8 @@
 * Read: link:https://diveintosystems.org/singlepage/#_what_von_neumann_knew_computer_architecture[Section 5, 5.1]
 * Read: link:https://diveintosystems.org/singlepage/##_assembly_chapter[Chapter 6] 
 // * link:assts/asst05.html[Assignment 05]: Due Feb 20
-* Assignment 05: Due October 2
+// * Assignment 05: Due October 2
+* Assignment 04: Fun with Pointers (due October 2)
 * Lab September 30: Code Jam 02
 
 |
@@ -100,7 +102,8 @@
 * Topics: instruction set architecture, machine code, memory forms, x86_64 instructions
 * Read: link:https://diveintosystems.org/singlepage/#_x64_assembly_chapter[Chapter 7 (7.1-7.3,7.5,7.10), 10] 
 // * link:assts/asst06.html[Assignment 06]: Due Feb 27
-* Assignment 06: Due October 9
+// * Assignment 06: Due October 9
+* Assignment 05: TBA (due October 9)
 // * Lab Feb 24: Quiz 02 Practice, link:studyguide2.html[Study Guide 2], link:studyguide3.html[StudyGuide 3]
 * Lab 7: Quiz 02 Practice
 
@@ -126,11 +129,10 @@
 * Topics: Tracing assembly, loops, conditionals
 * Topics: what is an operating system?, System calls
 * Read: link:https://diveintosystems.org/singlepage/#_x64_assembly_chapter[Chapter 7 (7.1-7.3,7.5,7.10), 10] 
-// * Lab March 3: **Quiz 02**, link:studyguide2.html[Study Guide 2], link:studyguide3.html[StudyGuide 3]
-* Lab October 21: **Quiz 02**
-// * link:assts/asst07.html[Assignment 07]: Due March 17th in class, no extensions
+// * Lab October 21: **Quiz 02**
 // Note: Not sure I like the hand written homework and turn it in here. I'd rather this be a lab quiz.
-* Assignment 07: TBA
+* Assignment 06: TBA (due October 23)
+* Lab October 21: **Quiz 02**
 |
 // * link:lectures/Lecture-Week07-March3-AssemblyBranch.pdf[Lectures March 3,5] 
 
@@ -140,13 +142,12 @@
 |*Midterm (TBD), Processes* 
 
 * Topics: Processes, fork, signals
-* Lab October 28: **Code Jam 03**
 // * Read: link:https://diveintosystems.org/singlepage/#_the_operating_system[Chapter 13, skip section 13.3] 
 // Note: Section 13.3 is on virtual memory. We will NOT be skipping it lol.
 * Read: link:https://diveintosystems.org/singlepage/#_the_operating_system[Chapter 13] 
 // * link:assts/asst08.html[Assignment 08]: Image Conscious. Due March 20th at midnight
-* Assignment 08: Due October 30
-
+* Assignment 07: Some Assembly Required (due October 30)
+* Lab October 28: **Code Jam 03**
 | 
 // link:lectures/Lecture-Week09-March17-OS-Processes.pdf[Lectures - March 17 and 19]
 
@@ -160,10 +161,9 @@
 * Read: link:https://diveintosystems.org/singlepage/#_some_advanced_c_features[Section 2.9.3, 2.9.4 (void* and pointer arithmetic)] 
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
 // * Lab March 24: Practice Quiz 03 link:studyguide4.html[Study Guide 04]
-* Lab November 4: Practice Quiz 03 
 // * link:assts/asst09.html[Assignment 09]: Trust the process. Due March 27th at midnight
-* Assignment 09: Due November 6
-
+* Assignment 08: Multiprocess (due November 6)
+* Lab November 4: Practice Quiz 03 
 |
 // * link:lectures/Lecture-Week10-March31-Threads1.pdf[Lectures - March 24 and 16]
 // * link:lectures/threads-min.c[threads-min.c]
@@ -176,7 +176,7 @@
 * Topics: synchronization, deadlock, producer/consumer pattern
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
 // * link:assts/asst10.html[Assignment 10]: Mandelthreads. Due April 3rd
-* Assignment 10: Due November 13
+* Assignment 09: Trust the Process (due November 13)
 * Lab November 11: **Quiz 03**: 50 minutes
 
 |
@@ -194,7 +194,7 @@
 * Read:"My malloc: mylloc and mhysa" by Johan Montelius 
 * Read: link:https://diveintosystems.org/singlepage/#_storage_and_the_memory_hierarchy[Chapter 11.1-11.3] 
 // * link:assts/asst11.html[Assignment 11]: Mutually Exclusive. Due April 10th
-* Assignment 11: Due November 20 
+* Assignment 10: Multiprocess & Multithread (due November 20)
 * Lab November 18: **Code Jam 04**
 
 |
@@ -209,7 +209,7 @@
 * Topics: TBD
 * Read: link:https://diveintosystems.org/singlepage/#_code_optimization[Chapter 12] 
 // * link:assts/asst12.html[Assignment 12]: Hold on to your memories. Due April 17th. ** Worksheet due tuesday April 21**
-* Assignment 12: Due TBA
+// * Assignment 12: Due TBA
 // * Practice Quiz 04 link:studyguide5.html[Study Guide 05]
 * Lab November 25: Practice Quiz 04
 
@@ -225,7 +225,7 @@
 // * C++ classes (operators, constructors, destructors), references, STL (list, vector, map), simple templates
 * Topics: Ownership and the Borrow Checker, Rust Abstractions Compared to C equivalents
 // * link:assts/asst13.html[(Optional/Extra Credit) Assignment 13]: C++ Image Class. Due May 1st.
-* Assignment 13 (Rust): Due December 11
+* Assignment 11: Sync or Swim (due December 4)
 * Lab December 2: **Quiz 04** 
 // link:studyguide5.html[Study Guide 05]
 
@@ -242,6 +242,7 @@
 |*Rust as a Systems Language, Final Review* 
 
 * Topics: Files + I/O, Threads, Shared State, Send / Sync, Final Review
+* Assignment 12: Let's Get Rusty (due December 11)
 * Lab December 9: Final Review / Practice Final
 
 // * link:studyguide-final.html[Final Study Guide]

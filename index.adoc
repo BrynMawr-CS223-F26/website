@@ -50,8 +50,8 @@ an introduction to the Rust programming language will be covered at the end of t
 
 | Lecture | Park 245 | Mondays and Wednesdays 1:10 PM - 2:30 PM
 | Lab | Park 231 | Wednesdays 2:40 PM - 4:00 PM 
-| Office Hours - Prof. Kelly Shiptoski | Park 204 | (Tentative) Mondays 2:30 PM - 3:30 PM, Wednesdays 4:00 PM - 5:00 PM, and by appointment 
-| TA Office Hours - TBA | TBA | TBA
+| Office Hours - Prof. Kelly Shiptoski | Park 204 | (Tentative) Wednesdays 4:00 PM - 5:00 PM, Thursdays 2:30 PM - 3:30 PM, and by appointment 
+| TA Office Hours - Linh Nguyen | TBA | Fridays 3:00 PM - 5:00 PM
 
 |===
 
@@ -116,8 +116,8 @@ as a weighted average of all grades according to the following weights:
 
 |===
 |35% | Final Exam
-|30% | Midterm Exam
-|15% | Assignments
+|35% | Midterm Exam
+|10% | Assignments
 |15% | Code jams and quizzes
 | 5% | Lab practice and class participation
 |===
