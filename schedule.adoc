@@ -33,7 +33,7 @@
 * Read: link:https://diveintosystems.org/singlepage/#_c_debugging_tools[Sections 3.1-3.3]
 // * Assignment 02: Due September 11
 * Assignment 01: Simple C (due September 11)
-* Lab September 9: Code Jam 01
+* Lab September 9: link:assts/code01-s26.html[Code Jam 01]
 // Note: this lab is just about basic strings and types.
 |
 // * link:lectures/Lecture-Week02-Jan27-Pointers.pdf[Lecture - Jan 27]
