@@ -48,10 +48,10 @@ an introduction to the Rust programming language will be covered at the end of t
 |===
 | Activity | Location | Time
 
-| Lecture | Park 245 | Mondays and Wednesdays 1:10 PM - 2:30 PM
+| Lecture | Park 159 | Mondays and Wednesdays 1:10 PM - 2:30 PM
 | Lab | Park 231 | Wednesdays 2:40 PM - 4:00 PM 
-| Office Hours - Prof. Kelly Shiptoski | Park 204 | (Tentative) Wednesdays 4:00 PM - 5:00 PM, Thursdays 2:30 PM - 3:30 PM, and by appointment 
-| TA Office Hours - Linh Nguyen | TBA | Fridays 3:00 PM - 5:00 PM
+| Office Hours - Prof. Kelly Shiptoski | Park 204 | Mondays 11:00 AM - 12:00 PM, Thursdays 2:30 PM - 3:30 PM, and by appointment 
+| TA Office Hours - Linh Nguyen | Park 231 | Fridays 3:00 PM - 5:00 PM
 
 |===
 
