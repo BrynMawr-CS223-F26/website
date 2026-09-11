@@ -68,7 +68,7 @@ Your cypher is gngrjcpv
 $ **./cypher **
 Enter a word: **gngrjcpv**
 Enter a shift: **-2**
-Your cypher is **elephant
+Your cypher is **elephant**
 $ **./cypher **
 Enter a word: **hello**
 Enter a shift: **7**
