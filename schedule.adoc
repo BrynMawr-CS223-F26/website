@@ -30,7 +30,7 @@
 | September 7 (No Class: Labor Day), 9 anchor:week02[]
 | *Introduction to Pointers* 
 
-* Topics: More pointers, malloc/free, heap, file I/O, gdb, valgrind, hexedit 
+* Topics: Basic pointers, malloc/free, heap, stack diagrams
 * Read: link:https://diveintosystems.org/singlepage/#_a_deeper_dive_into_c_programming[Sections 2.1-2.8, 2.9 (Command line arguments only)] 
 * Read: link:https://diveintosystems.org/singlepage/#_c_debugging_tools[Sections 3.1-3.3]
 // * Assignment 02: Due September 11
@@ -41,19 +41,20 @@
 // * link:lectures/Lecture-Week02-Jan29-Pointers.pdf[Lecture - Jan 22]
 * link:lectures/ask_matrix_aa.c[ask_matrix_aa.c]
 * link:lectures/ask_matrix_flat.c[ask_matrix_flat.c]
+* link:assts/week2lecture1.pdf[Week 2 Lecture 1]
 
 //-----------------------------
 |3
 |September 14, 16 anchor:week03[]
-|*Pointers Continued, NCurses Library, Intro to Data Structures in C*
+|*Advanced Pointers, Programming Tools, File I/O, Intro to Data Structures in C*
 
-* Topics: Remaining pointer topics, editor design and implementation, linked lists, trees
+* Topics: (Tentative) Advanced pointer topics, 2D arrays, file I/O, gdb, valgrind, hexadecimal, linked lists, trees
 * Read: link:https://diveintosystems.org/book/C2-C_depth/structs.html#_self_referential_structs[2.7.5. Self-Referential Structs]
 // * link:assts/asst03.html[Assignment 03]: Due Feb 6
 // * Assignment 03: Due September 18
-* Assignment 01: link:assts/asst01.html[Simple(ish) C] (due Sept 17)
+* Assignment 01: link:assts/asst01.html[Simple(ish) C] (due Sept 17 at midnight)
 // * Lab Feb 3: Practice Quiz 01, link:studyguide1.html[Study Guide: Quiz 01]
-* Lab Feb 3: Practice Quiz 01
+* Lab Sept 15: Practice Quiz 01
 
 |
 
@@ -71,7 +72,8 @@
 * Read: link:https://diveintosystems.org/singlepage/#_binary_and_data_representation[Chapter 4.1-4.9] 
 // * link:assts/asst04.html[Assignment 04]: Due Feb 13
 // * Assignment 04: Due September 25
-* Assignment 03: Fun with Malloc (due September 25)
+// * Assignment 03: Fun with Malloc (due September 25)
+* Assignment 02: Fun with Malloc (to be released Sept 18, due Sept 24 at midnight)
 * Lab September 23: **Quiz 01**: 50 minutes 
 
 |
@@ -88,7 +90,7 @@
 * Read: link:https://diveintosystems.org/singlepage/##_assembly_chapter[Chapter 6] 
 // * link:assts/asst05.html[Assignment 05]: Due Feb 20
 // * Assignment 05: Due October 2
-* Assignment 04: Fun with Pointers (due October 2)
+// * Assignment 04: Fun with Pointers (due October 2)
 * Lab September 30: Code Jam 02
 
 |
@@ -104,7 +106,7 @@
 * Read: link:https://diveintosystems.org/singlepage/#_x64_assembly_chapter[Chapter 7 (7.1-7.3,7.5,7.10), 10] 
 // * link:assts/asst06.html[Assignment 06]: Due Feb 27
 // * Assignment 06: Due October 9
-* Assignment 05: TBA (due October 9)
+// * Assignment 05: TBA (due October 9)
 // * Lab Feb 24: Quiz 02 Practice, link:studyguide2.html[Study Guide 2], link:studyguide3.html[StudyGuide 3]
 * Lab 7: Quiz 02 Practice
 
@@ -132,7 +134,7 @@
 * Read: link:https://diveintosystems.org/singlepage/#_x64_assembly_chapter[Chapter 7 (7.1-7.3,7.5,7.10), 10] 
 // * Lab October 21: **Quiz 02**
 // Note: Not sure I like the hand written homework and turn it in here. I'd rather this be a lab quiz.
-* Assignment 06: TBA (due October 23)
+// * Assignment 06: TBA (due October 23)
 * Lab October 21: **Quiz 02**
 |
 // * link:lectures/Lecture-Week07-March3-AssemblyBranch.pdf[Lectures March 3,5] 
@@ -147,7 +149,7 @@
 // Note: Section 13.3 is on virtual memory. We will NOT be skipping it lol.
 * Read: link:https://diveintosystems.org/singlepage/#_the_operating_system[Chapter 13] 
 // * link:assts/asst08.html[Assignment 08]: Image Conscious. Due March 20th at midnight
-* Assignment 07: Some Assembly Required (due October 30)
+// * Assignment 07: Some Assembly Required (due October 30)
 * Lab October 28: **Code Jam 03**
 | 
 // link:lectures/Lecture-Week09-March17-OS-Processes.pdf[Lectures - March 17 and 19]
@@ -163,7 +165,7 @@
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
 // * Lab March 24: Practice Quiz 03 link:studyguide4.html[Study Guide 04]
 // * link:assts/asst09.html[Assignment 09]: Trust the process. Due March 27th at midnight
-* Assignment 08: Multiprocess (due November 6)
+// * Assignment 08: Multiprocess (due November 6)
 * Lab November 4: Practice Quiz 03 
 |
 // * link:lectures/Lecture-Week10-March31-Threads1.pdf[Lectures - March 24 and 16]
@@ -177,7 +179,7 @@
 * Topics: synchronization, deadlock, producer/consumer pattern
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
 // * link:assts/asst10.html[Assignment 10]: Mandelthreads. Due April 3rd
-* Assignment 09: Trust the Process (due November 13)
+// * Assignment 09: Trust the Process (due November 13)
 * Lab November 11: **Quiz 03**: 50 minutes
 
 |
@@ -195,7 +197,7 @@
 * Read:"My malloc: mylloc and mhysa" by Johan Montelius 
 * Read: link:https://diveintosystems.org/singlepage/#_storage_and_the_memory_hierarchy[Chapter 11.1-11.3] 
 // * link:assts/asst11.html[Assignment 11]: Mutually Exclusive. Due April 10th
-* Assignment 10: Multiprocess & Multithread (due November 20)
+// * Assignment 10: Multiprocess & Multithread (due November 20)
 * Lab November 18: **Code Jam 04**
 
 |
@@ -226,7 +228,7 @@
 // * C++ classes (operators, constructors, destructors), references, STL (list, vector, map), simple templates
 * Topics: Ownership and the Borrow Checker, Rust Abstractions Compared to C equivalents
 // * link:assts/asst13.html[(Optional/Extra Credit) Assignment 13]: C++ Image Class. Due May 1st.
-* Assignment 11: Sync or Swim (due December 4)
+// * Assignment 11: Sync or Swim (due December 4)
 * Lab December 2: **Quiz 04** 
 // link:studyguide5.html[Study Guide 05]
 
@@ -243,7 +245,7 @@
 |*Rust as a Systems Language, Final Review* 
 
 * Topics: Files + I/O, Threads, Shared State, Send / Sync, Final Review
-* Assignment 12: Let's Get Rusty (due December 11)
+// * Assignment 12: Let's Get Rusty (due December 11)
 * Lab December 9: Final Review / Practice Final
 
 // * link:studyguide-final.html[Final Study Guide]
