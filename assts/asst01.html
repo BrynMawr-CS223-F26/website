@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>Assignment 1: Simple(ish) C</title>
+<link rel="stylesheet" href="../style/cs21.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_assignment_1_simpleish_c">Assignment 1: Simple(ish) C</a></li>
+<li><a href="#_update_your_repository">1. Update your repository</a></li>
+<li><a href="#_bad_password">2. Bad password</a></li>
+<li><a href="#_shift_cypher">3. Shift Cypher</a></li>
+<li><a href="#_submit_your_work">4. Submit your Work</a></li>
+<li><a href="#_grading_rubric">5. Grading Rubric</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_assignment_1_simpleish_c">Assignment 1: Simple(ish) C</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Due Thursday Sept 17, before midnight</strong></p>
+</div>
+<div class="paragraph">
+<p>The goals for this assignment are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Work with strings</p>
+</li>
+<li>
+<p>Work with structs</p>
+</li>
+<li>
+<p>Work with arrays</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_update_your_repository">1. Update your repository</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Do a <strong>git pull</strong> from your github hw repo. Your repository should now contain a new folder named <code>/hw1</code>.
+To submit this homework, you will add and commit your files, and push them to your homework repo.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bad_password">2. Bad password</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Write a program, <code>password.c</code>, that asks the user for a word and creates a bad password from it.
+You can assume that all characters are lowercase.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ <strong>gcc password.c -o password</strong>
+$ <strong>./password</strong>
+Enter a word: <strong>elephant</strong>
+Your bad password is 313ph@nt
+$ <strong>./password</strong>
+Enter a word: <strong>hello</strong>
+Your bad password is h311o
+$ <strong>./password</strong>
+Enter a word: <strong>rhythm</strong>
+Your bad password is rhythm</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Your bad password algorithm should</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Replace 'e&#8217;s with '3&#8217;s</p>
+</li>
+<li>
+<p>Replace 'l&#8217;s with '1&#8217;s</p>
+</li>
+<li>
+<p>Replace 'a&#8217;s with '@'s</p>
+</li>
+<li>
+<p>Replace 's&#8217;s with `$`s</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_shift_cypher">3. Shift Cypher</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Write a program, <code>cypher.c</code>, that asks the user for a word and then encodes it
+using a shift cypher. A shift cypher replaces each letter with a letter that is
+X positions from it in the alphabet. For example, is the letter is 'a' and the
+shift is 2, we replace 'a' with a 'c'. You can assume that all inputs are
+lowercase and do not contain special characters.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ <strong>gcc cypher.c -o cypher</strong>
+$ <strong>./cypher</strong>
+Enter a word: <strong>elephant</strong>
+Enter a shift: <strong>2</strong>
+Your cypher is gngrjcpv
+$ <strong>./cypher </strong>
+Enter a word: <strong>gngrjcpv</strong>
+Enter a shift: <strong>-2</strong>
+Your cypher is <strong>elephant
+$ </strong>./cypher <strong>
+Enter a word: </strong>hello<strong>
+Enter a shift: </strong>7<strong>
+Your cypher is olssv
+$ </strong>./cypher <strong>
+Enter a word: </strong>a<strong>
+Enter a shift: </strong>-2<strong>
+Your cypher is y
+$ </strong>./cypher <strong>
+Enter a word: </strong>z<strong>
+Enter a shift: </strong>2**
+Your cypher is b</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Hints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Recall that characters as represented as digits in ASCII. A straight-forward implementation can add offsets to each character of the word.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submit_your_work">4. Submit your Work</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Push you work to Github to submit your work.</p>
+</div>
+<div class="paragraph">
+<p>You <strong>do not</strong> need to include a make file.</p>
+</div>
+<div class="paragraph">
+<p>Please also include a <code>readme.txt</code> where you answer these questions: How long did the homework take you? What did you learn from the homework?</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ cd /hw1
+$ git add *.c readme.txt
+$ git commit -m "assignment 2 complete"
+$ git push origin main</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_grading_rubric">5. Grading Rubric</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Assignment rubrics</strong></p>
+</div>
+<div class="paragraph">
+<p>Grades are out of 10 points.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>(5 points) password</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(2 points) style, formatting, and in-code comments explaining your logic</p>
+</li>
+<li>
+<p>(2 points) correct behavior: asks the user for input and creates the new string</p>
+</li>
+<li>
+<p>(1 point) no memory errors</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>(5 points) cypher</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(2 points) style, formatting, and in-code comments explaining your logic</p>
+</li>
+<li>
+<p>(2 points) correct behavior: asks the user for input and creates the new string</p>
+</li>
+<li>
+<p>(1 point) no memory errors</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Code rubrics</strong></p>
+</div>
+<div class="paragraph">
+<p>For full credit, your C programs must be feature-complete, robust (e.g. run without memory errors or crashing) and
+have good style.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2026-09-11 13:54:32 -0400
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

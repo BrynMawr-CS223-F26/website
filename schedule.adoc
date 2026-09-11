@@ -34,7 +34,6 @@
 * Read: link:https://diveintosystems.org/singlepage/#_a_deeper_dive_into_c_programming[Sections 2.1-2.8, 2.9 (Command line arguments only)] 
 * Read: link:https://diveintosystems.org/singlepage/#_c_debugging_tools[Sections 3.1-3.3]
 // * Assignment 02: Due September 11
-* Assignment 01: Simple C (due September 11)
 * Lab September 9: link:assts/code01-s26.html[Code Jam 01]
 // Note: this lab is just about basic strings and types.
 |
@@ -52,7 +51,7 @@
 * Read: link:https://diveintosystems.org/book/C2-C_depth/structs.html#_self_referential_structs[2.7.5. Self-Referential Structs]
 // * link:assts/asst03.html[Assignment 03]: Due Feb 6
 // * Assignment 03: Due September 18
-* Assignment 02: Strings, Structs, & Arrays (due September 18)
+* Assignment 01: link:assts/asst01.html[Simple(ish) C] (due Sept 17)
 // * Lab Feb 3: Practice Quiz 01, link:studyguide1.html[Study Guide: Quiz 01]
 * Lab Feb 3: Practice Quiz 01
 

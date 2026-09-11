@@ -1,0 +1,124 @@
+include::header.adoc[]
+
+:title: Assignment 1: Simple(ish) C
+:Author Initials: KRS
+:Date:    2026-09-11
+:Revision: 0.1
+:ASST: A01
+
+= {title}
+
+**Due Thursday Sept 17, before midnight**
+
+The goals for this assignment are:
+
+* Work with strings
+* Work with structs
+* Work with arrays
+
+:sectnums:
+
+= Update your repository
+
+Do a *git pull* from your github hw repo. Your repository should now contain a new folder named `/hw1`.
+To submit this homework, you will add and commit your files, and push them to your homework repo.
+
+= Bad password
+
+Write a program, `password.c`, that asks the user for a word and creates a bad password from it.
+You can assume that all characters are lowercase.
+
+[source,subs="quotes"]
+----
+$ **gcc password.c -o password**
+$ **./password**
+Enter a word: **elephant**
+Your bad password is 313ph@nt
+$ **./password**
+Enter a word: **hello**
+Your bad password is h311o
+$ **./password**
+Enter a word: **rhythm**
+Your bad password is rhythm
+----
+
+Your bad password algorithm should
+
+* Replace 'e's with '3's
+* Replace 'l's with '1's
+* Replace 'a's with '@'s
+* Replace 's's with `$`s
+
+
+= Shift Cypher
+
+Write a program, `cypher.c`, that asks the user for a word and then encodes it
+using a shift cypher. A shift cypher replaces each letter with a letter that is
+X positions from it in the alphabet. For example, is the letter is 'a' and the
+shift is 2, we replace 'a' with a 'c'. You can assume that all inputs are
+lowercase and do not contain special characters.  
+
+[source,subs="quotes"]
+----
+$ **gcc cypher.c -o cypher**
+$ **./cypher**
+Enter a word: **elephant**
+Enter a shift: **2**
+Your cypher is gngrjcpv
+$ **./cypher **
+Enter a word: **gngrjcpv**
+Enter a shift: **-2**
+Your cypher is **elephant
+$ **./cypher **
+Enter a word: **hello**
+Enter a shift: **7**
+Your cypher is olssv
+$ **./cypher **
+Enter a word: **a**
+Enter a shift: **-2**
+Your cypher is y
+$ **./cypher **
+Enter a word: **z**
+Enter a shift: **2**
+Your cypher is b
+----
+
+Hints:
+
+* Recall that characters as represented as digits in ASCII. A straight-forward implementation can add offsets to each character of the word. 
+
+= Submit your Work
+
+Push you work to Github to submit your work.
+
+You **do not** need to include a make file.
+
+Please also include a `readme.txt` where you answer these questions: How long did the homework take you? What did you learn from the homework?
+
+[source, subs="attributes"]
+----
+$ cd /hw1
+$ git add *.c readme.txt
+$ git commit -m "assignment 2 complete"
+$ git push origin main
+----
+
+= Grading Rubric
+
+*Assignment rubrics*
+
+Grades are out of 10 points.
+
+* (5 points) password
+** (2 points) style, formatting, and in-code comments explaining your logic
+** (2 points) correct behavior: asks the user for input and creates the new string
+** (1 point) no memory errors
+* (5 points) cypher 
+** (2 points) style, formatting, and in-code comments explaining your logic
+** (2 points) correct behavior: asks the user for input and creates the new string
+** (1 point) no memory errors
+
+*Code rubrics*
+
+For full credit, your C programs must be feature-complete, robust (e.g. run without memory errors or crashing) and 
+have good style.
