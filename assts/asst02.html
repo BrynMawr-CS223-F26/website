@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>Assignment 2: If you malloc something, set it free</title>
+<link rel="stylesheet" href="../style/cs21.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_assignment_2_if_you_malloc_something_set_it_free">Assignment 2: If you malloc something, set it free</a></li>
+<li><a href="#_update_your_repository">1. Update your repository</a></li>
+<li><a href="#_1_minesweeper">2. 1. Minesweeper</a></li>
+<li><a href="#_2_flattening">3. 2. Flattening</a></li>
+<li><a href="#_grading_rubric">4. Grading Rubric</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_assignment_2_if_you_malloc_something_set_it_free">Assignment 2: If you malloc something, set it free</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Due Friday, February 6th, before midnight</strong></p>
+</div>
+<div class="paragraph">
+<p>The goals for this assignment are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Work with malloc/free</p>
+</li>
+<li>
+<p>Work with arrays / 2D arrays</p>
+</li>
+<li>
+<p>Work with a C-style systems API</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_update_your_repository">1. Update your repository</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Do a git pull from your github hw repo. Your repository should now contain a new folder named <code>/hw2</code>.
+To submit this homework, you will add and commit your files, and push them to your homework repo.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1_minesweeper">2. 1. Minesweeper</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Implement a program, <code>minesweeper.c</code>, that generates a minesweeper board.
+In <a href="https://minesweeperonline.com/#">Minesweeper</a>, each cell can either
+contain a bomb or not. Cells without bombs are called safe cells.</p>
+</div>
+<div class="paragraph">
+<p>Your program should take three command line arguments&#8201;&#8212;&#8201;m, n, and p&#8201;&#8212;&#8201;and
+generate an m x n grid of cells where each cell has probability p of containing a
+bomb. To do this, generate a random floating-point value between 0 and 1. If that
+value is less than p, place a bomb in the cell.</p>
+</div>
+<div class="paragraph">
+<p>Then, your program should print out the grid using X for bombs and . (period)
+for safe cells.</p>
+</div>
+<div class="paragraph">
+<p>Finally, your program should output an additional 2D grid with the
+number of neighboring bombs for each cell (above, below, left, right, NW, NE, SW, SE).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ <strong>make minesweeper</strong>
+gcc -g -Wall -Wvla -Werror minesweeper.c -o minesweeper
+$ <strong>./minesweeper 3 5 0.4</strong>
+X X . . .
+. . . . .
+. X . . .
+
+X X 1 0 0
+3 3 2 0 0
+1 X 1 0 0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Requirements/Hints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use malloc and free to allocate a 2D array to store the grid.</p>
+</li>
+<li>
+<p>You should create dynamic "array of arrays" for your grids.</p>
+</li>
+<li>
+<p>Use rand() and srand(time(0)) to create random boards</p>
+</li>
+<li>
+<p>Your program must use command line arguments!</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below is example code for seeding and then generating random numbers.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>#include <stdlib.h>
+#include <time.h>
+
+int main(void) {
+    srand(time(0));   // do this ONCE
+
+    printf("%d\n", rand());
+    printf("%d\n", rand());
+    printf("%d\n", rand());
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_flattening">3. 2. Flattening</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NCurses is a library for setting text in the terminal. Usually, when we write to terminal,
+we sequentially append text to the lines that have been output before. However, with the NCurses
+library, we can easily write and erase characters anywhere on the screen.</p>
+</div>
+<div class="paragraph">
+<p>In the file, <code>ascii.c</code>, write an NCurses program that draws an animated scene, character, or pattern.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/bee-demo.gif" alt="bee demo" width="600px">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ make ascii
+$ ./ascii</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Your program must include multiple colors</p>
+</li>
+<li>
+<p>Your program should include some animation</p>
+</li>
+<li>
+<p>Pressing ESCAPE should exit the application</p>
+</li>
+<li>
+<p>Search for ASCII art to get some ideas. Make sure your credit any art that you do not make yourself!</p>
+</li>
+</ul>
+</div>
+<h3 id="_getting_started_with_ncurses" class="discrete">Getting started with NCurses</h3>
+<div class="paragraph">
+<p>We will the ncurses library to render text to the screen and respond to user
+input.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/helloworld.html" class="bare">https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/helloworld.html</a></p>
+</div>
+<div class="paragraph">
+<p>The program below initializes a terminal screen, prints "Hello World!",
+and exits when the user presses any key. All ncurses applications need to
+initialize (<code>initscr</code>) and cleanup (<code>endwin</code>) the terminal at the start and end
+of the program.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>#include &lt;ncurses.h&gt;
+
+int main()
+{
+  initscr();      /* Start curses mode      */
+  printw("Hello World !!!");  /* Print Hello World      */
+  refresh();      /* Print it on to the real screen */
+  getch();      /* Wait for user input */
+  endwin();     /* End curses mode      */
+
+  return 0;
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_grading_rubric">4. Grading Rubric</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Assignment rubrics</strong></p>
+</div>
+<div class="paragraph">
+<p>Grades are out of 4 points.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>(2 point) Minesweeper</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(0.2 points) style</p>
+</li>
+<li>
+<p>(1.0 points) no memory errors</p>
+</li>
+<li>
+<p>(0.8 points) correct behavior: accepts command line arguments and produces good output</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>(2 points) ncurses</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(0.2 points) style</p>
+</li>
+<li>
+<p>(1.0 points) no memory errors</p>
+</li>
+<li>
+<p>(0.8 points) correct behavior: draws ASCII art using multiple text styles and colors</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Code rubrics</strong></p>
+</div>
+<div class="paragraph">
+<p>For full credit, your C programs must be feature-complete, robust (e.g. run without memory errors or crashing) and
+have good style.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Some credit lost for missing features or bugs, depending on severity of error</p>
+</li>
+<li>
+<p>-5% for style errors. See the <a href="../codingstandard.html">class coding style</a> here.</p>
+</li>
+<li>
+<p>-50% for memory errors</p>
+</li>
+<li>
+<p>-100% for failure to checkin work to Github</p>
+</li>
+<li>
+<p>-100% for failure to compile on linux using make</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2026-09-18 13:20:06 -0400
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
