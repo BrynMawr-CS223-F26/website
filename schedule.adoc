@@ -40,8 +40,6 @@
 |
 // * link:lectures/Lecture-Week02-Jan27-Pointers.pdf[Lecture - Jan 27]
 // * link:lectures/Lecture-Week02-Jan29-Pointers.pdf[Lecture - Jan 22]
-* link:lectures/ask_matrix_aa.c[ask_matrix_aa.c]
-* link:lectures/ask_matrix_flat.c[ask_matrix_flat.c]
 * link:assts/week2lecture1.pdf[Week 2 Lecture 1]
 
 //-----------------------------
@@ -63,6 +61,8 @@
 // * link:lectures/Lecture-Week03-Feb3-NCurses.pdf[Lecture Feb 3 - NCurses]
 // Note: Start this lecture if time
 // * link:lectures/Lecture-Week03-Feb5-DataStructures.pdf[Lecture Feb 5 - Data Structures]
+* link:assts/ask_matrix_aa.c[ask_matrix_aa.c]
+* link:assts/ask_matrix_flat.c[ask_matrix_flat.c]
 
 //-----------------------------
 |4
