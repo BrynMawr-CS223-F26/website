@@ -139,6 +139,21 @@ int matrix5[4][4] = {
 };
 ----
 
+= Submit your Work
+
+Push you work to Github to submit your work.
+
+You **do not** need to include a make file.
+
+Please also include a `readme.txt` where you answer these questions: How long did the homework take you? What did you learn from the homework?
+
+[source, subs="attributes"]
+----
+$ cd /hw2
+$ git add *.c readme.txt
+$ git commit -m "assignment 2 complete"
+$ git push origin main
+----
 
 
 = Grading Rubric

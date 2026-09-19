@@ -99,7 +99,7 @@ Please also include a `readme.txt` where you answer these questions: How long di
 ----
 $ cd /hw1
 $ git add *.c readme.txt
-$ git commit -m "assignment 2 complete"
+$ git commit -m "assignment 1 complete"
 $ git push origin main
 ----
 
