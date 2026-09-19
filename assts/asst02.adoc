@@ -8,7 +8,7 @@ include::header.adoc[]
 
 = {title}
 
-**Due Friday, February 6th, before midnight**
+**Due Thursday September 24, before midnight**
 
 The goals for this assignment are:
 
@@ -18,9 +18,9 @@ The goals for this assignment are:
 
 :sectnums:
 
-= Update your repository
+= Set Up
 
-Do a git pull from your github hw repo. Your repository should now contain a new folder named `/hw2`. 
+Create a new folder `/hw2` whereever your local gitub hw repo is on your computer. 
 To submit this homework, you will add and commit your files, and push them to your homework repo.
 
 
@@ -80,81 +80,84 @@ int main(void) {
 ----
 
 
-= 2. Flattening
+= Flattening
 
-NCurses is a library for setting text in the terminal. Usually, when we write to terminal, 
-we sequentially append text to the lines that have been output before. However, with the NCurses
-library, we can easily write and erase characters anywhere on the screen.
+Given a 2D array, copy it into a 1D array in row-major order, and then print the flattened array.
+For example, this 2D array:
 
-In the file, `ascii.c`, write an NCurses program that draws an animated scene, character, or pattern.
-
-image::bee-demo.gif[width=600px]
 
 [source, subs="quotes"]
 ----
-$ make ascii
-$ ./ascii 
+int matrix[3][4] = {
+    {1, 2, 3, 4},
+    {5, 6, 7, 8},
+    {9, 10, 11, 12}
+};
 ----
 
-Requirements:
+Becomes this when it's printed:
 
-* Your program must include multiple colors
-* Your program should include some animation
-* Pressing ESCAPE should exit the application
-* Search for ASCII art to get some ideas. Make sure your credit any art that you do not make yourself!
+[source, subs="quotes"]
+----
+1 2 3 4 5 6 7 8 9 10 11 12
+----
 
-[discrete]
-== Getting started with NCurses                                                           
-                                                                                
-We will the ncurses library to render text to the screen and respond to user    
-input.                                                                          
-                                                                                
-https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/helloworld.html                
-                                                                                
-The program below initializes a terminal screen, prints "Hello World!",         
-and exits when the user presses any key. All ncurses applications need to       
-initialize (`initscr`) and cleanup (`endwin`) the terminal at the start and end 
-of the program.                                                                 
-                                                                                
-[source]                                                                        
-----                                                                            
-#include <ncurses.h>                                                            
-                                                                                
-int main()                                                                      
-{                                                                               
-  initscr();      /* Start curses mode      */                                  
-  printw("Hello World !!!");  /* Print Hello World      */                      
-  refresh();      /* Print it on to the real screen */                          
-  getch();      /* Wait for user input */                                       
-  endwin();     /* End curses mode      */                                      
-                                                                                
-  return 0;                                                                     
-}                                                                               
-----                            
+Call your `flatten()` function from your main function on the following 2D arrays.
+Your function should print out the flattened array for each.
+
+
+[source, subs="quotes"]
+----
+int matrix1[2][3] = {
+    {4, 7, 1},
+    {9, 2, 6}
+};
+
+int matrix2[4][2] = {
+    {5, 8},
+    {3, 1},
+    {7, 4},
+    {6, 9}
+};
+
+int matrix3[3][5] = {
+    {2, 4, 6, 8, 10},
+    {1, 3, 5, 7, 9},
+    {11, 12, 13, 14, 15}
+};
+
+int matrix4[2][5] = {
+    {12, 3, 17, 8, 1},
+    {6, 14, 2, 9, 11}
+};
+
+int matrix5[4][4] = {
+    {1, 5, 9, 13},
+    {2, 6, 10, 14},
+    {3, 7, 11, 15},
+    {4, 8, 12, 16}
+};
+----
+
 
 
 = Grading Rubric
 
 *Assignment rubrics*
 
-Grades are out of 4 points.
+Grades are out of 10 points.
 
-* (2 point) Minesweeper
-** (0.2 points) style
-** (1.0 points) no memory errors
-** (0.8 points) correct behavior: accepts command line arguments and produces good output
-* (2 points) ncurses
-** (0.2 points) style
-** (1.0 points) no memory errors
-** (0.8 points) correct behavior: draws ASCII art using multiple text styles and colors
+* (6 points) Minesweeper
+** (1 point) style and comments
+** (2 points) no memory errors
+** (3 points) correct behavior: accepts command line arguments and produces good output
+* (4 points) Flattening
+** (1 point) style and comments
+** (1 point) no memory errors
+** (2 points) correct behavior: flattens 2D arrays to 1D arrays correctly and prints them out
 
 *Code rubrics*
 
 For full credit, your C programs must be feature-complete, robust (e.g. run without memory errors or crashing) and 
 have good style.
 
-* Some credit lost for missing features or bugs, depending on severity of error
-* -5% for style errors. See the link:../codingstandard.html[class coding style] here.
-* -50% for memory errors
-* -100% for failure to checkin work to Github
-* -100% for failure to compile on linux using make

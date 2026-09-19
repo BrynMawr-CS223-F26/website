@@ -15,9 +15,9 @@
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_assignment_2_if_you_malloc_something_set_it_free">Assignment 2: If you malloc something, set it free</a></li>
-<li><a href="#_update_your_repository">1. Update your repository</a></li>
+<li><a href="#_set_up">1. Set Up</a></li>
 <li><a href="#_1_minesweeper">2. 1. Minesweeper</a></li>
-<li><a href="#_2_flattening">3. 2. Flattening</a></li>
+<li><a href="#_flattening">3. Flattening</a></li>
 <li><a href="#_grading_rubric">4. Grading Rubric</a></li>
 </ul>
 </div>
@@ -27,7 +27,7 @@
 <h2 id="_assignment_2_if_you_malloc_something_set_it_free">Assignment 2: If you malloc something, set it free</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Due Friday, February 6th, before midnight</strong></p>
+<p><strong>Due Thursday September 24, before midnight</strong></p>
 </div>
 <div class="paragraph">
 <p>The goals for this assignment are:</p>
@@ -48,10 +48,10 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_update_your_repository">1. Update your repository</h2>
+<h2 id="_set_up">1. Set Up</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Do a git pull from your github hw repo. Your repository should now contain a new folder named <code>/hw2</code>.
+<p>Create a new folder <code>/hw2</code> whereever your local gitub hw repo is on your computer.
 To submit this homework, you will add and commit your files, and push them to your homework repo.</p>
 </div>
 </div>
@@ -131,74 +131,64 @@ int main(void) {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2_flattening">3. 2. Flattening</h2>
+<h2 id="_flattening">3. Flattening</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>NCurses is a library for setting text in the terminal. Usually, when we write to terminal,
-we sequentially append text to the lines that have been output before. However, with the NCurses
-library, we can easily write and erase characters anywhere on the screen.</p>
-</div>
-<div class="paragraph">
-<p>In the file, <code>ascii.c</code>, write an NCurses program that draws an animated scene, character, or pattern.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="img/bee-demo.gif" alt="bee demo" width="600px">
-</div>
+<p>Given a 2D array, copy it into a 1D array in row-major order, and then print the flattened array.
+For example, this 2D array:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ make ascii
-$ ./ascii</code></pre>
+<pre class="highlight"><code>int matrix[3][4] = {
+    {1, 2, 3, 4},
+    {5, 6, 7, 8},
+    {9, 10, 11, 12}
+};</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Requirements:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Your program must include multiple colors</p>
-</li>
-<li>
-<p>Your program should include some animation</p>
-</li>
-<li>
-<p>Pressing ESCAPE should exit the application</p>
-</li>
-<li>
-<p>Search for ASCII art to get some ideas. Make sure your credit any art that you do not make yourself!</p>
-</li>
-</ul>
-</div>
-<h3 id="_getting_started_with_ncurses" class="discrete">Getting started with NCurses</h3>
-<div class="paragraph">
-<p>We will the ncurses library to render text to the screen and respond to user
-input.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/helloworld.html" class="bare">https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/helloworld.html</a></p>
-</div>
-<div class="paragraph">
-<p>The program below initializes a terminal screen, prints "Hello World!",
-and exits when the user presses any key. All ncurses applications need to
-initialize (<code>initscr</code>) and cleanup (<code>endwin</code>) the terminal at the start and end
-of the program.</p>
+<p>Becomes this when it&#8217;s printed:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>#include &lt;ncurses.h&gt;
+<pre class="highlight"><code>1 2 3 4 5 6 7 8 9 10 11 12</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Call your <code>flatten()</code> function from your main function on the following 2D arrays.
+Your function should print out the flattened array for each.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>int matrix1[2][3] = {
+    {4, 7, 1},
+    {9, 2, 6}
+};
 
-int main()
-{
-  initscr();      /* Start curses mode      */
-  printw("Hello World !!!");  /* Print Hello World      */
-  refresh();      /* Print it on to the real screen */
-  getch();      /* Wait for user input */
-  endwin();     /* End curses mode      */
+int matrix2[4][2] = {
+    {5, 8},
+    {3, 1},
+    {7, 4},
+    {6, 9}
+};
 
-  return 0;
-}</code></pre>
+int matrix3[3][5] = {
+    {2, 4, 6, 8, 10},
+    {1, 3, 5, 7, 9},
+    {11, 12, 13, 14, 15}
+};
+
+int matrix4[2][5] = {
+    {12, 3, 17, 8, 1},
+    {6, 14, 2, 9, 11}
+};
+
+int matrix5[4][4] = {
+    {1, 5, 9, 13},
+    {2, 6, 10, 14},
+    {3, 7, 11, 15},
+    {4, 8, 12, 16}
+};</code></pre>
 </div>
 </div>
 </div>
@@ -210,38 +200,38 @@ int main()
 <p><strong>Assignment rubrics</strong></p>
 </div>
 <div class="paragraph">
-<p>Grades are out of 4 points.</p>
+<p>Grades are out of 10 points.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>(2 point) Minesweeper</p>
+<p>(6 points) Minesweeper</p>
 <div class="ulist">
 <ul>
 <li>
-<p>(0.2 points) style</p>
+<p>(1 point) style and comments</p>
 </li>
 <li>
-<p>(1.0 points) no memory errors</p>
+<p>(2 points) no memory errors</p>
 </li>
 <li>
-<p>(0.8 points) correct behavior: accepts command line arguments and produces good output</p>
+<p>(3 points) correct behavior: accepts command line arguments and produces good output</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>(2 points) ncurses</p>
+<p>(4 points) Flattening</p>
 <div class="ulist">
 <ul>
 <li>
-<p>(0.2 points) style</p>
+<p>(1 point) style and comments</p>
 </li>
 <li>
-<p>(1.0 points) no memory errors</p>
+<p>(1 point) no memory errors</p>
 </li>
 <li>
-<p>(0.8 points) correct behavior: draws ASCII art using multiple text styles and colors</p>
+<p>(2 points) correct behavior: flattens 2D arrays to 1D arrays correctly and prints them out</p>
 </li>
 </ul>
 </div>
@@ -255,31 +245,12 @@ int main()
 <p>For full credit, your C programs must be feature-complete, robust (e.g. run without memory errors or crashing) and
 have good style.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Some credit lost for missing features or bugs, depending on severity of error</p>
-</li>
-<li>
-<p>-5% for style errors. See the <a href="../codingstandard.html">class coding style</a> here.</p>
-</li>
-<li>
-<p>-50% for memory errors</p>
-</li>
-<li>
-<p>-100% for failure to checkin work to Github</p>
-</li>
-<li>
-<p>-100% for failure to compile on linux using make</p>
-</li>
-</ul>
-</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-09-18 13:20:06 -0400
+Last updated 2026-09-19 12:21:51 -0400
 </div>
 </div>
 <script type="text/x-mathjax-config">
