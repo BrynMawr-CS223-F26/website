@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>Code Jam 2</title>
+<link rel="stylesheet" href="../style/cs21.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<h2 id="_code_jam_2" class="discrete">Code Jam 2</h2>
+<div class="paragraph">
+<p>Names:
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<h2 id="_question_1" class="discrete">Question 1</h2>
+<div class="paragraph">
+<p>When Cedric runs his program with valgrind, he gets the following error.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>==2552== Invalid read of size 4
+==2552==    at 0x109276: main (memerr2.c:12)
+==2552==  Address 0x4a51040 is 0 bytes inside a block of size 40 free'd
+==2552==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2552==    by 0x109258: main (memerr2.c:10)
+==2552==  Block was alloc'd at
+==2552==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2552==    by 0x1091EC: main (memerr2.c:6)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here is his code.  What does the valgrind error mean and how can Cedric fix his
+program? Write your answer in the space below, next to Cedric&#8217;s program.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code> 4  int main() {
+ 5   int n = 10;
+ 6   int *values = malloc(sizeof(int) * n);
+ 7   for (int i = 0; i &lt; n; i++) {
+ 8     values[i] = rand() % 10 - 5;
+ 9   }
+10   free(values);
+11   for (int i = 0; i &lt; n; i++) {
+12     printf("%d ", values[i]);
+13   }
+14   printf("\n");
+15   return 0;
+16 }</code></pre>
+</div>
+</div>
+<h2 id="_question_2" class="discrete">Question 2</h2>
+<div class="paragraph">
+<p>Consider the program, <code>linkedlist.c</code>. You can pull this program by cloning the labs repo: <code>git clone <a href="mailto:git@github.com">git@github.com</a>:BrynMawr-CS223-F26/labs.git</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>struct cake {
+  float cost;
+  char flavor[16];
+  struct cake* next;
+};
+
+struct cake makeCake(const char* flavor, float cost) {
+  struct cake newCake;
+  strncpy(newCake.flavor, flavor, 16);
+  newCake.cost = cost;
+  newCake.next = NULL;
+  return newCake;
+}
+
+int main() {
+  struct cake cake1 = makeCake("red velvet", 2.00);
+  struct cake cake2 = makeCake("chocolate", 1.75);
+  struct cake cake3 = makeCake("mocha", 3.50);
+
+  cake1.next = &amp;cake2;
+  cake2.next = &amp;cake3;
+  // A) draw stack and heap here
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>A) In the space above, draw the function stack for the following program at the
+end of <code>main()</code>.  You <em>do not</em> need to include intermediate values in your
+diagram&#8201;&#8212;&#8201;just include the state of the stack and heap.</p>
+</div>
+<div class="paragraph">
+<p>B) Does the above program have memory leaks? Why or why not?</p>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>C) In the file, <code>linkedlist.c</code>, add a fourth cake the end of the list.</p>
+</div>
+<div class="paragraph">
+<p>D) In the file, <code>linkedlist.c</code>, implement a function <code>cheapestCake</code> that
+prints each cake followed by the cheapest one. Below is an example of
+possible output. Your function should take the first cake as an argument.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ <strong>make linkedlist</strong>
+gcc -g linkedlist.c -o linkedlist
+$ <strong>./linkedlist</strong>
+cake: red velvet ($2.00)
+cake: chocolate ($1.75)
+cake: mocha ($3.50)
+cake: rainbow sprinkle ($5.25)
+The cheapest cake is chocolate</code></pre>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2026-09-30 07:43:29 -0400
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

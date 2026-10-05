@@ -48,7 +48,7 @@
 |September 14, 16 anchor:week03[]
 |*Advanced Pointers, Programming Tools, File I/O, Intro to Data Structures in C*
 
-* Topics: (Tentative) Advanced pointer topics, 2D arrays, file I/O, gdb, valgrind, hexadecimal, linked lists, trees
+* Topics: Advanced pointer topics, 2D arrays, file I/O, gdb, valgrind, hexadecimal, linked lists, trees
 * Read: link:https://diveintosystems.org/book/C2-C_depth/structs.html#_self_referential_structs[2.7.5. Self-Referential Structs]
 // * link:assts/asst03.html[Assignment 03]: Due Feb 6
 // * Assignment 03: Due September 18
@@ -72,7 +72,7 @@
 |September 21, 23 anchor:week04[]
 |*Data Structures in C Continued, Introduction to Binary and Data Representation* 
 
-* Topics: number systems, integer/float/char binary formats, struct layouts, endianess
+* Topics: Linked lists, integer/float/char binary formats, struct layouts, endianess
 * Read: link:https://diveintosystems.org/singlepage/#_binary_and_data_representation[Chapter 4.1-4.9] 
 // * link:assts/asst04.html[Assignment 04]: Due Feb 13
 // * Assignment 04: Due September 25
@@ -89,15 +89,17 @@
 //-----------------------------
 |5
 |September 28, 30 anchor:week05[]
-|*Binary Continued, Bitwise operators, Introduction to Assembly* 
+|*Binary and Data Representation Continued* 
 
-* Topics: bitwise operators, shifts, masking, working with bit fields
-* Read: link:https://diveintosystems.org/singlepage/#_what_von_neumann_knew_computer_architecture[Section 5, 5.1]
-* Read: link:https://diveintosystems.org/singlepage/##_assembly_chapter[Chapter 6] 
+* Topics: Integer/float/char binary formats
+* No homework this week!
+// struct layouts, endianess
+// * Topics: bitwise operators, shifts, masking, working with bit fields
+// * Read: link:https://diveintosystems.org/singlepage/#_what_von_neumann_knew_computer_architecture[Section 5, 5.1]
+// * Read: link:https://diveintosystems.org/singlepage/##_assembly_chapter[Chapter 6] 
 // * link:assts/asst05.html[Assignment 05]: Due Feb 20
 // * Assignment 05: Due October 2
 // * Assignment 04: Fun with Pointers (due October 2)
-* Lab September 30: Code Jam 02
 
 |
 // * link:lectures/Lecture-Week04-Feb12-Binary.pdf[Lecture Feb 17 - Binary]
@@ -106,15 +108,17 @@
 //-----------------------------
 |6
 |October 5, 7  anchor:week06[]
-|*Assembly*
+// |*Assembly*
+|*Bitwise Operators*
 
-* Topics: instruction set architecture, machine code, memory forms, x86_64 instructions
-* Read: link:https://diveintosystems.org/singlepage/#_x64_assembly_chapter[Chapter 7 (7.1-7.3,7.5,7.10), 10] 
+* Topics: Struct layouts, endianess, bitwise ops, shifts, masking, working with bit fields
+* Read: link:https://diveintosystems.org/singlepage/#_what_von_neumann_knew_computer_architecture[Section 5, 5.1]
 // * link:assts/asst06.html[Assignment 06]: Due Feb 27
 // * Assignment 06: Due October 9
 // * Assignment 05: TBA (due October 9)
 // * Lab Feb 24: Quiz 02 Practice, link:studyguide2.html[Study Guide 2], link:studyguide3.html[StudyGuide 3]
-* Lab 7: Quiz 02 Practice
+* Lab Oct 7: link:assts/jam02-s22.html[Code Jam 02]
+* Assignment 03: TBD (not due until AFTER fall break!)
 
 |
 // * link:lectures/Lecture-Week06-Feb24-IntroAssembly.pdf[Lecture Feb 24]
@@ -135,10 +139,11 @@
 |October 19, 21 anchor:week08[]
 |*Assembly, The operating system* 
 
+// * Topics: instruction set architecture, machine code, memory forms, x86_64 instructions
 * Topics: Tracing assembly, loops, conditionals
 * Topics: what is an operating system?, System calls
 * Read: link:https://diveintosystems.org/singlepage/#_x64_assembly_chapter[Chapter 7 (7.1-7.3,7.5,7.10), 10] 
-// * Lab October 21: **Quiz 02**
+// * Read: link:https://diveintosystems.org/singlepage/#_x64_assembly_chapter[Chapter 7 (7.1-7.3,7.5,7.10), 10] 
 // Note: Not sure I like the hand written homework and turn it in here. I'd rather this be a lab quiz.
 // * Assignment 06: TBA (due October 23)
 * Lab October 21: **Quiz 02**

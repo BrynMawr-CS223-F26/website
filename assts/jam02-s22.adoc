@@ -1,0 +1,215 @@
+include::header.adoc[]
+
+:title: Code Jam 2
+:Author Initials: ASN
+:Date:    2020-08-15
+:Revision: 0.1
+:stem: latexmath
+
+[discrete]
+= {title}
+
+
+
+Names: 
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+
+[discrete]
+= Question 1
+
+When Cedric runs his program with valgrind, he gets the following error.
+
+[source]
+----
+==2552== Invalid read of size 4
+==2552==    at 0x109276: main (memerr2.c:12)
+==2552==  Address 0x4a51040 is 0 bytes inside a block of size 40 free'd
+==2552==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2552==    by 0x109258: main (memerr2.c:10)
+==2552==  Block was alloc'd at
+==2552==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2552==    by 0x1091EC: main (memerr2.c:6)
+----
+
+Here is his code.  What does the valgrind error mean and how can Cedric fix his
+program? Write your answer in the space below, next to Cedric's program.
+
+[source]
+----
+ 4  int main() {
+ 5   int n = 10;
+ 6   int *values = malloc(sizeof(int) * n);
+ 7   for (int i = 0; i < n; i++) {
+ 8     values[i] = rand() % 10 - 5;
+ 9   }
+10   free(values);
+11   for (int i = 0; i < n; i++) {
+12     printf("%d ", values[i]);
+13   }
+14   printf("\n");
+15   return 0;
+16 }
+----
+
+
+[discrete]
+= Question 2
+
+Consider the program, `linkedlist.c`. You can pull this program by cloning the labs repo: `git clone git@github.com:BrynMawr-CS223-F26/labs.git`
+
+[source]
+----
+struct cake {
+  float cost;
+  char flavor[16];
+  struct cake* next;
+};
+
+struct cake makeCake(const char* flavor, float cost) {
+  struct cake newCake;
+  strncpy(newCake.flavor, flavor, 16);
+  newCake.cost = cost;
+  newCake.next = NULL;
+  return newCake;
+}
+
+int main() {
+  struct cake cake1 = makeCake("red velvet", 2.00);
+  struct cake cake2 = makeCake("chocolate", 1.75);
+  struct cake cake3 = makeCake("mocha", 3.50);
+
+  cake1.next = &cake2;
+  cake2.next = &cake3;
+  // A) draw stack and heap here
+}
+----
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+A) In the space above, draw the function stack for the following program at the
+end of `main()`.  You _do not_ need to include intermediate values in your
+diagram -- just include the state of the stack and heap.
+
+
+B) Does the above program have memory leaks? Why or why not?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+C) In the file, `linkedlist.c`, add a fourth cake the end of the list.
+
+D) In the file, `linkedlist.c`, implement a function `cheapestCake` that 
+prints each cake followed by the cheapest one. Below is an example of 
+possible output. Your function should take the first cake as an argument.
+
+[source,subs=quotes]
+----
+$ **make linkedlist**
+gcc -g linkedlist.c -o linkedlist
+$ **./linkedlist**
+cake: red velvet ($2.00)
+cake: chocolate ($1.75)
+cake: mocha ($3.50)
+cake: rainbow sprinkle ($5.25)
+The cheapest cake is chocolate
+----
+
+// [discrete]
+// = Question 3
+//
+// Write a program, readvector.c, that implements a function that reads in a vector from 
+// a file and prints the result. 
+//
+// A vector is a N-dimensional list of components. For example, an example of a 
+// 3-dimensional vector is (0.5, 6, -7.1). 
+//
+// Vectors are stored in a file, with one value per line. The first value in the file stores 
+// the length of the vector. Each subsequent line stores the corresponding values.
+//
+// [source,subs="quotes"]
+// ----
+// $ **cat vector1.txt**
+// 3
+// 0.5
+// 6
+// -7.1
+// $ **make readvector**
+// gcc -g readvector.c -o readvector
+// $ **./readvector vector1.txt**
+// 0.500000
+// 6.000000
+// -7.100000
+// ----
+//
+// Requirements:
+//
+// * Your program should run without memory errors.
+// * You should use fopen/fclose to open and close the file.
+// * You should not change the function signatures in your base code.
+// * Your program should read the filename as a command line argument.
+// * Use malloc/free to allocate memory for your vector (do not assume a max size!)
+// * You can assume no number requires more than 32 characters to store.
+// * Hint: use atof to convert from a string to a float value
+
+//= Question 4
+//
+//Write a program, `orthogonal.c`, that reads in two vectors (each stored in 
+//their own file) and prints whether they are perpendicular to each other or not. 
+//
+//Recall that a vector is a n-tuple of values, such as (0.5, 6, -7), or 
+//(10,2.789,4, 11, 30.0, 100). The first line in the vector file is the number 
+//of components in the vector. Each subsequent line is the ith value. For example,
+//a file containing the first vector would look like 
+//
+//[source]
+//----
+//3
+//0.5
+//6
+//-7
+//----
+//
+//Two vectors are perpendicular if their dot product is zero. The 
+//dot product is the sum of their component-wise products.
+//For example, if stem:[a = (a_1, a_2, a_3, \ldots, a_n)] and 
+//stem:[b = (b_1, b_2, b_2, \ldots, b_n)], then their dot product, denoted 
+//stem:[a \cdot b], is 
+//
+//[stem]
+//++++
+//a \cdot b = a_1 b_1 + a_2 b_2 + a_3 b_3 + \ldots + a_n b_n 
+//++++
+//
+//[source,subs="quotes"]
+//----
+//$ **make orthogonal**
+//gcc -g orthogonal.c -o orthogonal
+//$ **./orthogonal a.txt b.txt**
+//----
+//
+//Requirements/Hints:
+//
+//* Use float to read in your vectors.
+//* If two vectors are not the same size, print an error that says the dot product cannot be computed.
+//* Your program should read in the two vectors as command line arguments
+//* Your should print the input vectors as well as whether they are orthogonal
+//* Your output does not need to match exactly but should be clear and easy to read
+//* Make sure your program runs without memory errors
+
+
