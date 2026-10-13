@@ -12,18 +12,13 @@
 
 * Topics: Programming at the command line, Makefiles, From Java to C, strings, arrays, structs, function stack, basic pointers
 * Read: link:https://diveintosystems.org/singlepage/#_appendix_1_chapter_1_for_java_programmers[Chapter 1: From JAVA to C] 
-// * link:assts/asst01.html[Assignment 01]: Due September 4
-// * Assignment 01: Due September 4
 * Lab September 2: link:assts/ssh-setup.html[SSH and Github setup]
 
 |
-// * link:assts/ssh-setup.html[SSH Setup]
 * link:http://linuxcommand.org/lc3_learning_the_shell.php[Learning the shell]
 * link:https://pythontutor.com/c.html#mode=edit[C Tutor]
 * link:assts/week1lecture1.pdf[Week 1 Lecture 1]
 * link:assts/week1lecture2.pdf[Week 1 Lecture 2]
-// * link:lectures/Lecture-Week01-Jan20-Intro.pdf[Lecture - Jan 20]
-// * link:lectures/Lecture-Week01-Jan22-C.pdf[Lecture - Jan 22]
 
 //-----------------------------
 | 2 
@@ -33,13 +28,9 @@
 * Topics: Basic pointers, malloc/free, heap, stack diagrams
 * Read: link:https://diveintosystems.org/singlepage/#_a_deeper_dive_into_c_programming[Sections 2.1-2.8, 2.9 (Command line arguments only)] 
 * Read: link:https://diveintosystems.org/singlepage/#_c_debugging_tools[Sections 3.1-3.3]
-// * Assignment 02: Due September 11
 * Assignment 01: link:assts/asst01.html[Simple(ish) C] (due Sept 17 at midnight)
 * Lab September 9: link:assts/code01-s26.html[Code Jam 01]
-// Note: this lab is just about basic strings and types.
 |
-// * link:lectures/Lecture-Week02-Jan27-Pointers.pdf[Lecture - Jan 27]
-// * link:lectures/Lecture-Week02-Jan29-Pointers.pdf[Lecture - Jan 22]
 * link:assts/week2lecture1.pdf[Week 2 Lecture 1]
 * link:assts/week2examples.pdf[Week 2 in class examples]
 
@@ -50,18 +41,11 @@
 
 * Topics: Advanced pointer topics, 2D arrays, file I/O, gdb, valgrind, hexadecimal, linked lists, trees
 * Read: link:https://diveintosystems.org/book/C2-C_depth/structs.html#_self_referential_structs[2.7.5. Self-Referential Structs]
-// * link:assts/asst03.html[Assignment 03]: Due Feb 6
-// * Assignment 03: Due September 18
-// * Lab Feb 3: Practice Quiz 01, link:studyguide1.html[Study Guide: Quiz 01]
 * Assignment 02: link:assts/asst02.html[2D Arrays] (due Sept 24 at midnight)
 * Lab Sept 15: Practice Quiz 01
 
 |
 
-// * link:lectures/Lecture-Week02-Jan29-Pointers.pdf[Lecture - Jan 22]
-// * link:lectures/Lecture-Week03-Feb3-NCurses.pdf[Lecture Feb 3 - NCurses]
-// Note: Start this lecture if time
-// * link:lectures/Lecture-Week03-Feb5-DataStructures.pdf[Lecture Feb 5 - Data Structures]
 * link:assts/week3lectures.pdf[Week 3 Lectures]
 * link:assts/week3examples.pdf[Week 3 in class examples]
 * link:assts/ask_matrix_aa.c[ask_matrix_aa.c]
@@ -70,7 +54,7 @@
 //-----------------------------
 |4
 |September 21, 23 anchor:week04[]
-|*Data Structures in C Continued, Introduction to Binary and Data Representation* 
+|*Data Structures in C Continued* 
 
 * Topics: Linked lists, integer/float/char binary formats, struct layouts, endianess
 * Read: link:https://diveintosystems.org/singlepage/#_binary_and_data_representation[Chapter 4.1-4.9] 
@@ -79,27 +63,19 @@
 // * Assignment 03: Fun with Malloc (due September 25)
 // * Assignment 02: Fun with Malloc (to be released Sept 18, due Sept 24 at midnight)
 // * Lab September 23: link:assts/quiz01-s26.html[**Quiz 01**]: 60 minutes 
+* Lab September 23: Quiz 01
 
 |
-// * link:lectures/Lecture-Week03-Feb5-DataStructures.pdf[Lecture Feb 10 - Data Structures]
-// * link:lectures/Lecture-Week04-Feb12-Binary.pdf[Lecture Feb 12 - Binary]
 * link:assts/week4lecture1.pdf[Week 4 Lecture 1]
 * link:assts/week4lecture2.pdf[Week 4 Lecture 2]
 
 //-----------------------------
 |5
 |September 28, 30 anchor:week05[]
-|*Binary and Data Representation Continued* 
+|*Binary and Data Representation* 
 
-* Topics: Integer/float/char binary formats
+* Topics: Integer/float/char binary formats, binary arithmetic, signed / unsigned number representation
 * No homework this week!
-// struct layouts, endianess
-// * Topics: bitwise operators, shifts, masking, working with bit fields
-// * Read: link:https://diveintosystems.org/singlepage/#_what_von_neumann_knew_computer_architecture[Section 5, 5.1]
-// * Read: link:https://diveintosystems.org/singlepage/##_assembly_chapter[Chapter 6] 
-// * link:assts/asst05.html[Assignment 05]: Due Feb 20
-// * Assignment 05: Due October 2
-// * Assignment 04: Fun with Pointers (due October 2)
 
 |
 // * link:lectures/Lecture-Week04-Feb12-Binary.pdf[Lecture Feb 17 - Binary]
@@ -109,16 +85,10 @@
 |6
 |October 5, 7  anchor:week06[]
 // |*Assembly*
-|*Bitwise Operators*
+|*Binary and Data Representation Continued*
 
-* Topics: Struct layouts, endianess, bitwise ops, shifts, masking, working with bit fields
 * Read: link:https://diveintosystems.org/singlepage/#_what_von_neumann_knew_computer_architecture[Section 5, 5.1]
-// * link:assts/asst06.html[Assignment 06]: Due Feb 27
-// * Assignment 06: Due October 9
-// * Assignment 05: TBA (due October 9)
-// * Lab Feb 24: Quiz 02 Practice, link:studyguide2.html[Study Guide 2], link:studyguide3.html[StudyGuide 3]
-* Lab Oct 7: link:assts/jam02-s22.html[Code Jam 02]
-* Assignment 03: TBD (not due until AFTER fall break!)
+* Lab Oct 7: Go over Quiz 01
 
 |
 // * link:lectures/Lecture-Week06-Feb24-IntroAssembly.pdf[Lecture Feb 24]
@@ -137,31 +107,25 @@
 //-----------------------------
 |8
 |October 19, 21 anchor:week08[]
-|*Assembly, The operating system* 
+|*Bitwise Operators, Introduction to Assembly* 
 
-// * Topics: instruction set architecture, machine code, memory forms, x86_64 instructions
-* Topics: Tracing assembly, loops, conditionals
-* Topics: what is an operating system?, System calls
+* Topics: bitwise operators, shifts, masking, working with bit fields
+* Topics: instruction set architecture, machine code, memory forms, x86_64 instructions
 * Read: link:https://diveintosystems.org/singlepage/#_x64_assembly_chapter[Chapter 7 (7.1-7.3,7.5,7.10), 10] 
-// * Read: link:https://diveintosystems.org/singlepage/#_x64_assembly_chapter[Chapter 7 (7.1-7.3,7.5,7.10), 10] 
-// Note: Not sure I like the hand written homework and turn it in here. I'd rather this be a lab quiz.
-// * Assignment 06: TBA (due October 23)
-* Lab October 21: **Quiz 02**
+* Assignment 03: TBD
+* Lab October 21: **Practice Quiz 02 / Code Jam 02**
 |
 // * link:lectures/Lecture-Week07-March3-AssemblyBranch.pdf[Lectures March 3,5] 
 
 //-----------------------------
 |9
 |October 26, 28 anchor:week09[]
-|*Midterm (TBD), Processes* 
+|*Assembly Continued, the Operating System* 
 
-* Topics: Processes, fork, signals
-// * Read: link:https://diveintosystems.org/singlepage/#_the_operating_system[Chapter 13, skip section 13.3] 
-// Note: Section 13.3 is on virtual memory. We will NOT be skipping it lol.
+* Topics: tracing assembly, loops, conditionals
+* Topics: what is an OS?, system calls
 * Read: link:https://diveintosystems.org/singlepage/#_the_operating_system[Chapter 13] 
-// * link:assts/asst08.html[Assignment 08]: Image Conscious. Due March 20th at midnight
-// * Assignment 07: Some Assembly Required (due October 30)
-* Lab October 28: **Code Jam 03**
+* Lab October 28: **Quiz 02**
 | 
 // link:lectures/Lecture-Week09-March17-OS-Processes.pdf[Lectures - March 17 and 19]
 
@@ -169,15 +133,17 @@
 //-----------------------------
 |10
 |November 2, 4 anchor:week10[]
-|*Threads I* 
+|*Processes, Threads I* 
 
+* Topics: Processes, fork, signals, virtual memory
 * Topics: Threads vs processes, designing concurrent algorithms, pthreads
 * Read: link:https://diveintosystems.org/singlepage/#_some_advanced_c_features[Section 2.9.3, 2.9.4 (void* and pointer arithmetic)] 
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
 // * Lab March 24: Practice Quiz 03 link:studyguide4.html[Study Guide 04]
 // * link:assts/asst09.html[Assignment 09]: Trust the process. Due March 27th at midnight
 // * Assignment 08: Multiprocess (due November 6)
-* Lab November 4: Practice Quiz 03 
+* Assignment 04: TBD
+* Lab November 4: Practice Quiz 03 / Code Jam 03
 |
 // * link:lectures/Lecture-Week10-March31-Threads1.pdf[Lectures - March 24 and 16]
 // * link:lectures/threads-min.c[threads-min.c]
@@ -191,7 +157,7 @@
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
 // * link:assts/asst10.html[Assignment 10]: Mandelthreads. Due April 3rd
 // * Assignment 09: Trust the Process (due November 13)
-* Lab November 11: **Quiz 03**: 50 minutes
+* Lab November 11: **Quiz 03**
 
 |
 // * link:lectures/Lecture-Week11-March31-ThreadsConcurrency.pdf[Lectures - March 31, April 2]
@@ -205,11 +171,11 @@
 
 * Topics: Thread safety, thread performance
 * Topics: Memory hierarchy, spatial/temporal locality, caching
-* Read:"My malloc: mylloc and mhysa" by Johan Montelius 
 * Read: link:https://diveintosystems.org/singlepage/#_storage_and_the_memory_hierarchy[Chapter 11.1-11.3] 
 // * link:assts/asst11.html[Assignment 11]: Mutually Exclusive. Due April 10th
 // * Assignment 10: Multiprocess & Multithread (due November 20)
-* Lab November 18: **Code Jam 04**
+* Assignment 05: TBD
+* Lab November 18: Practice Quiz 04 /  Code Jam 04
 
 |
 // * link:lectures/Lecture-Week12-April7-ThreadPerformance.pdf[Lecture April 7]
@@ -225,7 +191,7 @@
 // * link:assts/asst12.html[Assignment 12]: Hold on to your memories. Due April 17th. ** Worksheet due tuesday April 21**
 // * Assignment 12: Due TBA
 // * Practice Quiz 04 link:studyguide5.html[Study Guide 05]
-* Lab November 25: Practice Quiz 04
+* Lab November 25: **Quiz 04**
 
 |
 // * link:lectures/Lecture-Week12-April9-Malloc.pdf[Lecture April 14]
@@ -236,11 +202,10 @@
 |November 30, December 2 anchor:week14[]
 |*Introduction to Rust* 
 
-// * C++ classes (operators, constructors, destructors), references, STL (list, vector, map), simple templates
 * Topics: Ownership and the Borrow Checker, Rust Abstractions Compared to C equivalents
 // * link:assts/asst13.html[(Optional/Extra Credit) Assignment 13]: C++ Image Class. Due May 1st.
-// * Assignment 11: Sync or Swim (due December 4)
-* Lab December 2: **Quiz 04** 
+* Assignment 6: Sync or Swim (due December 4)
+* Lab December 2: Code Jam 05
 // link:studyguide5.html[Study Guide 05]
 
 |
@@ -256,7 +221,7 @@
 |*Rust as a Systems Language, Final Review* 
 
 * Topics: Files + I/O, Threads, Shared State, Send / Sync, Final Review
-// * Assignment 12: Let's Get Rusty (due December 11)
+* Assignment 7: Let's Get Rusty (due December 11)
 * Lab December 9: Final Review / Practice Final
 
 // * link:studyguide-final.html[Final Study Guide]

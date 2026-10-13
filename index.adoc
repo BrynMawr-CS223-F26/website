@@ -115,11 +115,11 @@ All graded work will receive a grade, 4.0, 3.7, 3.3, 3.0, 2.7, 2.3, 2.0, 1.7,
 as a weighted average of all grades according to the following weights:
 
 |===
-|35% | Final Exam
-|35% | Midterm Exam
-|10% | Assignments
-|15% | Code jams and quizzes
-| 5% | Lab practice and class participation
+|30% | Final Exam
+|35% | Quizzes
+|15% | Homeworks
+|15% | Labs
+| 5% | Attendance / participation
 |===
 
 include::quizzes.adoc[]
