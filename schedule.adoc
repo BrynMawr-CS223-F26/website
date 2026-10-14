@@ -68,6 +68,8 @@
 |
 * link:assts/week4lecture1.pdf[Week 4 Lecture 1]
 * link:assts/week4lecture2.pdf[Week 4 Lecture 2]
+* link:lectures/cs223week4lecture1.pdf[Week 4 Lecture 1 Notes / Examples]
+* link:lectures/cs223week4lecture2.pdf[Week 4 Lecture 2 Notes / Examples]
 
 //-----------------------------
 |5
@@ -76,6 +78,7 @@
 
 * Topics: Integer/float/char binary formats, binary arithmetic, signed / unsigned number representation
 * No homework this week!
+* Lab Sept 30: Go over Quiz 01
 
 |
 // * link:lectures/Lecture-Week04-Feb12-Binary.pdf[Lecture Feb 17 - Binary]
@@ -88,7 +91,6 @@
 |*Binary and Data Representation Continued*
 
 * Read: link:https://diveintosystems.org/singlepage/#_what_von_neumann_knew_computer_architecture[Section 5, 5.1]
-* Lab Oct 7: Go over Quiz 01
 
 |
 // * link:lectures/Lecture-Week06-Feb24-IntroAssembly.pdf[Lecture Feb 24]
