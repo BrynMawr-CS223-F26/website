@@ -83,7 +83,7 @@
 |
 * link:lectures/week5lecture1.pdf[Week 5 Lecture 1]
 * link:lectures/week5lecture2.pdf[Week 5 Lecture 2]
-* link:lectures/cs223week5lectures.pdf[Week 5 Lecture Notes / Examples]
+* link:lectures/cs223week5lectures.pdf[Week 5 Notes / Examples]
 
 
 //-----------------------------
@@ -95,8 +95,8 @@
 * Read: link:https://diveintosystems.org/singlepage/#_what_von_neumann_knew_computer_architecture[Section 5, 5.1]
 
 |
-// * link:lectures/Lecture-Week06-Feb24-IntroAssembly.pdf[Lecture Feb 24]
-// * link:lectures/Lecture-Week06-Feb26-Assembly.pdf[Lecture Feb 26] 
+* link:lectures/week6lecture1.pdf[Week 6 Lectures]
+* link:lectures/cs223week6lectures.pdf[Week 6 Notes / Examples]
 
 //-----------------------------
 |7
