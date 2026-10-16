@@ -116,7 +116,7 @@
 * Topics: bitwise operators, shifts, masking, working with bit fields
 * Topics: instruction set architecture, machine code, memory forms, x86_64 instructions
 * Read: link:https://diveintosystems.org/singlepage/#_x64_assembly_chapter[Chapter 7 (7.1-7.3,7.5,7.10), 10] 
-* Assignment 03: TBD
+* Assignment 03: link:assts/asst03.html[Watch where you point]
 * Lab October 21: Practice Quiz 02, link:assts/jam02-s22.html[**Code Jam 02**]
 |
 // * link:lectures/Lecture-Week07-March3-AssemblyBranch.pdf[Lectures March 3,5] 

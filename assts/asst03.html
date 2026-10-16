@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>Assignment 3: Watch where you point</title>
+<link rel="stylesheet" href="../style/cs21.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_assignment_3_watch_where_you_point">Assignment 3: Watch where you point</a></li>
+<li><a href="#_set_up">1. Set Up</a></li>
+<li><a href="#_zipper">2. Zipper</a>
+<ul class="sectlevel2">
+<li><a href="#_build_it">2.1. Build it</a></li>
+<li><a href="#_manipulate_it">2.2. Manipulate it</a></li>
+<li><a href="#_test_it">2.3. Test it</a></li>
+</ul>
+</li>
+<li><a href="#_binary_tree">3. Binary Tree</a></li>
+<li><a href="#_submit_your_work">4. Submit your Work</a></li>
+<li><a href="#_grading_rubric">5. Grading Rubric</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_assignment_3_watch_where_you_point">Assignment 3: Watch where you point</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Due Sunday October 25, before midnight</strong></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_set_up">1. Set Up</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Create a new folder <code>/hw3</code> whereever your local gitub hw repo is on your computer.
+To submit this homework, you will add and commit your files, and push them to your homework repo.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_zipper">2. Zipper</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For this problem, you will implement your own linked list in C, and then write a function that merges
+(or zippers) two linked lists.</p>
+</div>
+<div class="sect2">
+<h3 id="_build_it">2.1. Build it</h3>
+<div class="paragraph">
+<p>Define a Node struct and implement basic operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>insert node</p>
+</li>
+<li>
+<p>delete node</p>
+</li>
+<li>
+<p>print list</p>
+</li>
+<li>
+<p>free list</p>
+</li>
+<li>
+<p>whatever else you find helpful</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manipulate_it">2.2. Manipulate it</h3>
+<div class="paragraph">
+<p>Implement a function <code>zipper()</code> that takes two linked lists and merges them into a new linked list,
+which is then returned.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_test_it">2.3. Test it</h3>
+<div class="paragraph">
+<p>Think of as many edge cases as you can, document them in your code, and ensure your program
+can handle them. Examples include: lists of unequal sizes, empty lists, etc.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_binary_tree">3. Binary Tree</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For this problem, you will implement a binary tree. Similar to the first problem, you must implement
+your own node struct and basic functionality for a binary tree. For this problem, this includes implementing
+a <code>find()</code> function.</p>
+</div>
+<div class="paragraph">
+<p>A test file has been added to your private homework repo called <code>tree_tests.c</code>. Below is sample correct output.</p>
+</div>
+<div class="paragraph">
+<p>You should write two files for this problem: <code>tree.c</code> (where you will implement your functionality) and <code>tree.h</code>
+(where you will declare all your functions, so that the <code>tree_tests.c</code> program can easily import your code).</p>
+</div>
+<div class="paragraph">
+<p>For more information on C header files, you can read <a href="https://www.cs.cornell.edu/courses/cs3410/2024fa/rsrc/c/header.html">this</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> This is just a binary tree, not a binary search tree.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ gcc tree_tests.c -o tree_tests
+$ ./tree_tests
+Running tests...
+test 1: insert for empty tree: PASSED
+test 2: name set correctly: PASSED
+test 3: left is null: PASSED
+test 4: right is null: PASSED
+test 5: name set correctly: PASSED
+test 6: right is null: PASSED
+test 7: name set correctly: PASSED
+test 8: item not in tree: PASSED
+test 9: item in tree: PASSED
+test 10: found correct object: PASSED</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submit_your_work">4. Submit your Work</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Push you work to Github to submit your work.</p>
+</div>
+<div class="paragraph">
+<p>You <strong>do not</strong> need to include a make file.</p>
+</div>
+<div class="paragraph">
+<p>Please also include a <code>readme.txt</code> where you answer these questions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How long did the homework take you?</p>
+</li>
+<li>
+<p>What did you learn from the homework?</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ cd /hw3
+$ git add *.c *.h readme.txt
+$ git commit -m "assignment 3 complete"
+$ git push origin main</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_grading_rubric">5. Grading Rubric</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Assignment rubrics</strong></p>
+</div>
+<div class="paragraph">
+<p>Grades are out of 10 points.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>(8 points) Zipper</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(1 point) style and comments</p>
+</li>
+<li>
+<p>(2 points) no memory errors</p>
+</li>
+<li>
+<p>(3 points) correct behavior</p>
+</li>
+<li>
+<p>(2 points) reasonable edge cases handled</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>(8 points) Tree</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(1 point) style and comments</p>
+</li>
+<li>
+<p>(2 point) no memory errors</p>
+</li>
+<li>
+<p>(3 points) correct behavior</p>
+</li>
+<li>
+<p>(2 points) tests pass</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Code rubric</strong></p>
+</div>
+<div class="paragraph">
+<p>For full credit, your C programs must be feature-complete, robust (e.g. run without memory errors or crashing) and
+have good style.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2026-10-16 15:43:58 -0400
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

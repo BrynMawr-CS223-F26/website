@@ -1,0 +1,127 @@
+include::header.adoc[]
+
+:title: Assignment 3: Watch where you point
+:Author Initials: ASN
+:Date:    2021-01-29
+:Revision: 0.1
+:ASST: A03
+
+= {title}
+
+**Due Sunday October 25, before midnight**
+
+
+:sectnums:
+
+= Set Up
+
+Create a new folder `/hw3` whereever your local gitub hw repo is on your computer. 
+To submit this homework, you will add and commit your files, and push them to your homework repo.
+
+
+=  Zipper
+
+For this problem, you will implement your own linked list in C, and then write a function that merges
+(or zippers) two linked lists.
+
+== Build it
+
+Define a Node struct and implement basic operations:
+
+* insert node
+* delete node
+* print list
+* free list
+* whatever else you find helpful
+
+== Manipulate it
+
+Implement a function `zipper()` that takes two linked lists and merges them into a new linked list,
+which is then returned.
+
+== Test it
+
+Think of as many edge cases as you can, document them in your code, and ensure your program
+can handle them. Examples include: lists of unequal sizes, empty lists, etc.
+
+
+= Binary Tree
+
+For this problem, you will implement a binary tree. Similar to the first problem, you must implement
+your own node struct and basic functionality for a binary tree. For this problem, this includes implementing
+a `find()` function.
+
+A test file has been added to your private homework repo called `tree_tests.c`. Below is sample correct output.
+
+You should write two files for this problem: `tree.c` (where you will implement your functionality) and `tree.h`
+(where you will declare all your functions, so that the `tree_tests.c` program can easily import your code).
+
+For more information on C header files, you can read link:https://www.cs.cornell.edu/courses/cs3410/2024fa/rsrc/c/header.html[this].
+
+
+
+
+**Note:** This is just a binary tree, not a binary search tree.
+
+[source, subs="quotes"]
+----
+$ gcc tree_tests.c -o tree_tests
+$ ./tree_tests
+Running tests...
+test 1: insert for empty tree: PASSED
+test 2: name set correctly: PASSED
+test 3: left is null: PASSED
+test 4: right is null: PASSED
+test 5: name set correctly: PASSED
+test 6: right is null: PASSED
+test 7: name set correctly: PASSED
+test 8: item not in tree: PASSED
+test 9: item in tree: PASSED
+test 10: found correct object: PASSED
+----
+
+
+
+
+= Submit your Work
+
+Push you work to Github to submit your work.
+
+You **do not** need to include a make file.
+
+Please also include a `readme.txt` where you answer these questions: 
+
+* How long did the homework take you? 
+* What did you learn from the homework?
+
+[source, subs="attributes"]
+----
+$ cd /hw3
+$ git add *.c *.h readme.txt
+$ git commit -m "assignment 3 complete"
+$ git push origin main
+----
+
+
+= Grading Rubric
+
+*Assignment rubrics*
+
+Grades are out of 10 points.
+
+* (8 points) Zipper
+** (1 point) style and comments
+** (2 points) no memory errors
+** (3 points) correct behavior
+** (2 points) reasonable edge cases handled
+* (8 points) Tree
+** (1 point) style and comments
+** (2 point) no memory errors
+** (3 points) correct behavior
+** (2 points) tests pass
+
+*Code rubric*
+
+For full credit, your C programs must be feature-complete, robust (e.g. run without memory errors or crashing) and 
+have good style.
+
