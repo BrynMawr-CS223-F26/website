@@ -107,7 +107,7 @@ $ git push origin main
 
 *Assignment rubrics*
 
-Grades are out of 10 points.
+Grades are out of 16 points.
 
 * (8 points) Zipper
 ** (1 point) style and comments
