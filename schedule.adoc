@@ -195,7 +195,6 @@
 // * link:assts/asst12.html[Assignment 12]: Hold on to your memories. Due April 17th. ** Worksheet due tuesday April 21**
 // * Assignment 12: Due TBA
 // * Practice Quiz 04 link:studyguide5.html[Study Guide 05]
-* Lab November 25: **Quiz 04**
 
 |
 // * link:lectures/Lecture-Week12-April9-Malloc.pdf[Lecture April 14]
@@ -209,7 +208,7 @@
 * Topics: Ownership and the Borrow Checker, Rust Abstractions Compared to C equivalents
 // * link:assts/asst13.html[(Optional/Extra Credit) Assignment 13]: C++ Image Class. Due May 1st.
 * Assignment 6: Sync or Swim (due December 4)
-* Lab December 2: Code Jam 05
+* Lab December 2: **Quiz 04**
 // link:studyguide5.html[Study Guide 05]
 
 |
@@ -226,7 +225,7 @@
 
 * Topics: Files + I/O, Threads, Shared State, Send / Sync, Final Review
 * Assignment 7: Let's Get Rusty (due December 11)
-* Lab December 9: Final Review / Practice Final
+* Lab December 9: Code Jam 05
 
 // * link:studyguide-final.html[Final Study Guide]
 // * Class April 28: Review Quizzo and party
