@@ -120,6 +120,8 @@
 * Lab October 21: Practice Quiz 02, link:assts/jam02-s22.html[**Code Jam 02**]
 |
 // * link:lectures/Lecture-Week07-March3-AssemblyBranch.pdf[Lectures March 3,5] 
+* link:lectures/week8lecture1.pdf[Week 8 Lecture 1]
+* link:lectures/cs223week8lecture1.pdf[Week 8 Lecture 1 Notes / Examples]
 
 //-----------------------------
 |9
