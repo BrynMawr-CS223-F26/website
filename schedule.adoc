@@ -111,10 +111,9 @@
 //-----------------------------
 |8
 |October 19, 21 anchor:week08[]
-|*Bitwise Operators, Introduction to Assembly* 
+|*Bitwise Operators* 
 
 * Topics: bitwise operators, shifts, masking, working with bit fields
-* Topics: instruction set architecture, machine code, memory forms, x86_64 instructions
 * Read: link:https://diveintosystems.org/singlepage/#_x64_assembly_chapter[Chapter 7 (7.1-7.3,7.5,7.10), 10] 
 * Assignment 03: link:assts/asst03.html[Watch where you point]
 * Lab October 21: link:assts/practicequiz2.html[Practice Quiz 02], link:assts/practicequiz2solutions.pdf[Practice Quiz 02 Solutions]
@@ -122,15 +121,15 @@
 |
 // * link:lectures/Lecture-Week07-March3-AssemblyBranch.pdf[Lectures March 3,5] 
 * link:lectures/week8lecture1.pdf[Week 8 Lecture 1]
-* link:lectures/cs223week8lecture1.pdf[Week 8 Lecture 1 Notes / Examples]
+* link:lectures/cs223week8lecture1.pdf[Week 8 Lecture Notes / Examples]
 
 //-----------------------------
 |9
 |October 26, 28 anchor:week09[]
-|*Assembly Continued, the Operating System* 
+|*Assembly* 
 
+* Topics: instruction set architecture, machine code, memory forms, x86_64 instructions
 * Topics: tracing assembly, loops, conditionals
-* Topics: what is an OS?, system calls
 * Read: link:https://diveintosystems.org/singlepage/#_the_operating_system[Chapter 13] 
 * Lab October 28: **Quiz 02**
 | 
@@ -140,8 +139,9 @@
 //-----------------------------
 |10
 |November 2, 4 anchor:week10[]
-|*Processes, Threads I* 
+|*OS Overview, Processes, Threads I* 
 
+* Topics: what is an OS?, system calls
 * Topics: Processes, fork, signals, virtual memory
 * Topics: Threads vs processes, designing concurrent algorithms, pthreads
 * Read: link:https://diveintosystems.org/singlepage/#_some_advanced_c_features[Section 2.9.3, 2.9.4 (void* and pointer arithmetic)] 
