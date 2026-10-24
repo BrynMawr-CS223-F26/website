@@ -23,7 +23,7 @@
 <li><a href="#_test_it">2.3. Test it</a></li>
 </ul>
 </li>
-<li><a href="#_binary_tree">3. Binary Tree</a></li>
+<li><a href="#_binary_search_tree">3. Binary Search Tree</a></li>
 <li><a href="#_submit_your_work">4. Submit your Work</a></li>
 <li><a href="#_grading_rubric">5. Grading Rubric</a></li>
 </ul>
@@ -34,7 +34,7 @@
 <h2 id="_assignment_3_watch_where_you_point">Assignment 3: Watch where you point</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Due Sunday October 25, before midnight</strong></p>
+<p><strong>Due Wednesday October 28, before midnight</strong></p>
 </div>
 </div>
 </div>
@@ -96,12 +96,16 @@ can handle them. Examples include: lists of unequal sizes, empty lists, etc.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_binary_tree">3. Binary Tree</h2>
+<h2 id="_binary_search_tree">3. Binary Search Tree</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For this problem, you will implement a binary tree. Similar to the first problem, you must implement
-your own node struct and basic functionality for a binary tree. For this problem, this includes implementing
-a <code>find()</code> function.</p>
+<p>For this problem, you will implement a <strong>binary search tree (BST)</strong>. Similar to the first problem, you must implement your own
+node struct and basic functionality, but this time for a binary search tree. For this problem, this includes implementing a <code>find()</code> function.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> Your tree should maintain the binary search tree property when inserting nodes: values smaller than the current
+node go in the left subtree, and values larger go in the right subtree. You can use <code>strcmp()</code> to compare strings. You do not
+need to balance the tree.</p>
 </div>
 <div class="paragraph">
 <p>A test file has been added to your private homework repo called <code>tree_tests.c</code>. Below is sample correct output.</p>
@@ -112,9 +116,6 @@ a <code>find()</code> function.</p>
 </div>
 <div class="paragraph">
 <p>For more information on C header files, you can read <a href="https://www.cs.cornell.edu/courses/cs3410/2024fa/rsrc/c/header.html">this</a>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Note:</strong> This is just a binary tree, not a binary search tree.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -230,7 +231,7 @@ have good style.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-10-16 15:55:22 -0400
+Last updated 2026-10-24 11:00:19 -0400
 </div>
 </div>
 <script type="text/x-mathjax-config">

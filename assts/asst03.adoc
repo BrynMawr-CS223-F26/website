@@ -8,7 +8,7 @@ include::header.adoc[]
 
 = {title}
 
-**Due Sunday October 25, before midnight**
+**Due Wednesday October 28, before midnight**
 
 
 :sectnums:
@@ -45,11 +45,15 @@ Think of as many edge cases as you can, document them in your code, and ensure y
 can handle them. Examples include: lists of unequal sizes, empty lists, etc.
 
 
-= Binary Tree
+= Binary Search Tree
 
-For this problem, you will implement a binary tree. Similar to the first problem, you must implement
-your own node struct and basic functionality for a binary tree. For this problem, this includes implementing
-a `find()` function.
+For this problem, you will implement a **binary search tree (BST)**. Similar to the first problem, you must implement your own 
+node struct and basic functionality, but this time for a binary search tree. For this problem, this includes implementing a `find()` function.
+
+**Note:** Your tree should maintain the binary search tree property when inserting nodes: values smaller than the current 
+node go in the left subtree, and values larger go in the right subtree. You can use `strcmp()` to compare strings. You do not 
+need to balance the tree.
+
 
 A test file has been added to your private homework repo called `tree_tests.c`. Below is sample correct output.
 
@@ -58,10 +62,6 @@ You should write two files for this problem: `tree.c` (where you will implement 
 
 For more information on C header files, you can read link:https://www.cs.cornell.edu/courses/cs3410/2024fa/rsrc/c/header.html[this].
 
-
-
-
-**Note:** This is just a binary tree, not a binary search tree.
 
 [source, subs="quotes"]
 ----
