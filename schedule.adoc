@@ -139,18 +139,12 @@
 //-----------------------------
 |10
 |November 2, 4 anchor:week10[]
-|*OS Overview, Processes, Threads I* 
+|*OS Overview, Processes* 
 
-* Topics: what is an OS?, system calls
-* Topics: Processes, fork, signals, virtual memory
-* Topics: Threads vs processes, designing concurrent algorithms, pthreads
+* Topics: what is an OS?, system calls, processes, fork, signals, virtual memory
 * Read: link:https://diveintosystems.org/singlepage/#_some_advanced_c_features[Section 2.9.3, 2.9.4 (void* and pointer arithmetic)] 
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
-// * Lab March 24: Practice Quiz 03 link:studyguide4.html[Study Guide 04]
-// * link:assts/asst09.html[Assignment 09]: Trust the process. Due March 27th at midnight
-// * Assignment 08: Multiprocess (due November 6)
-* Assignment 04: TBD
-* Lab November 4: Practice Quiz 03 / Code Jam 03
+* Lab November 4: Go over Quiz 02
 |
 // * link:lectures/Lecture-Week10-March31-Threads1.pdf[Lectures - March 24 and 16]
 // * link:lectures/threads-min.c[threads-min.c]
@@ -158,13 +152,15 @@
 //-----------------------------
 |11
 |November 9, 11 anchor:week11[]
-|*Threads II* 
+|*Threads* 
 
-* Topics: synchronization, deadlock, producer/consumer pattern
+* Topics: processes vs threads, shared memory, pthreads, creating and joining threads
+* Topics: race conditions, interleavings, synchronization
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
 // * link:assts/asst10.html[Assignment 10]: Mandelthreads. Due April 3rd
 // * Assignment 09: Trust the Process (due November 13)
-* Lab November 11: **Quiz 03**
+* Assignment 04: GDB & Valgrind Practice (due Nov 16 at midnight)
+* Lab November 11: Pthreads & race condition practice, Practice Quiz 03
 
 |
 // * link:lectures/Lecture-Week11-March31-ThreadsConcurrency.pdf[Lectures - March 31, April 2]
@@ -174,15 +170,15 @@
 //-----------------------------
 |12
 |November 16, 18 anchor:week12[]
-|*Threads III, Memory* 
+|*Thread Synchronization* 
 
-* Topics: Thread safety, thread performance
-* Topics: Memory hierarchy, spatial/temporal locality, caching
-* Read: link:https://diveintosystems.org/singlepage/#_storage_and_the_memory_hierarchy[Chapter 11.1-11.3] 
+* Topics: Critical sections, mutexes, thread safety
+* Topics: Introduction to condition variables
+* Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
+// * Read: link:https://diveintosystems.org/singlepage/#_storage_and_the_memory_hierarchy[Chapter 11.1-11.3] 
 // * link:assts/asst11.html[Assignment 11]: Mutually Exclusive. Due April 10th
-// * Assignment 10: Multiprocess & Multithread (due November 20)
-* Assignment 05: TBD
-* Lab November 18: Practice Quiz 04 /  Code Jam 04
+* Assignment 05: Processes & Threads (due Nov 30 at midnight)
+* Lab November 18: **Quiz 03**
 
 |
 // * link:lectures/Lecture-Week12-April7-ThreadPerformance.pdf[Lecture April 7]
@@ -191,13 +187,13 @@
 //-----------------------------
 |13
 |November 23, 25 anchor:week13[]
-|*Malloc, Code Optimization* 
+|*Concurrency Continued, Memory Management* 
 
-* Topics: TBD
+* Topics: Condition variables and producer / consumer pattern
+* Topics: Deadlock, common causes and prevention
+* No lab / lecture on Nov 25
+* Review video lecture and practice quiz 04 and solutions on your own
 * Read: link:https://diveintosystems.org/singlepage/#_code_optimization[Chapter 12] 
-// * link:assts/asst12.html[Assignment 12]: Hold on to your memories. Due April 17th. ** Worksheet due tuesday April 21**
-// * Assignment 12: Due TBA
-// * Practice Quiz 04 link:studyguide5.html[Study Guide 05]
 
 |
 // * link:lectures/Lecture-Week12-April9-Malloc.pdf[Lecture April 14]
@@ -206,11 +202,11 @@
 //-----------------------------
 |14
 |November 30, December 2 anchor:week14[]
-|*Introduction to Rust* 
+|*Memory Hierarchy, Debugging Tools* 
 
-* Topics: Ownership and the Borrow Checker, Rust Abstractions Compared to C equivalents
-// * link:assts/asst13.html[(Optional/Extra Credit) Assignment 13]: C++ Image Class. Due May 1st.
-* Assignment 6: Sync or Swim (due December 4)
+* Topics: Memory hierarchy, caching and locality 
+* Topics: Debugging segmentation faults and memory leaks
+* Assignment 06: TBD
 * Lab December 2: **Quiz 04**
 // link:studyguide5.html[Study Guide 05]
 
@@ -224,11 +220,11 @@
 //-----------------------------
 |15
 |December 7, 9 anchor:week15[]
-|*Rust as a Systems Language, Final Review* 
+|*Intro to Rust, Rust as a Systems Language* 
 
-* Topics: Files + I/O, Threads, Shared State, Send / Sync, Final Review
-* Assignment 7: Let's Get Rusty (due December 11)
-* Lab December 9: Code Jam 05
+* Topics: Rust ownership and borrowing compared to C
+* Topics: Memory safety and systems programming programming language design
+* Lab December 9: **Final Review Session**
 
 // * link:studyguide-final.html[Final Study Guide]
 // * Class April 28: Review Quizzo and party
