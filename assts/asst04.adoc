@@ -1,0 +1,157 @@
+include::header.adoc[]
+
+:title: Assignment 4: GDB & Valgrind Practice
+:Author Initials: KRS
+:Date:    2021-11-07
+:Revision: 0.1
+:ASST: A04
+
+= {title}
+
+**Due Wednesday November 16, before midnight**
+
+
+:sectnums:
+
+= Set Up
+
+Create a new folder `/hw4` whereever your local gitub hw repo is on your computer. 
+Perform a `git pull origin main` in order to get the C programs you will work with for this homework.
+To submit this homework, you will add and commit your files, and push them to your homework repo.
+
+Today you will pause a running C program, inspect variables, and use a memory-error report to fix a second program. 
+
+Use your course Linux environment with GCC, GDB, and Valgrind installed. Keep both C files in your working directory.
+
+= GDB
+
+
+== Where did the points go?
+
+`scores.c` should add all four scores. Predict the correct total, then compile and run it:
+
+[source, subs="quotes"]
+----
+gcc -std=c11 -Wall -Wextra -g -O0 scores.c -o scores
+./scores
+gdb ./scores
+----
+
+`-g` includes debugging information. `-O0` disables optimization to keep stepping through source straightforward.
+
+At the GDB prompt, enter:
+
+[source, subs="quotes"]
+----
+break sum_scores
+run
+print count
+print scores[0]
+next
+----
+
+A breakpoint pauses execution when the program reaches a location. `next` executes the current source line, 
+stepping over any function calls. The displayed source line is normally the line about to execute, not a line 
+that has already executed.
+
+Continue with `next` until you are paused on `total += scores[i];`. Then inspect:
+
+[source, subs="quotes"]
+----
+print i
+print scores[i]
+print total
+next
+print total
+----
+
+Keep stepping and inspecting until you understand the incorrect result. You can use `list` to see 
+nearby source lines and `continue` to finish the run. `quit` exits GDB.
+
+Answer the following questions in a text file:
+
+1. What total did you expect, and what total did the original program print?
+2. What index and score did the program use on its first addition? Include the GDB commands and values you observed.
+3. Explain the bug. Fix it, exit GDB, recompile, and run again.
+4. Give a second input array and its expected total. Change the data in `main` and check your fix, keeping the count consistent.
+
+= Binary Search Tree
+
+For this problem, you will implement a **binary search tree (BST)**. Similar to the first problem, you must implement your own 
+node struct and basic functionality, but this time for a binary search tree. For this problem, this includes implementing a `find()` function.
+
+**Note:** Your tree should maintain the binary search tree property when inserting nodes: values smaller than the current 
+node go in the left subtree, and values larger go in the right subtree. You can use `strcmp()` to compare strings. You do not 
+need to balance the tree.
+
+
+A test file has been added to your private homework repo called `tree_tests.c`. Below is sample correct output.
+
+You should write two files for this problem: `tree.c` (where you will implement your functionality) and `tree.h`
+(where you will declare all your functions, so that the `tree_tests.c` program can easily import your code).
+
+For more information on C header files, you can read link:https://www.cs.cornell.edu/courses/cs3410/2024fa/rsrc/c/header.html[this].
+
+
+[source, subs="quotes"]
+----
+$ gcc tree_tests.c -o tree_tests
+$ ./tree_tests
+Running tests...
+test 1: insert for empty tree: PASSED
+test 2: name set correctly: PASSED
+test 3: left is null: PASSED
+test 4: right is null: PASSED
+test 5: name set correctly: PASSED
+test 6: right is null: PASSED
+test 7: name set correctly: PASSED
+test 8: item not in tree: PASSED
+test 9: item in tree: PASSED
+test 10: found correct object: PASSED
+----
+
+
+
+
+= Submit your Work
+
+Push you work to Github to submit your work.
+
+You **do not** need to include a make file.
+
+Please also include a `readme.txt` where you answer these questions: 
+
+* How long did the homework take you? 
+* What did you learn from the homework?
+
+[source, subs="attributes"]
+----
+$ cd /h4w
+$ git add *.c *.h readme.txt
+$ git commit -m "assignment 4 complete"
+$ git push origin main
+----
+
+
+= Grading Rubric
+
+*Assignment rubrics*
+
+Grades are out of 16 points.
+
+* (8 points) Zipper
+** (1 point) style and comments
+** (2 points) no memory errors
+** (3 points) correct behavior
+** (2 points) reasonable edge cases handled
+* (8 points) Tree
+** (1 point) style and comments
+** (2 point) no memory errors
+** (3 points) correct behavior
+** (2 points) tests pass
+
+*Code rubric*
+
+For full credit, your C programs must be feature-complete, robust (e.g. run without memory errors or crashing) and 
+have good style.
+
