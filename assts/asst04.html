@@ -19,11 +19,11 @@
 <li><a href="#_gdb">2. GDB</a>
 <ul class="sectlevel2">
 <li><a href="#_where_did_the_points_go">2.1. Where did the points go?</a></li>
+<li><a href="#_why_didnt_the_swap_stick">2.2. Why didn&#8217;t the swap stick?</a></li>
 </ul>
 </li>
-<li><a href="#_binary_search_tree">3. Binary Search Tree</a></li>
-<li><a href="#_submit_your_work">4. Submit your Work</a></li>
-<li><a href="#_grading_rubric">5. Grading Rubric</a></li>
+<li><a href="#_submit_your_work">3. Submit your Work</a></li>
+<li><a href="#_grading_rubric">4. Grading Rubric</a></li>
 </ul>
 </div>
 </div>
@@ -123,51 +123,83 @@ nearby source lines and <code>continue</code> to finish the run. <code>quit</cod
 </ol>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_binary_search_tree">3. Binary Search Tree</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_why_didnt_the_swap_stick">2.2. Why didn&#8217;t the swap stick?</h3>
 <div class="paragraph">
-<p>For this problem, you will implement a <strong>binary search tree (BST)</strong>. Similar to the first problem, you must implement your own
-node struct and basic functionality, but this time for a binary search tree. For this problem, this includes implementing a <code>find()</code> function.</p>
-</div>
-<div class="paragraph">
-<p><strong>Note:</strong> Your tree should maintain the binary search tree property when inserting nodes: values smaller than the current
-node go in the left subtree, and values larger go in the right subtree. You can use <code>strcmp()</code> to compare strings. You do not
-need to balance the tree.</p>
-</div>
-<div class="paragraph">
-<p>A test file has been added to your private homework repo called <code>tree_tests.c</code>. Below is sample correct output.</p>
-</div>
-<div class="paragraph">
-<p>You should write two files for this problem: <code>tree.c</code> (where you will implement your functionality) and <code>tree.h</code>
-(where you will declare all your functions, so that the <code>tree_tests.c</code> program can easily import your code).</p>
-</div>
-<div class="paragraph">
-<p>For more information on C header files, you can read <a href="https://www.cs.cornell.edu/courses/cs3410/2024fa/rsrc/c/header.html">this</a>.</p>
+<p><code>swap.c</code> is supposed to exchange <code>first</code> and <code>second</code> in <code>main</code>. The message inside <code>swap</code> looks promising, but the
+final output is wrong.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ gcc tree_tests.c -o tree_tests
-$ ./tree_tests
-Running tests...
-test 1: insert for empty tree: PASSED
-test 2: name set correctly: PASSED
-test 3: left is null: PASSED
-test 4: right is null: PASSED
-test 5: name set correctly: PASSED
-test 6: right is null: PASSED
-test 7: name set correctly: PASSED
-test 8: item not in tree: PASSED
-test 9: item in tree: PASSED
-test 10: found correct object: PASSED</code></pre>
+<pre class="highlight"><code>gcc -std=c11 -Wall -Wextra -g -O0 swap.c -o swap
+./swap
+gdb ./swap</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>break swap
+run
+print left
+print right
+bt</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>bt</code> (backtrace) lists the active function calls. You should see <code>swap</code>, called by <code>main</code>.
+You do not need to interpret addresses.</p>
+</div>
+<div class="paragraph">
+<p>Use <code>next</code> to execute the assignments one at a time. Inspect <code>temporary</code> after its initialization, and <code>left</code>
+and <code>right</code> as the assignments execute. Remember: the highlighted line is normally about to execute.
+A local variable is meaningful only after its initialization has executed.</p>
+</div>
+<div class="paragraph">
+<p>Once both assignments have executed, inspect:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>print left
+print right
+finish
+print first
+print second</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>finish</code> runs until the current function returns to its caller. You are now back in <code>main</code>, where <code>first</code>
+and <code>second</code> are in scope. Use <code>continue</code> to finish the program, then <code>quit</code> to exit GDB.</p>
+</div>
+<div class="paragraph">
+<p>Answer the following questions in a text file:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>What values should <code>first</code> and <code>second</code> have after a successful swap? What values does the original program print?</p>
+</li>
+<li>
+<p>Record the values of <code>left</code> and <code>right</code> at function entry and after the assignments. Include the GDB commands you used.</p>
+</li>
+<li>
+<p>After <code>finish</code>, what values do <code>first</code> and <code>second</code> have? Explain why changing <code>left</code> and <code>right</code> did not change them.</p>
+</li>
+<li>
+<p>Fix <code>swap</code> so that it modifies the caller&#8217;s variables. You will need to change the parameter types, the function body, and the call in <code>main</code>.</p>
+</li>
+<li>
+<p>Recompile and rerun. Then use GDB to verify your correction. With pointer parameters, inspect <code>*left</code> and <code>*right</code> inside <code>swap</code>.</p>
+</li>
+<li>
+<p>Test a second pair of values and explain what <code>bt</code> and <code>finish</code> helped you see.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_submit_your_work">4. Submit your Work</h2>
+<h2 id="_submit_your_work">3. Submit your Work</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Push you work to Github to submit your work.</p>
@@ -199,7 +231,7 @@ $ git push origin main</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_grading_rubric">5. Grading Rubric</h2>
+<h2 id="_grading_rubric">4. Grading Rubric</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Assignment rubrics</strong></p>
@@ -261,7 +293,7 @@ have good style.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-11-07 15:48:54 -0500
+Last updated 2026-11-07 15:53:54 -0500
 </div>
 </div>
 <script type="text/x-mathjax-config">

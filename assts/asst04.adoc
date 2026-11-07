@@ -75,43 +75,58 @@ Answer the following questions in a text file:
 3. Explain the bug. Fix it, exit GDB, recompile, and run again.
 4. Give a second input array and its expected total. Change the data in `main` and check your fix, keeping the count consistent.
 
-= Binary Search Tree
+== Why didn't the swap stick?
 
-For this problem, you will implement a **binary search tree (BST)**. Similar to the first problem, you must implement your own 
-node struct and basic functionality, but this time for a binary search tree. For this problem, this includes implementing a `find()` function.
-
-**Note:** Your tree should maintain the binary search tree property when inserting nodes: values smaller than the current 
-node go in the left subtree, and values larger go in the right subtree. You can use `strcmp()` to compare strings. You do not 
-need to balance the tree.
-
-
-A test file has been added to your private homework repo called `tree_tests.c`. Below is sample correct output.
-
-You should write two files for this problem: `tree.c` (where you will implement your functionality) and `tree.h`
-(where you will declare all your functions, so that the `tree_tests.c` program can easily import your code).
-
-For more information on C header files, you can read link:https://www.cs.cornell.edu/courses/cs3410/2024fa/rsrc/c/header.html[this].
+`swap.c` is supposed to exchange `first` and `second` in `main`. The message inside `swap` looks promising, but the 
+final output is wrong.
 
 
 [source, subs="quotes"]
 ----
-$ gcc tree_tests.c -o tree_tests
-$ ./tree_tests
-Running tests...
-test 1: insert for empty tree: PASSED
-test 2: name set correctly: PASSED
-test 3: left is null: PASSED
-test 4: right is null: PASSED
-test 5: name set correctly: PASSED
-test 6: right is null: PASSED
-test 7: name set correctly: PASSED
-test 8: item not in tree: PASSED
-test 9: item in tree: PASSED
-test 10: found correct object: PASSED
+gcc -std=c11 -Wall -Wextra -g -O0 swap.c -o swap
+./swap
+gdb ./swap
 ----
 
 
+[source, subs="quotes"]
+----
+break swap
+run
+print left
+print right
+bt
+----
 
+`bt` (backtrace) lists the active function calls. You should see `swap`, called by `main`. 
+You do not need to interpret addresses.
+
+Use `next` to execute the assignments one at a time. Inspect `temporary` after its initialization, and `left` 
+and `right` as the assignments execute. Remember: the highlighted line is normally about to execute. 
+A local variable is meaningful only after its initialization has executed.
+
+Once both assignments have executed, inspect:
+
+[source, subs="quotes"]
+----
+print left
+print right
+finish
+print first
+print second
+----
+
+`finish` runs until the current function returns to its caller. You are now back in `main`, where `first` 
+and `second` are in scope. Use `continue` to finish the program, then `quit` to exit GDB.
+
+Answer the following questions in a text file:
+
+1. What values should `first` and `second` have after a successful swap? What values does the original program print?
+2. Record the values of `left` and `right` at function entry and after the assignments. Include the GDB commands you used.
+3. After `finish`, what values do `first` and `second` have? Explain why changing `left` and `right` did not change them.
+4. Fix `swap` so that it modifies the caller's variables. You will need to change the parameter types, the function body, and the call in `main`.
+5. Recompile and rerun. Then use GDB to verify your correction. With pointer parameters, inspect `*left` and `*right` inside `swap`.
+6. Test a second pair of values and explain what `bt` and `finish` helped you see.
 
 = Submit your Work
 
