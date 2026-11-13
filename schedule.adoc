@@ -161,13 +161,13 @@
 // * Assignment 09: Trust the Process (due November 13)
 * Assignment 04: link:assts/asst04.html[GDB & Valgrind Practice] (due Nov 16 at midnight)
 * Lab November 11: Pthreads & race condition practice, Practice Quiz 03
+* link:assts/practice03-f26.html[Practice Quiz 3]
 
 |
 // * link:lectures/Lecture-Week11-March31-ThreadsConcurrency.pdf[Lectures - March 31, April 2]
 * link:lectures/week11lecture1.pdf[Week 11 Lecture 1]
 * link:lectures/cs223week11lecture1.pdf[Week 11 Lecture 1 Notes / Examples]
 * link:lectures/week11lecture2.pdf[Week 11 Lecture 2]
-* link:assts/practice03-f26.html[Practice Quiz 3]
 // * link:lectures/threads-count.c[threads-count.c]
 
 

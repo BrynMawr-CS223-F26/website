@@ -303,3 +303,45 @@ int main(void) {
 {nbsp} +
 {nbsp} +
 
+---
+[discrete]
+= Question 6: Operating System Concepts
+
+Answer each question briefly.
+
+* Explain the difference between `fork()` and `exec()`.
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Why might a parent process call `wait()` after creating a child?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* What does the operating system scheduler do?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* What does it mean for processes to have separate virtual address spaces?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
