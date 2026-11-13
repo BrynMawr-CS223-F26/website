@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>CS223: Systems Programming - Practice Quiz 4</title>
+<link rel="stylesheet" href="../style/cs21.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<h2 id="_cs223_systems_programming_practice_quiz_4" class="discrete">CS223: Systems Programming - Practice Quiz 4</h2>
+<div class="paragraph">
+<p>Name:
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>Complete the following exercises in 50 minutes. Practice quizzes are closed book.
+For actual quizzes you may bring a cheat sheet.</p>
+</div>
+<div class="pagebreak"/>
+<h2 id="_question_1_threads" class="discrete">Question 1: Threads</h2>
+<div class="paragraph">
+<p>First, draw a stack diagram for the following program. Then add code for the following.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add code in HelloWorld so that each thread computes the sum for a subset of the values passed to it.</p>
+</li>
+<li>
+<p>Add code in Main to compute the average over all values, based on the sub-sums computed by each thread.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>struct foo {
+  long id;
+  float sum;
+  int* values;
+};
+
+void *HelloWorld(void *id) {
+  struct foo *holder = (struct foo *) id;
+  printf("I am thread %ld\n", holder-&gt;id);
+
+  // Todo 1: your code here
+
+
+
+
+
+
+
+
+
+
+  return NULL;
+}
+
+int main(int argc, char **argv) {
+  int values = {-1, 2, 4, 5, -7, 8, -2, 6};
+  struct foo holder1, holder2;
+  holder1.id = 0;
+  holder2.id = 1;
+
+  pthread_t thread1, thread2;
+  pthread_create(&amp;thread1, NULL, HelloWorld, &amp;holder1);
+  pthread_create(&amp;thread2, NULL, HelloWorld, &amp;holder2);
+  pthread_join(thread1, NULL);
+  pthread_join(thread2, NULL);
+
+  // Todo 2: your code here
+
+
+
+
+
+  return 0;
+}</code></pre>
+</div>
+</div>
+<div class="pagebreak"></div>
+<div class="paragraph">
+<p>Page left blank for additional workspace.</p>
+</div>
+<div class="pagebreak"></div>
+<h2 id="_question_2_concurrency" class="discrete">Question 2: Concurrency</h2>
+<div class="paragraph">
+<p>Does the following code have a race condition? If yes, show how the program might behave differently due to scheduling.
+If no, give a reason why not.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>static int x = 0;
+
+void* foo(void *usr) {
+   int* p = (int*) usr;
+   int y = *p;
+   x += y;
+}
+
+int main() {
+ int pvalue = 35;
+ pthread_t thread1, thread2;
+ pthread_create(&amp;thread1, NULL, foo, &amp;pvalue);
+ pthread_create(&amp;thread2, NULL, foo, &amp;pvalue);
+ pthread_join(thread1, NULL);
+ pthread_join(thread2, NULL);
+ return 0;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<h2 id="_question_3_performance" class="discrete">Question 3: Performance</h2>
+<div class="paragraph">
+<p>A serial program takes 10 seconds to run but only 4 seconds with 4 cores. Furthermore, 70% of the program can be done in parallel.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What is the speed up with 4 cores?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What is the efficiency with 4 cores?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What is the theoretical best case speed up if we had infinite cores? Use Ahmdel&#8217;s Law which states Tc = S * T1 + (P/c) * T1.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="pagebreak"></div>
+<h2 id="_question_4_processes" class="discrete">Question 4: Processes</h2>
+<div class="paragraph">
+<p>Draw the timeline for the following program.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>int main() {
+  pid_t ret;
+  int i = 1;
+  printf("A %d\n", i);
+
+  ret = fork();
+  if(ret == 0) {
+    i = i+1;
+    printf("B %d\n", i);
+
+    ret = fork();
+    if(ret == 0) {
+      i = i+2;
+      printf("C %d\n", i);
+    }
+
+    i = i+1;
+    printf("D %d\n", i);
+  }
+  else {
+    i = i+10;
+    printf("E %d\n", i);
+
+    ret = fork();
+    i = i+10;
+    printf("F %d\n", i);
+  }
+
+  printf("G %d\n", i);
+  return 0;
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How many processes does this program create?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What is a possible output of this program?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="pagebreak"></div>
+<h2 id="_question_5_short_answer" class="discrete">Question 5: Short Answer</h2>
+<div class="ulist">
+<ul>
+<li>
+<p>What are the two primary jobs of the operating system?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What information is stored in the Virtual Address Space of a process (list at least four)?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How does the <code>exec</code> call differ from the <code>fork</code> call?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What does the command <code>kill -9 345</code> d?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What happens when a user types Ctrl-Z at the terminal?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Is the following cast safe? Why or why not.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>int a = 4;
+void* ptr = &amp;a;
+printf("%c\n", *((char*) ptr));</code></pre>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2026-11-13 15:06:29 -0500
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

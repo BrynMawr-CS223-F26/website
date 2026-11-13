@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>CS223: Systems Programming - Practice Quiz 3</title>
+<link rel="stylesheet" href="../style/cs21.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<h2 id="_cs223_systems_programming_practice_quiz_3" class="discrete">CS223: Systems Programming - Practice Quiz 3</h2>
+<div class="paragraph">
+<p>Name:
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="pagebreak"/>
+<h2 id="_question_1_memory_hierarchy" class="discrete">Question 1: Memory Hierarchy</h2>
+<div class="ulist">
+<ul>
+<li>
+<p>Arrange the following components from fastest to slowest in terms of typical access time: main memory (RAM),
+CPU registers, SSD storage, CPU cache.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Explain why modern computers use a memory hierarchy rather than storing all data in one type of memory.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TODO</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<hr>
+<h2 id="_question_2_assembly_fundamentals" class="discrete">Question 2: Assembly Fundamentals</h2>
+<div class="paragraph">
+<p>Consider the following x86-64 assembly instructions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>movq $12, %rax
+movq $5, %rbx
+addq %rbx, %rax
+subq $2, %rbx</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What are the final values of <code>%rax</code> and <code>%rbx</code>?</p>
+</li>
+<li>
+<p>What does the <code>$</code> symbol indicate in these instructions?</p>
+</li>
+<li>
+<p>What does the <code>%</code> symbol indicate?</p>
+</li>
+<li>
+<p>Explain what the instruction <code>addq %rbx, %rax</code> does.</p>
+</li>
+</ul>
+</div>
+<div class="pagebreak"/>
+<hr>
+<h2 id="_question_3_x86_64" class="discrete">Question 3: x86_64</h2>
+<div class="paragraph">
+<p>Consider the following code and its generated assembly. Suppose that the registers start with these values</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>rbp = 0x3008</p>
+</li>
+<li>
+<p>rsp = 0x3000</p>
+</li>
+<li>
+<p>rip = 0x114d</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>int main() {
+  int string[3];
+  string[0] = 'h';
+  string[1] = 'i';
+  string[2] = '\0';
+  return 0;
+}
+
+Dump of assembler code for function main:
+0000000000001149 &lt;main&gt;:
+    1149:       f3 0f 1e fa             endbr64
+    114d:       55                      push   %rbp
+    114e:       48 89 e5                mov    %rsp,%rbp
+    1151:       48 83 ec 10             sub    $0x10,%rsp
+    1155:       c6 45 fd 68             movb   $0x68,-0x3(%rbp)
+    1159:       c6 45 fe 69             movb   $0x69,-0x2(%rbp)
+    115d:       c6 45 ff 00             movb   $0x0,-0x1(%rbp)
+    1161:       48 8d 45 fd             lea    -0x3(%rbp),%rax
+    1165:       48 89 c7                mov    %rax,%rdi
+    1168:       e8 e3 fe ff ff          call   1050 &lt;puts@plt&gt;
+    116d:       b8 00 00 00 00          mov    $0x0,%eax
+    1172:       c9                      leave
+    1173:       c3                      ret</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>(1 points) What is assembly language?
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p>(3 points) What data is stored in the rbp, rsp, and rip registers?
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p>(1 points) What is the value 0x10 in decimal?
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p>(1 points) What does the value 0x68 correspond to in the original program?
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p>(2 points) List the literal values in the assembly program.
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p>(4 points) Explain what the command <code>sub $0x10, %rsp</code> means. What is the value of %rsp and %rbp after running this instruction.
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p>(3 points) Explain what the command <code>movb $0x68,-0x3(%rbp)</code> means. What line of code does this command correspond to?
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p>(2 points) Explain what the command <code>lea -0x3(%rbp), %rax</code> means.
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p>(4 points) Explain what the command <code>leave</code> does. What are the contents of rip, rsp, and rbp after calling leave?
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</li>
+<li>
+<p>(4 points) Draw the contents of memory after executing the command <code>mov $0x0,%eax</code>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2026-11-13 16:06:28 -0500
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

@@ -167,6 +167,7 @@
 * link:lectures/week11lecture1.pdf[Week 11 Lecture 1]
 * link:lectures/cs223week11lecture1.pdf[Week 11 Lecture 1 Notes / Examples]
 * link:lectures/week11lecture2.pdf[Week 11 Lecture 2]
+* link:assts/practice03-f26.html[Practice Quiz 3]
 // * link:lectures/threads-count.c[threads-count.c]
 
 

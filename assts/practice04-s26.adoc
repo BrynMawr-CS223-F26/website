@@ -1,0 +1,262 @@
+include::header.adoc[]
+
+:title: CS223: Systems Programming - Practice Quiz 4
+:Author Initials: ASN
+:Date:    2020-08-15
+:Revision: 0.1
+
+[discrete]
+= {title}
+
+
+
+Name: 
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+Complete the following exercises in 50 minutes. Practice quizzes are closed book. 
+For actual quizzes you may bring a cheat sheet. 
+
+++++
+<div class="pagebreak"/>
+++++
+
+[discrete]
+= Question 1: Threads 
+
+First, draw a stack diagram for the following program. Then add code for the following.
+
+. Add code in HelloWorld so that each thread computes the sum for a subset of the values passed to it.
+. Add code in Main to compute the average over all values, based on the sub-sums computed by each thread.
+
+[source]
+----
+struct foo {
+  long id;
+  float sum;
+  int* values;
+};
+
+void *HelloWorld(void *id) { 
+  struct foo *holder = (struct foo *) id; 
+  printf("I am thread %ld\n", holder->id);
+  
+  // Todo 1: your code here
+
+
+
+
+
+
+
+
+
+
+  return NULL;
+}
+
+int main(int argc, char **argv) { 
+  int values = {-1, 2, 4, 5, -7, 8, -2, 6};
+  struct foo holder1, holder2; 
+  holder1.id = 0;
+  holder2.id = 1; 
+
+  pthread_t thread1, thread2; 
+  pthread_create(&thread1, NULL, HelloWorld, &holder1);
+  pthread_create(&thread2, NULL, HelloWorld, &holder2); 
+  pthread_join(thread1, NULL); 
+  pthread_join(thread2, NULL); 
+
+  // Todo 2: your code here
+
+
+
+
+
+  return 0;
+}
+----
+
+++++
+<div class="pagebreak"></div>
+++++ 
+Page left blank for additional workspace.
+
+++++
+<div class="pagebreak"></div>
+++++ 
+
+[discrete]
+= Question 2: Concurrency 
+
+Does the following code have a race condition? If yes, show how the program might behave differently due to scheduling.
+If no, give a reason why not.
+
+[source]
+----
+static int x = 0;
+
+void* foo(void *usr) {
+   int* p = (int*) usr;
+   int y = *p;
+   x += y;
+}
+
+int main() {
+ int pvalue = 35;                                                         
+ pthread_t thread1, thread2;                                                    
+ pthread_create(&thread1, NULL, foo, &pvalue);
+ pthread_create(&thread2, NULL, foo, &pvalue);
+ pthread_join(thread1, NULL);  
+ pthread_join(thread2, NULL);
+ return 0;
+}
+----
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+[discrete]
+= Question 3: Performance 
+
+A serial program takes 10 seconds to run but only 4 seconds with 4 cores. Furthermore, 70% of the program can be done in parallel. 
+
+* What is the speed up with 4 cores?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+
+* What is the efficiency with 4 cores?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+
+* What is the theoretical best case speed up if we had infinite cores? Use Ahmdel's Law which states Tc = S * T1 + (P/c) * T1.
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+++++
+<div class="pagebreak"></div>
+++++ 
+
+[discrete]
+= Question 4: Processes
+
+Draw the timeline for the following program.
+
+[source]                                                                        
+----                                                                            
+int main() {
+  pid_t ret;
+  int i = 1;
+  printf("A %d\n", i);
+              
+  ret = fork();
+  if(ret == 0) {
+    i = i+1;
+    printf("B %d\n", i);
+                 
+    ret = fork();
+    if(ret == 0) {
+      i = i+2;
+      printf("C %d\n", i);
+    }          
+      
+    i = i+1;
+    printf("D %d\n", i);
+  } 
+  else {
+    i = i+10;
+    printf("E %d\n", i);
+    
+    ret = fork(); 
+    i = i+10;
+    printf("F %d\n", i);
+  }
+   
+  printf("G %d\n", i);
+  return 0;
+} 
+----
+
+* How many processes does this program create?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* What is a possible output of this program?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+++++
+<div class="pagebreak"></div>
+++++ 
+
+
+[discrete]
+= Question 5: Short Answer 
+
+* What are the two primary jobs of the operating system?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* What information is stored in the Virtual Address Space of a process (list at least four)?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* How does the `exec` call differ from the `fork` call? 
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* What does the command `kill -9 345` d?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* What happens when a user types Ctrl-Z at the terminal?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Is the following cast safe? Why or why not.
+
+[source]
+----
+int a = 4;
+void* ptr = &a;
+printf("%c\n", *((char*) ptr));
+----
