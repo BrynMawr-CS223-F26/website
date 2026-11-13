@@ -212,3 +212,94 @@ Assume all registers are 64-bit registers and any referenced memory addresses ar
 {nbsp} +
 {nbsp} +
 {nbsp} +
+
+---
+[discrete]
+= Question 5: Processes and `fork()`
+
+
+Consider the following C program. Assume all calls to `fork()` succeed and that each line of output is 
+written immediately without buffering.
+
+
+
+[source]
+----
+#include <stdio.h>
+#include <unistd.h>
+
+int main(void) {
+    int x = 1;
+
+    printf("A: %d\n", x);
+
+    pid_t p = fork();
+
+    if (p == 0) {
+        x += 2;
+        printf("B: %d\n", x);
+    } else {
+        x += 10;
+        printf("C: %d\n", x);
+
+        pid_t q = fork();
+
+        if (q == 0) {
+            x += 5;
+            printf("E: %d\n", x);
+        }
+    }
+
+    printf("D: %d\n", x);
+
+    return 0;
+}
+----
+
+
+
+* How many total processes execute this program, including the original process?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* What is the final value of `x` in each process?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Write one possible complete output of the program.
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Identify two ordering constraints that must hold for every possible output. Explain why.
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Why does changing `x` in one process not change its value in the other processes?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
