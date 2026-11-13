@@ -42,14 +42,6 @@ CPU registers, SSD storage, CPU cache.
 {nbsp} +
 {nbsp} +
 
-* TODO
-
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
 
 ---
 [discrete]
@@ -117,65 +109,22 @@ Assume:
 [cols="1,1", options="header"]
 |===
 
-| Header 1 | Header 2 
+| Address | Value 
 
-| Row 1, Col 1 | Row 1, Col 2 
-| Row 2, Col 1 | Row 2, Col 2 
+| `0x2000` | 10
+| `0x2008` | 20
+| `0x2010` | 30
+| `0x2018` | 40
 |===
 
 [source]
 ----
-int main() {
-  int string[3];
-  string[0] = 'h';
-  string[1] = 'i';
-  string[2] = '\0';
-  return 0;
-}
-
-Dump of assembler code for function main:
-0000000000001149 <main>:
-    1149:       f3 0f 1e fa             endbr64
-    114d:       55                      push   %rbp
-    114e:       48 89 e5                mov    %rsp,%rbp
-    1151:       48 83 ec 10             sub    $0x10,%rsp
-    1155:       c6 45 fd 68             movb   $0x68,-0x3(%rbp)
-    1159:       c6 45 fe 69             movb   $0x69,-0x2(%rbp)
-    115d:       c6 45 ff 00             movb   $0x0,-0x1(%rbp)
-    1161:       48 8d 45 fd             lea    -0x3(%rbp),%rax
-    1165:       48 89 c7                mov    %rax,%rdi
-    1168:       e8 e3 fe ff ff          call   1050 <puts@plt>
-    116d:       b8 00 00 00 00          mov    $0x0,%eax
-    1172:       c9                      leave
-    1173:       c3                      ret
+movq (%rbx, %rcx, 8), %rax
+addq $5, %rax
+movq %rax, 8(%rbx, %rcx, 8)
 ----
 
-* (1 points) What is assembly language?
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
-* (3 points) What data is stored in the rbp, rsp, and rip registers?
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
-* (1 points) What is the value 0x10 in decimal?
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
-* (1 points) What does the value 0x68 correspond to in the original program?
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
-* (2 points) List the literal values in the assembly program.
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
-* (4 points) Explain what the command `sub $0x10, %rsp` means. What is the value of %rsp and %rbp after running this instruction.
+* What is the value of `%rax` after executing these instructions? Show your work.
 {nbsp} +
 {nbsp} +
 {nbsp} +
@@ -183,7 +132,7 @@ Dump of assembler code for function main:
 {nbsp} +
 {nbsp} +
 
-* (3 points) Explain what the command `movb $0x68,-0x3(%rbp)` means. What line of code does this command correspond to?
+* Which memory address is modified, and what value is stored there?
 {nbsp} +
 {nbsp} +
 {nbsp} +
@@ -191,7 +140,7 @@ Dump of assembler code for function main:
 {nbsp} +
 {nbsp} +
 
-* (2 points) Explain what the command `lea -0x3(%rbp), %rax` means. 
+* Explain what the expression `(%rbx, %rcx, 8)` means.
 {nbsp} +
 {nbsp} +
 {nbsp} +
@@ -199,7 +148,18 @@ Dump of assembler code for function main:
 {nbsp} +
 {nbsp} +
 
-* (4 points) Explain what the command `leave` does. What are the contents of rip, rsp, and rbp after calling leave?
+---
+[discrete]
+= Question 4: Valid Assembly Instructions
+
+Consider the following x86-64 assembly instructions.
+
+For each instruction, determine whether it is **valid or invalid**. If it is invalid, briefly explain why.
+
+Assume all registers are 64-bit registers and any referenced memory addresses are accessible.
+
+* `movq $10, %rax`
+
 {nbsp} +
 {nbsp} +
 {nbsp} +
@@ -207,7 +167,46 @@ Dump of assembler code for function main:
 {nbsp} +
 {nbsp} +
 
-* (4 points) Draw the contents of memory after executing the command `mov $0x0,%eax`
+* `movq %rax, %rbx`
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* `movq (%rax), (%rbx)`
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* `movq $5, $10`
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* `movq 8(%rbx, %rcx, 4), %rax`
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* `movq %eax, %rbx`
+
+
+{nbsp} +
 {nbsp} +
 {nbsp} +
 {nbsp} +
