@@ -164,6 +164,9 @@
 
 |
 // * link:lectures/Lecture-Week11-March31-ThreadsConcurrency.pdf[Lectures - March 31, April 2]
+* link:lectures/week11lecture1.pdf[Week 11 Lecture 1]
+* link:lectures/cs223week11lecture1.pdf[Week 11 Lecture 1 Notes / Examples]
+* link:lectures/week11lecture2.pdf[Week 11 Lecture 2]
 // * link:lectures/threads-count.c[threads-count.c]
 
 
