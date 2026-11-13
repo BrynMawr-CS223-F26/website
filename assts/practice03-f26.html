@@ -86,36 +86,101 @@ subq $2, %rbx</code></pre>
 <li>
 <p>What are the final values of <code>%rax</code> and <code>%rbx</code>?</p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>What does the <code>$</code> symbol indicate in these instructions?</p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>What does the <code>%</code> symbol indicate?</p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>Explain what the instruction <code>addq %rbx, %rax</code> does.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
 <div class="pagebreak"/>
 <hr>
-<h2 id="_question_3_x86_64" class="discrete">Question 3: x86_64</h2>
+<h2 id="_question_3_assembly_and_memory" class="discrete">Question 3: Assembly and Memory</h2>
 <div class="paragraph">
-<p>Consider the following code and its generated assembly. Suppose that the registers start with these values</p>
+<p>Consider the following x86-64 assembly code.</p>
+</div>
+<div class="paragraph">
+<p>Assume:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>rbp = 0x3008</p>
+<p><code>%rbx = 0x2000</code></p>
 </li>
 <li>
-<p>rsp = 0x3000</p>
+<p><code>%rcx = 2</code></p>
 </li>
 <li>
-<p>rip = 0x114d</p>
+<p>Memory contains the following 8-byte values:</p>
 </li>
 </ul>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Header 1</th>
+<th class="tableblock halign-left valign-top">Header 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Row 1, Col 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Row 1, Col 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Row 2, Col 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Row 2, Col 2</p></td>
+</tr>
+</tbody>
+</table>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>int main() {
@@ -224,7 +289,7 @@ Dump of assembler code for function main:
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-11-13 16:06:28 -0500
+Last updated 2026-11-13 16:24:08 -0500
 </div>
 </div>
 <script type="text/x-mathjax-config">

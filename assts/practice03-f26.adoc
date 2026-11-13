@@ -67,11 +67,35 @@ subq $2, %rbx
 
 * What are the final values of `%rax` and `%rbx`?
 
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
 * What does the `$` symbol indicate in these instructions?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
 
 * What does the `%` symbol indicate?
 
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
 * Explain what the instruction `addq %rbx, %rax` does.
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
 
 ++++
 <div class="pagebreak"/>
@@ -79,13 +103,25 @@ subq $2, %rbx
 
 ---
 [discrete]
-= Question 3: x86_64
+= Question 3: Assembly and Memory
 
-Consider the following code and its generated assembly. Suppose that the registers start with these values
+Consider the following x86-64 assembly code.
 
-* rbp = 0x3008
-* rsp = 0x3000
-* rip = 0x114d 
+Assume:
+
+* `%rbx = 0x2000`
+* `%rcx = 2`
+* Memory contains the following 8-byte values:
+
+
+[cols="1,1", options="header"]
+|===
+
+| Header 1 | Header 2 
+
+| Row 1, Col 1 | Row 1, Col 2 
+| Row 2, Col 1 | Row 2, Col 2 
+|===
 
 [source]
 ----
