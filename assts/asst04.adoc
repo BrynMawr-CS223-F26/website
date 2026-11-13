@@ -75,6 +75,8 @@ Answer the following questions in a text file:
 3. Explain the bug. Fix it, exit GDB, recompile, and run again.
 4. Give a second input array and its expected total. Change the data in `main` and check your fix, keeping the count consistent.
 
+Submit your corrected `scores.c` and text file with your answers to the questions above.
+
 == Why didn't the swap stick?
 
 `swap.c` is supposed to exchange `first` and `second` in `main`. The message inside `swap` looks promising, but the 
@@ -127,6 +129,10 @@ Answer the following questions in a text file:
 4. Fix `swap` so that it modifies the caller's variables. You will need to change the parameter types, the function body, and the call in `main`.
 5. Recompile and rerun. Then use GDB to verify your correction. With pointer parameters, inspect `*left` and `*right` inside `swap`.
 6. Test a second pair of values and explain what `bt` and `finish` helped you see.
+
+Hint if needed: What should a function receive if it needs to modify an existing variable that belongs to its caller?
+
+Submit your corrected `swap.c` and text file with your answers to the above questions.
 
 = Submit your Work
 
