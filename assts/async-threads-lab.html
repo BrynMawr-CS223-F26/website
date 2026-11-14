@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>(Async) Threads Lab</title>
+<link rel="stylesheet" href="../style/cs21.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_submit_your_work">Submit your Work</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<h2 id="_async_threads_lab" class="discrete">(Async) Threads Lab</h2>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<h2 id="_exercise_1_fix_the_shared_counter" class="discrete">Exercise 1: Fix the shared counter</h2>
+<div class="paragraph">
+<p>Perform a <code>git pull</code> from our course&#8217;s labs repo: <code><a href="https://github.com/BrynMawr-CS223-F26/labs" class="bare">https://github.com/BrynMawr-CS223-F26/labs</a></code>. You will
+use the <code>counter.c</code> program for this exercise. Follow the instructions below. If an instruction asks you
+a question, answer it in a text file called <code>exercise1-answers.txt</code>.</p>
+</div>
+<div class="paragraph">
+<p>Instructions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Compile the program using this command: <code>gcc -O0 -pthread counter.c -o counter</code>.</p>
+</li>
+<li>
+<p>Run the program several times. What result do you expect? What do you actually observe?</p>
+</li>
+<li>
+<p>Explain why <code>counter++</code> can create a race condition.</p>
+</li>
+<li>
+<p>Add a mutex to protect the counter.</p>
+</li>
+<li>
+<p>Run it again. Does the result now match the expected value?</p>
+</li>
+<li>
+<p>Why isn&#8217;t <code>counter++</code> atomic? Why must both threads use the same mutex?</p>
+</li>
+</ol>
+</div>
+<hr>
+<h2 id="_exercise_2_bank_transfer_deadlock" class="discrete">Exercise 2: Bank transfer deadlock</h2>
+<div class="paragraph">
+<p>Consider two threads transferring money between bank accounts A and B.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>void transfer(Account *from, Account *to, int amount) {
+    pthread_mutex_lock(&amp;from-&gt;lock);
+    pthread_mutex_lock(&amp;to-&gt;lock);
+
+    from-&gt;balance -= amount;
+    to-&gt;balance += amount;
+
+    pthread_mutex_unlock(&amp;to-&gt;lock);
+    pthread_mutex_unlock(&amp;from-&gt;lock);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Assume the accounts are distinct.</p>
+</div>
+<div class="paragraph">
+<p>Thread 1 executes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>transfer(A, B, 20);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Thread 2 executes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>transfer(B, A, 40);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Follow the instructions below. If an instruction asks you
+a question, answer it in a text file called <code>exercise2-answers.txt</code>.</p>
+</div>
+<div class="paragraph">
+<p>Instructions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Identify which lock each thread attempts to acquire first.</p>
+</li>
+<li>
+<p>Describe an execution order that causes deadlock.</p>
+</li>
+<li>
+<p>Explain why neither thread can make progress.</p>
+</li>
+<li>
+<p>Propose a modification to prevent deadlock while keeping both balance updates protected together.</p>
+</li>
+</ol>
+</div>
+<hr>
+<div class="sect1">
+<h2 id="_submit_your_work">Submit your Work</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Push you work to your Github homework repo to submit your work. Place your files in a new folder
+<code>/async-lab</code>. Please provide:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Your fixed <code>counter.c</code> program</p>
+</li>
+<li>
+<p>Your exercise 1 answers file (<code>exercise1-answers.txt</code>).</p>
+</li>
+<li>
+<p>Your exercise 2 answers file (<code>exercise2-answers.txt</code>).</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git add *.c *.h readme.txt
+$ git commit -m "async lab complete"
+$ git push origin main</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2026-11-14 12:02:17 -0500
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

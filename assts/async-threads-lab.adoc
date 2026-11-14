@@ -1,0 +1,109 @@
+include::header.adoc[]
+
+:title: (Async) Threads Lab
+:Author Initials: KRS
+:Date:    2026-11-14
+:Revision: 0.1
+:stem: latexmath
+
+[discrete]
+= {title}
+
+
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+
+[discrete]
+= Exercise 1: Fix the shared counter
+
+Perform a `git pull` from our course's labs repo: `https://github.com/BrynMawr-CS223-F26/labs`. You will
+use the `counter.c` program for this exercise. Follow the instructions below. If an instruction asks you 
+a question, answer it in a text file called `exercise1-answers.txt`.
+
+
+Instructions:
+
+1. Compile the program using this command: `gcc -O0 -pthread counter.c -o counter`.
+
+2. Run the program several times. What result do you expect? What do you actually observe?
+
+3. Explain why `counter++` can create a race condition.
+
+4. Add a mutex to protect the counter.
+
+5. Run it again. Does the result now match the expected value?
+
+6. Why isn't `counter++` atomic? Why must both threads use the same mutex?
+
+
+---
+[discrete]
+= Exercise 2: Bank transfer deadlock
+
+Consider two threads transferring money between bank accounts A and B.
+
+
+[source]
+----
+void transfer(Account *from, Account *to, int amount) {
+    pthread_mutex_lock(&from->lock);
+    pthread_mutex_lock(&to->lock);
+
+    from->balance -= amount;
+    to->balance += amount;
+
+    pthread_mutex_unlock(&to->lock);
+    pthread_mutex_unlock(&from->lock);
+}
+----
+
+Assume the accounts are distinct.
+
+Thread 1 executes:
+
+[source]
+----
+transfer(A, B, 20);
+----
+
+Thread 2 executes:
+
+[source]
+----
+transfer(B, A, 40);
+----
+
+Follow the instructions below. If an instruction asks you 
+a question, answer it in a text file called `exercise2-answers.txt`.
+
+
+Instructions:
+
+1. Identify which lock each thread attempts to acquire first.
+
+2. Describe an execution order that causes deadlock.
+
+3. Explain why neither thread can make progress.
+
+4. Propose a modification to prevent deadlock while keeping both balance updates protected together.
+
+
+---
+= Submit your Work
+
+Push you work to your Github homework repo to submit your work. Place your files in a new folder 
+`/async-lab`. Please provide:
+
+* Your fixed `counter.c` program
+* Your exercise 1 answers file (`exercise1-answers.txt`).
+* Your exercise 2 answers file (`exercise2-answers.txt`).
+
+[source, subs="attributes"]
+----
+$ git add *.c *.h readme.txt
+$ git commit -m "async lab complete"
+$ git push origin main
+----
