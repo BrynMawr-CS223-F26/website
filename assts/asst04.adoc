@@ -8,7 +8,7 @@ include::header.adoc[]
 
 = {title}
 
-**Due Wednesday November 16, before midnight**
+**Due Sunday November 22, before midnight**
 
 
 :sectnums:
@@ -134,9 +134,33 @@ Hint if needed: What should a function receive if it needs to modify an existing
 
 Submit your corrected `swap.c` and text file with your answers to the above questions.
 
+= Valgrind
+
+== Correct-looking output, incorrect memory use
+
+`squares.c` allocates space for four integers and should print their squares: 0 1 4 9. It contains two memory-management bugs.
+
+[source, subs="attributes"]
+----
+gcc -std=c11 -Wall -Wextra -g -O0 squares.c -o squares
+valgrind --leak-check=full ./squares
+----
+
+Start with the first invalid-access report. Find the reference to your own file, rather than trying to 
+understand every line of library output.
+
+Answer the following questions in a text file:
+
+1. Does Valgrind report an invalid read or an invalid write? Which source line caused it?
+2. Which indices fit in the allocation? Which index causes the invalid access?
+3. Fix that bug, recompile, and rerun Valgrind.
+4. Find the remaining leak report. What allocation has no matching deallocation?
+5. Fix the leak, recompile, and rerun Valgrind again. Confirm that it reports no invalid accesses and no leaked blocks from this program.
+6. Explain why seeing the expected printed numbers would not prove that this program manages memory correctly.
+
 = Submit your Work
 
-Push you work to Github to submit your work.
+Push you work to your Github homework repo to submit your work.
 
 You **do not** need to include a make file.
 
@@ -147,7 +171,7 @@ Please also include a `readme.txt` where you answer these questions:
 
 [source, subs="attributes"]
 ----
-$ cd /h4w
+$ cd /hw4
 $ git add *.c *.h readme.txt
 $ git commit -m "assignment 4 complete"
 $ git push origin main
@@ -158,18 +182,7 @@ $ git push origin main
 
 *Assignment rubrics*
 
-Grades are out of 16 points.
-
-* (8 points) Zipper
-** (1 point) style and comments
-** (2 points) no memory errors
-** (3 points) correct behavior
-** (2 points) reasonable edge cases handled
-* (8 points) Tree
-** (1 point) style and comments
-** (2 point) no memory errors
-** (3 points) correct behavior
-** (2 points) tests pass
+Full rubric will be posted soon, but for now: assignment will be 12 points, 4 points per problem.
 
 *Code rubric*
 

@@ -22,8 +22,13 @@
 <li><a href="#_why_didnt_the_swap_stick">2.2. Why didn&#8217;t the swap stick?</a></li>
 </ul>
 </li>
-<li><a href="#_submit_your_work">3. Submit your Work</a></li>
-<li><a href="#_grading_rubric">4. Grading Rubric</a></li>
+<li><a href="#_valgrind">3. Valgrind</a>
+<ul class="sectlevel2">
+<li><a href="#_correct_looking_output_incorrect_memory_use">3.1. Correct-looking output, incorrect memory use</a></li>
+</ul>
+</li>
+<li><a href="#_submit_your_work">4. Submit your Work</a></li>
+<li><a href="#_grading_rubric">5. Grading Rubric</a></li>
 </ul>
 </div>
 </div>
@@ -32,7 +37,7 @@
 <h2 id="_assignment_4_gdb_valgrind_practice">Assignment 4: GDB &amp; Valgrind Practice</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Due Wednesday November 16, before midnight</strong></p>
+<p><strong>Due Sunday November 22, before midnight</strong></p>
 </div>
 </div>
 </div>
@@ -208,10 +213,56 @@ and <code>second</code> are in scope. Use <code>continue</code> to finish the pr
 </div>
 </div>
 <div class="sect1">
-<h2 id="_submit_your_work">3. Submit your Work</h2>
+<h2 id="_valgrind">3. Valgrind</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_correct_looking_output_incorrect_memory_use">3.1. Correct-looking output, incorrect memory use</h3>
+<div class="paragraph">
+<p><code>squares.c</code> allocates space for four integers and should print their squares: 0 1 4 9. It contains two memory-management bugs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>gcc -std=c11 -Wall -Wextra -g -O0 squares.c -o squares
+valgrind --leak-check=full ./squares</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Start with the first invalid-access report. Find the reference to your own file, rather than trying to
+understand every line of library output.</p>
+</div>
+<div class="paragraph">
+<p>Answer the following questions in a text file:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Does Valgrind report an invalid read or an invalid write? Which source line caused it?</p>
+</li>
+<li>
+<p>Which indices fit in the allocation? Which index causes the invalid access?</p>
+</li>
+<li>
+<p>Fix that bug, recompile, and rerun Valgrind.</p>
+</li>
+<li>
+<p>Find the remaining leak report. What allocation has no matching deallocation?</p>
+</li>
+<li>
+<p>Fix the leak, recompile, and rerun Valgrind again. Confirm that it reports no invalid accesses and no leaked blocks from this program.</p>
+</li>
+<li>
+<p>Explain why seeing the expected printed numbers would not prove that this program manages memory correctly.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submit_your_work">4. Submit your Work</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Push you work to Github to submit your work.</p>
+<p>Push you work to your Github homework repo to submit your work.</p>
 </div>
 <div class="paragraph">
 <p>You <strong>do not</strong> need to include a make file.</p>
@@ -231,7 +282,7 @@ and <code>second</code> are in scope. Use <code>continue</code> to finish the pr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ cd /h4w
+<pre class="highlight"><code>$ cd /hw4
 $ git add *.c *.h readme.txt
 $ git commit -m "assignment 4 complete"
 $ git push origin main</code></pre>
@@ -240,55 +291,13 @@ $ git push origin main</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_grading_rubric">4. Grading Rubric</h2>
+<h2 id="_grading_rubric">5. Grading Rubric</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Assignment rubrics</strong></p>
 </div>
 <div class="paragraph">
-<p>Grades are out of 16 points.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>(8 points) Zipper</p>
-<div class="ulist">
-<ul>
-<li>
-<p>(1 point) style and comments</p>
-</li>
-<li>
-<p>(2 points) no memory errors</p>
-</li>
-<li>
-<p>(3 points) correct behavior</p>
-</li>
-<li>
-<p>(2 points) reasonable edge cases handled</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>(8 points) Tree</p>
-<div class="ulist">
-<ul>
-<li>
-<p>(1 point) style and comments</p>
-</li>
-<li>
-<p>(2 point) no memory errors</p>
-</li>
-<li>
-<p>(3 points) correct behavior</p>
-</li>
-<li>
-<p>(2 points) tests pass</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<p>Full rubric will be posted soon, but for now: assignment will be 12 points, 4 points per problem.</p>
 </div>
 <div class="paragraph">
 <p><strong>Code rubric</strong></p>
@@ -302,7 +311,7 @@ have good style.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-11-07 15:56:36 -0500
+Last updated 2026-11-14 13:01:28 -0500
 </div>
 </div>
 <script type="text/x-mathjax-config">
