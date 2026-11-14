@@ -148,6 +148,9 @@
 |
 // * link:lectures/Lecture-Week10-March31-Threads1.pdf[Lectures - March 24 and 16]
 // * link:lectures/threads-min.c[threads-min.c]
+* link:lectures/week10lecture1slides.pdf[Week 10 Lecture 1]
+* link:lectures/week10lecture2slides.pdf[Week 10 Lecture 2]
+* link:lectures/week10lecturesnotes.pdf[Week 10 Lecture Notes]
 
 //-----------------------------
 |11
