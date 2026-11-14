@@ -175,6 +175,7 @@
 * link:lectures/week11lecture1.pdf[Week 11 Lecture 1]
 * link:lectures/cs223week11lecture1.pdf[Week 11 Lecture 1 Notes / Examples]
 * link:lectures/week11lecture2.pdf[Week 11 Lecture 2]
+* link:https://youtu.be/tnzpvkS4XAM[Video Lecture on Mutexes]
 // * link:lectures/threads-count.c[threads-count.c]
 
 
