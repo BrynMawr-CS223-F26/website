@@ -134,6 +134,10 @@
 * Lab October 28: **Quiz 02**
 | 
 // link:lectures/Lecture-Week09-March17-OS-Processes.pdf[Lectures - March 17 and 19]
+* link:lectures/week9lecture1slides.pdf[Week 9 Lecture 1]
+* link:lectures/week9lecture2slides.pdf[Week 9 Lecture 2]
+* link:lectures/week9lecture1notes.pdf[Week 9 Lecture 1 Notes]
+* link:lectures/week9lecture2notes.pdf[Week 9 Lecture 2 Notes]
 
 
 //-----------------------------
