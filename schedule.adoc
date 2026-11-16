@@ -166,8 +166,8 @@
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
 // * link:assts/asst10.html[Assignment 10]: Mandelthreads. Due April 3rd
 // * Assignment 09: Trust the Process (due November 13)
-* Assignment 04: link:assts/asst04.html[GDB & Valgrind Practice] (due Nov 16 at midnight)
-* (Async) Lab November 11: link:assts/async-threads-lab.html[Pthreads & race conditions practice] (due Friday Nov 20)
+* Assignment 04: link:assts/asst04.html[GDB & Valgrind Practice] (due Nov 22 at midnight)
+* (Async) Lab November 11: link:assts/async-threads-lab.html[Pthreads & race conditions practice] (due Nov 24 at midnight)
 * link:assts/practice03-f26.html[Practice Quiz 3]
 
 |
