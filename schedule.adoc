@@ -168,7 +168,7 @@
 // * Assignment 09: Trust the Process (due November 13)
 * Assignment 04: link:assts/asst04.html[GDB & Valgrind Practice] (due Nov 22 at midnight)
 * (Async) Lab November 11: link:assts/async-threads-lab.html[Pthreads & race conditions practice] (due Nov 24 at midnight)
-* link:assts/practice03-f26.html[Practice Quiz 3]
+* link:assts/practice03-f26.html[Practice Quiz 3], link:assts/practice03-f26-solns.pdf[Solutions]
 
 |
 // * link:lectures/Lecture-Week11-March31-ThreadsConcurrency.pdf[Lectures - March 31, April 2]
