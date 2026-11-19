@@ -835,13 +835,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>Topics: Critical sections, mutexes, thread safety</p>
-</li>
-<li>
-<p>Topics: Introduction to condition variables</p>
-</li>
-<li>
-<p>Read: <a href="https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era">Chapter 14</a></p>
+<p>Topics: Critical sections, mutexes, thread safety, deadlock, dining philosophers problem</p>
 </li>
 <li>
 <p>Lab November 18: <strong>Quiz 03</strong></p>
@@ -863,7 +857,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">November 23, 25 <a id="week13"></a></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>Concurrency Continued, Memory Management</strong></p>
+<p><strong>Thread Synchronization (Continued), Parallel Performance</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -871,16 +865,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Topics: Condition variables and producer / consumer pattern</p>
 </li>
 <li>
-<p>Topics: Deadlock, common causes and prevention</p>
+<p>Topics Serial vs parallel execution, theoretical vs measured speedup, efficiency, Amdahl&#8217;s law, sync overhead &amp; contention</p>
 </li>
 <li>
 <p>No lab / lecture on Nov 25</p>
 </li>
 <li>
-<p>Review video lecture and practice quiz 04 and solutions on your own</p>
+<p>Review video lecture and practice quiz 04 / solutions on your own</p>
 </li>
 <li>
-<p>Read: <a href="https://diveintosystems.org/singlepage/#_code_optimization">Chapter 12</a></p>
+<p>Read: <a href="https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era">Chapter 14</a></p>
 </li>
 </ul>
 </div></div></td>
@@ -890,46 +884,34 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">November 30, December 2 <a id="week14"></a></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>Memory Hierarchy, Debugging Tools</strong></p>
+<p><strong>Memory Hierarchy, Cache Locality, Code Optimizations</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Topics: Memory hierarchy, caching and locality</p>
+<p>Topics: Memory hierarchy, caching and locality, cache lines, hits, misses, capacity, latency, bandwidth</p>
 </li>
 <li>
-<p>Topics: Debugging segmentation faults and memory leaks</p>
+<p>Topics: Compiler optimization levels, constant folding, dead code elimination, etc.</p>
 </li>
 <li>
-<p>Assignment 05: Processes &amp; Threads (due Nov 30 at midnight)</p>
-</li>
-<li>
-<p>Assignment 06: TBD</p>
+<p>Assignment 05: Concurrency &amp; Performance (due Dec 9 at midnight)</p>
 </li>
 <li>
 <p>Lab December 2: <strong>Quiz 04</strong></p>
 </li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
 <li>
-<p><a href="https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html">Understanding Ownership</a></p>
-</li>
-<li>
-<p><a href="https://doc.rust-lang.org/book/ch06-00-enums.html">Enums and Pattern Matching</a></p>
-</li>
-<li>
-<p><a href="https://doc.rust-lang.org/book/ch09-00-error-handling.html">Error Handling</a></p>
+<p>Read: <a href="https://diveintosystems.org/singlepage/#_code_optimization">Chapter 12</a></p>
 </li>
 </ul>
 </div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">December 7, 9 <a id="week15"></a></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>Intro to Rust, Rust as a Systems Language</strong></p>
+<p><strong>Intro to Rust, Rust as a Systems Language, Final Exam Review</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -947,6 +929,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
+<p><a href="https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html">Understanding Ownership</a></p>
+</li>
+<li>
+<p><a href="https://doc.rust-lang.org/book/ch06-00-enums.html">Enums and Pattern Matching</a></p>
+</li>
+<li>
+<p><a href="https://doc.rust-lang.org/book/ch09-00-error-handling.html">Error Handling</a></p>
+</li>
+<li>
 <p><a href="https://doc.rust-lang.org/book/ch16-00-concurrency.html">Fearless Concurrency</a></p>
 </li>
 </ul>
@@ -957,7 +948,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-11-19 10:39:50 -0500
+Last updated 2026-11-19 12:10:38 -0500
 </div>
 </div>
 </body>

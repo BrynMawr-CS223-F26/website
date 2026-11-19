@@ -58,11 +58,6 @@
 
 * Topics: Linked lists, integer/float/char binary formats, struct layouts, endianess
 * Read: link:https://diveintosystems.org/singlepage/#_binary_and_data_representation[Chapter 4.1-4.9] 
-// * link:assts/asst04.html[Assignment 04]: Due Feb 13
-// * Assignment 04: Due September 25
-// * Assignment 03: Fun with Malloc (due September 25)
-// * Assignment 02: Fun with Malloc (to be released Sept 18, due Sept 24 at midnight)
-// * Lab September 23: link:assts/quiz01-s26.html[**Quiz 01**]: 60 minutes 
 * Lab September 23: Quiz 01
 
 |
@@ -164,8 +159,6 @@
 * Topics: processes vs threads, shared memory, pthreads, creating and joining threads
 * Topics: race conditions, interleavings, synchronization
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
-// * link:assts/asst10.html[Assignment 10]: Mandelthreads. Due April 3rd
-// * Assignment 09: Trust the Process (due November 13)
 * Assignment 04: link:assts/asst04.html[GDB & Valgrind Practice] (due Nov 22 at midnight)
 * (Async) Lab November 11: link:assts/async-threads-lab.html[Pthreads & race conditions practice] (due Nov 24 at midnight)
 * link:assts/practice03-f26.html[Practice Quiz 3], link:assts/practice03-f26-solns.pdf[Solutions]
@@ -184,9 +177,7 @@
 |November 16, 18 anchor:week12[]
 |*Thread Synchronization* 
 
-* Topics: Critical sections, mutexes, thread safety
-* Topics: Introduction to condition variables
-* Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
+* Topics: Critical sections, mutexes, thread safety, deadlock, dining philosophers problem
 * Lab November 18: **Quiz 03**
 
 |
@@ -196,13 +187,13 @@
 //-----------------------------
 |13
 |November 23, 25 anchor:week13[]
-|*Concurrency Continued, Memory Management* 
+|*Thread Synchronization (Continued), Parallel Performance* 
 
 * Topics: Condition variables and producer / consumer pattern
-* Topics: Deadlock, common causes and prevention
+* Topics Serial vs parallel execution, theoretical vs measured speedup, efficiency, Amdahl's law, sync overhead & contention
 * No lab / lecture on Nov 25
-* Review video lecture and practice quiz 04 and solutions on your own
-* Read: link:https://diveintosystems.org/singlepage/#_code_optimization[Chapter 12] 
+* Review video lecture and practice quiz 04 / solutions on your own
+* Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
 
 |
 // * link:lectures/Lecture-Week12-April9-Malloc.pdf[Lecture April 14]
@@ -211,38 +202,30 @@
 //-----------------------------
 |14
 |November 30, December 2 anchor:week14[]
-|*Memory Hierarchy, Debugging Tools* 
+|*Memory Hierarchy, Cache Locality, Code Optimizations* 
 
-* Topics: Memory hierarchy, caching and locality 
-* Topics: Debugging segmentation faults and memory leaks
-* Assignment 05: Processes & Threads (due Nov 30 at midnight)
-* Assignment 06: TBD
+* Topics: Memory hierarchy, caching and locality, cache lines, hits, misses, capacity, latency, bandwidth
+* Topics: Compiler optimization levels, constant folding, dead code elimination, etc.
+* Assignment 05: Concurrency & Performance (due Dec 9 at midnight)
 * Lab December 2: **Quiz 04**
-// link:studyguide5.html[Study Guide 05]
+* Read: link:https://diveintosystems.org/singlepage/#_code_optimization[Chapter 12] 
 
 |
-// * link:lectures/Lecture-Week14-April21-C++.pdf[Lecture April 21, 23]
-// * link:lectures/mystring.cpp[mystring.cpp]
-* link:https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html[Understanding Ownership]
-* link:https://doc.rust-lang.org/book/ch06-00-enums.html[Enums and Pattern Matching]
-* link:https://doc.rust-lang.org/book/ch09-00-error-handling.html[Error Handling]
 
 //-----------------------------
 |15
 |December 7, 9 anchor:week15[]
-|*Intro to Rust, Rust as a Systems Language* 
+|*Intro to Rust, Rust as a Systems Language, Final Exam Review* 
 
 * Topics: Rust ownership and borrowing compared to C
 * Topics: Memory safety and systems programming programming language design
 * Lab December 9: **Final Review Session**
 
-// * link:studyguide-final.html[Final Study Guide]
-// * Class April 28: Review Quizzo and party
-// * Lab April 28: Practice Final
-// * Class April 30: Practice Final Answers and Q+A
-
 |
 
+* link:https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html[Understanding Ownership]
+* link:https://doc.rust-lang.org/book/ch06-00-enums.html[Enums and Pattern Matching]
+* link:https://doc.rust-lang.org/book/ch09-00-error-handling.html[Error Handling]
 * link:https://doc.rust-lang.org/book/ch16-00-concurrency.html[Fearless Concurrency]
 |===
 
