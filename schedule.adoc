@@ -187,14 +187,11 @@
 * Topics: Critical sections, mutexes, thread safety
 * Topics: Introduction to condition variables
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
-// * Read: link:https://diveintosystems.org/singlepage/#_storage_and_the_memory_hierarchy[Chapter 11.1-11.3] 
-// * link:assts/asst11.html[Assignment 11]: Mutually Exclusive. Due April 10th
-* Assignment 05: Processes & Threads (due Nov 30 at midnight)
 * Lab November 18: **Quiz 03**
 
 |
-// * link:lectures/Lecture-Week12-April7-ThreadPerformance.pdf[Lecture April 7]
-// * link:lectures/Lecture-Week12-April9-MemoryHierarchy.pdf[Lecture April 9]
+* link:lectures/week12lecture1.pdf[Week 12 Lecture 1]
+* link:lectures/week12lecture2.pdf[Week 12 Lecture 2]
 
 //-----------------------------
 |13
@@ -218,6 +215,7 @@
 
 * Topics: Memory hierarchy, caching and locality 
 * Topics: Debugging segmentation faults and memory leaks
+* Assignment 05: Processes & Threads (due Nov 30 at midnight)
 * Assignment 06: TBD
 * Lab December 2: **Quiz 04**
 // link:studyguide5.html[Study Guide 05]
