@@ -43,6 +43,48 @@ use the <code>parallel_sum.c</code> program for this exercise. Compile it with t
 <pre class="highlight"><code>./parallel_sum 10000000 4</code></pre>
 </div>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2858%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Threads</th>
+<th class="tableblock halign-left valign-top">Run 1</th>
+<th class="tableblock halign-left valign-top">Run 2</th>
+<th class="tableblock halign-left valign-top">Run 3</th>
+<th class="tableblock halign-left valign-top">Median Time</th>
+<th class="tableblock halign-left valign-top">Speedup</th>
+<th class="tableblock halign-left valign-top">Efficiency (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
 <div class="stemblock">
 <div class="content">
 \[S(N)=\frac{T_1}{T_N},\qquad E(N)=\frac{S(N)}{N}\times100\%\]
@@ -142,7 +184,7 @@ $ git push origin main</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-11-20 15:17:12 -0500
+Last updated 2026-11-20 15:20:23 -0500
 </div>
 </div>
 <script type="text/x-mathjax-config">

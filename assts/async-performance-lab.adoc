@@ -34,6 +34,33 @@ The arguments specify the number of elements and number of threads:
 ./parallel_sum 10000000 4
 ----
 
+[cols="7", options="header"]
+|===
+
+| Threads | Run 1 | Run 2 | Run 3 | Median Time | Speedup | Efficiency (%)
+
+| 1
+|    
+|   
+|   
+
+| 2
+|
+|
+|
+
+| 4
+|
+|
+|
+
+| 8
+|
+|
+|
+
+|===
+
 [stem]
 ++++
 S(N)=\frac{T_1}{T_N},\qquad E(N)=\frac{S(N)}{N}\times100\% 
