@@ -1,0 +1,104 @@
+include::header.adoc[]
+
+:title: (Async) Performance Lab 
+:Author Initials: KRS
+:Date:    2026-11-20
+:Revision: 0.1
+:stem: latexmath
+
+[discrete]
+= {title}
+
+
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+
+[discrete]
+= Part 1: Running the program.
+
+Perform a `git pull` from our course's labs repo: `https://github.com/BrynMawr-CS223-F26/labs`. You will
+use the `parallel_sum.c` program for this exercise. Compile it with the following command:
+
+[source]
+----
+gcc -O2 -Wall -Wextra -pthread parallel_sum.c -o parallel_sum
+----
+
+The arguments specify the number of elements and number of threads:
+
+[source]
+----
+./parallel_sum 10000000 4
+----
+
+
+---
+[discrete]
+= Part 2: Measurements
+
+Run with 1, 2, 4 and 8 threads. Keep the input size constant. Run each configuration three times and record the median time. If instructed to change input size, repeat all configurations with the new size.
+
+[source]
+----
+void transfer(Account *from, Account *to, int amount) {
+    pthread_mutex_lock(&from->lock);
+    pthread_mutex_lock(&to->lock);
+
+    from->balance -= amount;
+    to->balance += amount;
+
+    pthread_mutex_unlock(&to->lock);
+    pthread_mutex_unlock(&from->lock);
+}
+----
+
+Assume the accounts are distinct.
+
+Thread 1 executes:
+
+[source]
+----
+transfer(A, B, 20);
+----
+
+Thread 2 executes:
+
+[source]
+----
+transfer(B, A, 40);
+----
+
+Follow the instructions below. If an instruction asks you 
+a question, answer it in a text file called `exercise2-answers.txt`.
+
+
+Instructions:
+
+1. Identify which lock each thread attempts to acquire first.
+
+2. Describe an execution order that causes deadlock.
+
+3. Explain why neither thread can make progress.
+
+4. Propose a modification to prevent deadlock while keeping both balance updates protected together.
+
+
+---
+= Submit your Work
+
+Push you work to your Github homework repo to submit your work. Place your files in a new folder 
+`/async-lab`. Please provide:
+
+* Your fixed `counter.c` program
+* Your exercise 1 answers file (`exercise1-answers.txt`).
+* Your exercise 2 answers file (`exercise2-answers.txt`).
+
+[source, subs="attributes"]
+----
+$ git add *.c *.h readme.txt
+$ git commit -m "async lab complete"
+$ git push origin main
+----
