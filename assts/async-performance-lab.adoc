@@ -11,6 +11,8 @@ include::header.adoc[]
 
 **Due Dec 4 at midnight.**
 
+**Be sure to review the slides and accompanying video lecture on parallel performance before working on this lab.**
+
 {nbsp} +
 {nbsp} +
 {nbsp} +
