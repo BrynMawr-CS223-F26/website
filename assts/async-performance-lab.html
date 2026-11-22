@@ -14,12 +14,16 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
+<li><a href="#_part_3_analysis">Part 3: Analysis</a></li>
 <li><a href="#_submit_your_work">Submit your Work</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <h2 id="_async_performance_lab" class="discrete">(Async) Performance Lab</h2>
+<div class="paragraph">
+<p><strong>Due Dec 4 at midnight.</strong></p>
+</div>
 <div class="paragraph">
 <p>&#160;<br>
 &#160;<br>
@@ -36,12 +40,27 @@ use the <code>parallel_sum.c</code> program for this exercise. Compile it with t
 </div>
 </div>
 <div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="paragraph">
 <p>The arguments specify the number of elements and number of threads:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>./parallel_sum 10000000 4</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<hr>
+<h2 id="_part_2_measurements" class="discrete">Part 2: Measurements</h2>
+<div class="paragraph">
+<p>Run with 1, 2, 4 and 8 threads. Keep the input size constant. Run each configuration three times and record the median time. If instructed to change input size, repeat all configurations with the new size.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -103,106 +122,70 @@ use the <code>parallel_sum.c</code> program for this exercise. Compile it with t
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>Use the one-thread median as your baseline.</p>
+</div>
 <div class="stemblock">
 <div class="content">
 \[S(N)=\frac{T_1}{T_N},\qquad E(N)=\frac{S(N)}{N}\times100\%\]
 </div>
 </div>
+<div class="paragraph">
+<p>Verify that the sum is the same across configurations.</p>
+</div>
 <hr>
-<h2 id="_part_2_measurements" class="discrete">Part 2: Measurements</h2>
+<div class="sect1">
+<h2 id="_part_3_analysis">Part 3: Analysis</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Run with 1, 2, 4 and 8 threads. Keep the input size constant. Run each configuration three times and record the median time. If instructed to change input size, repeat all configurations with the new size.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>void transfer(Account *from, Account *to, int amount) {
-    pthread_mutex_lock(&amp;from-&gt;lock);
-    pthread_mutex_lock(&amp;to-&gt;lock);
-
-    from-&gt;balance -= amount;
-    to-&gt;balance += amount;
-
-    pthread_mutex_unlock(&amp;to-&gt;lock);
-    pthread_mutex_unlock(&amp;from-&gt;lock);
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Assume the accounts are distinct.</p>
-</div>
-<div class="paragraph">
-<p>Thread 1 executes:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>transfer(A, B, 20);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Thread 2 executes:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>transfer(B, A, 40);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Follow the instructions below. If an instruction asks you
-a question, answer it in a text file called <code>exercise2-answers.txt</code>.</p>
-</div>
-<div class="paragraph">
-<p>Instructions:</p>
+<p>Answer the following questions:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Identify which lock each thread attempts to acquire first.</p>
+<p>Which configuration produced the shortest execution time?</p>
 </li>
 <li>
-<p>Describe an execution order that causes deadlock.</p>
+<p>Did doubling the thread count halve execution time? Explain using your measurements.</p>
 </li>
 <li>
-<p>Explain why neither thread can make progress.</p>
+<p>Which configuration had the highest efficiency?</p>
 </li>
 <li>
-<p>Propose a modification to prevent deadlock while keeping both balance updates protected together.</p>
+<p>Identify two possible reasons measured speedup differs from ideal linear speedup.</p>
+</li>
+<li>
+<p>Suppose 90% of serial execution time is parallelizable. Calculate the theoretical speedup with four workers using Amdahl&#8217;s law.</p>
+</li>
+<li>
+<p>What is the theoretical maximum speedup for that program as the number of workers approaches infinity?</p>
 </li>
 </ol>
 </div>
-<hr>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_submit_your_work">Submit your Work</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Push you work to your Github homework repo to submit your work. Place your files in a new folder
-<code>/async-lab</code>. Please provide:</p>
+<code>/async-performance-lab</code>. Please provide:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Your fixed <code>counter.c</code> program</p>
-</li>
-<li>
-<p>Your exercise 1 answers file (<code>exercise1-answers.txt</code>).</p>
-</li>
-<li>
-<p>Your exercise 2 answers file (<code>exercise2-answers.txt</code>).</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>$ git add *.c *.h readme.txt
-$ git commit -m "async lab complete"
-$ git push origin main</code></pre>
-</div>
+<div class="paragraph">
+<p>Submit your completed table and answers to the analysis questions. You can use a text file or upload a pdf
+or whatever format, as long as I can read it. No new C implementation is required.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-11-20 15:22:18 -0500
+Last updated 2026-11-20 15:29:37 -0500
 </div>
 </div>
 <script type="text/x-mathjax-config">
