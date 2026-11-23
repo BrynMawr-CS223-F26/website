@@ -148,20 +148,10 @@ void *withdraw(void *arg) {
 &#160;<br>
 &#160;<br></p>
 </div>
-<div class="paragraph">
-<p>What would happen if a thread acquired the mutex but never released it?</p>
-</div>
-<div class="paragraph">
-<p>&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br></p>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Explain what the instruction <code>addq %rbx, %rax</code> does.</p>
+<p>What would happen if a thread acquired the mutex but never released it?</p>
 </li>
 </ul>
 </div>
@@ -174,109 +164,27 @@ void *withdraw(void *arg) {
 </div>
 <div class="pagebreak"/>
 <hr>
-<h2 id="_question_3_assembly_and_memory" class="discrete">Question 3: Assembly and Memory</h2>
+<h2 id="_question_3_condition_variables" class="discrete">Question 3: Condition Variables</h2>
 <div class="paragraph">
-<p>Consider the following x86-64 assembly code.</p>
+<p>Consider the following C code.</p>
 </div>
-<div class="paragraph">
-<p>Assume:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>%rbx = 0x2000</code></p>
-</li>
-<li>
-<p><code>%rcx = 2</code></p>
-</li>
-<li>
-<p>Memory contains the following 8-byte values:</p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Address</th>
-<th class="tableblock halign-left valign-top">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0x2000</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0x2008</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0x2010</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0x2018</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
-</tr>
-</tbody>
-</table>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>movq (%rbx, %rcx, 8), %rax
-addq $5, %rax
-movq %rax, 8(%rbx, %rcx, 8)</code></pre>
+<pre class="highlight"><code>pthread_mutex_lock(&amp;mutex);
+
+while (!ready) {
+    pthread_cond_wait(&amp;cond, &amp;mutex);
+}
+
+process_data();
+
+pthread_mutex_unlock(&amp;mutex);</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>What is the value of <code>%rax</code> after executing these instructions? Show your work.
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br></p>
-</li>
-<li>
-<p>Which memory address is modified, and what value is stored there?
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br></p>
-</li>
-<li>
-<p>Explain what the expression <code>(%rbx, %rcx, 8)</code> means.
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br></p>
-</li>
-</ul>
-</div>
-<hr>
-<h2 id="_question_4_valid_assembly_instructions" class="discrete">Question 4: Valid Assembly Instructions</h2>
-<div class="paragraph">
-<p>Consider the following x86-64 assembly instructions.</p>
-</div>
-<div class="paragraph">
-<p>For each instruction, determine whether it is <strong>valid or invalid</strong>. If it is invalid, briefly explain why.</p>
-</div>
-<div class="paragraph">
-<p>Assume all registers are 64-bit registers and any referenced memory addresses are accessible.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>movq $10, %rax</code></p>
+<p>What happens to the mutex while the thread waits?</p>
 </li>
 </ul>
 </div>
@@ -291,7 +199,7 @@ movq %rax, 8(%rbx, %rcx, 8)</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><code>movq %rax, %rbx</code></p>
+<p>Why do we use <code>while</code> instead of <code>if</code>?</p>
 </li>
 </ul>
 </div>
@@ -306,52 +214,7 @@ movq %rax, 8(%rbx, %rcx, 8)</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><code>movq (%rax), (%rbx)</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>movq $5, $10</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>movq 8(%rbx, %rcx, 4), %rax</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>movq %eax, %rbx</code></p>
+<p>Does calling <code>pthread_cond_signal()</code> guarantee that the waiting thread will immediately run? Explain.</p>
 </li>
 </ul>
 </div>
@@ -364,48 +227,42 @@ movq %rax, 8(%rbx, %rcx, 8)</code></pre>
 &#160;<br></p>
 </div>
 <hr>
-<h2 id="_question_5_processes_and_fork" class="discrete">Question 5: Processes and <code>fork()</code></h2>
+<h2 id="_question_4_deadlock" class="discrete">Question 4: Deadlock</h2>
 <div class="paragraph">
-<p>Consider the following C program. Assume all calls to <code>fork()</code> succeed and that each line of output is
-written immediately without buffering.</p>
+<p>Two threads execute the following:</p>
+</div>
+<div class="paragraph">
+<p><strong>Thread A</strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>#include &lt;stdio.h&gt;
-#include &lt;unistd.h&gt;
+<pre class="highlight"><code>pthread_mutex_lock(&amp;lock1);
+pthread_mutex_lock(&amp;lock2);
 
-int main(void) {
-    int x = 1;
+/* critical section */
 
-    printf("A: %d\n", x);
+pthread_mutex_unlock(&amp;lock2);
+pthread_mutex_unlock(&amp;lock1);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Thread B</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>pthread_mutex_lock(&amp;lock2);
+pthread_mutex_lock(&amp;lock1);
 
-    pid_t p = fork();
+/* critical section */
 
-    if (p == 0) {
-        x += 2;
-        printf("B: %d\n", x);
-    } else {
-        x += 10;
-        printf("C: %d\n", x);
-
-        pid_t q = fork();
-
-        if (q == 0) {
-            x += 5;
-            printf("E: %d\n", x);
-        }
-    }
-
-    printf("D: %d\n", x);
-
-    return 0;
-}</code></pre>
+pthread_mutex_unlock(&amp;lock1);
+pthread_mutex_unlock(&amp;lock2);</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>How many total processes execute this program, including the original process?</p>
+<p>Describe a possible execution that causes deadlock.</p>
 </li>
 </ul>
 </div>
@@ -420,7 +277,7 @@ int main(void) {
 <div class="ulist">
 <ul>
 <li>
-<p>What is the final value of <code>x</code> in each process?</p>
+<p>Explain why neither thread can proceed.</p>
 </li>
 </ul>
 </div>
@@ -435,7 +292,47 @@ int main(void) {
 <div class="ulist">
 <ul>
 <li>
-<p>Write one possible complete output of the program.</p>
+<p>Suggest one modification that prevents this deadlock.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<hr>
+<h2 id="_question_5_parallel_performance" class="discrete">Question 5: Parallel Performance</h2>
+<div class="paragraph">
+<p>Suppose a program takes 20 seconds on one core.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Inherently sequential part: 5 seconds</p>
+</li>
+<li>
+<p>Parallel part: 15 seconds</p>
+</li>
+<li>
+<p>Assume no additional overhead</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>Answer the following questions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How long does the program take on 3 cores?</p>
 </li>
 </ul>
 </div>
@@ -450,7 +347,7 @@ int main(void) {
 <div class="ulist">
 <ul>
 <li>
-<p>Identify two ordering constraints that must hold for every possible output. Explain why.</p>
+<p>What is the maximum possible speedup, even with infinitely many cores?</p>
 </li>
 </ul>
 </div>
@@ -465,7 +362,7 @@ int main(void) {
 <div class="ulist">
 <ul>
 <li>
-<p>Why does changing <code>x</code> in one process not change its value in the other processes?</p>
+<p>Explain why adding more cores eventually provides diminishing returns.</p>
 </li>
 </ul>
 </div>
@@ -485,7 +382,7 @@ int main(void) {
 <div class="ulist">
 <ul>
 <li>
-<p>Explain the difference between <code>fork()</code> and <code>exec()</code>.</p>
+<p>What is the difference between concurrency and parallelism?</p>
 </li>
 </ul>
 </div>
@@ -500,7 +397,7 @@ int main(void) {
 <div class="ulist">
 <ul>
 <li>
-<p>Why might a parent process call <code>wait()</code> after creating a child?</p>
+<p>Why should threads generally spend as little time as possible holding a mutex?</p>
 </li>
 </ul>
 </div>
@@ -515,22 +412,7 @@ int main(void) {
 <div class="ulist">
 <ul>
 <li>
-<p>What does the operating system scheduler do?</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br>
-&#160;<br></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>What does it mean for processes to have separate virtual address spaces?</p>
+<p>Can a program have a race condition even if it never crashes? Explain.</p>
 </li>
 </ul>
 </div>
@@ -545,7 +427,7 @@ int main(void) {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-11-23 11:21:27 -0500
+Last updated 2026-11-23 17:34:48 -0500
 </div>
 </div>
 <script type="text/x-mathjax-config">

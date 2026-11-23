@@ -118,7 +118,7 @@ For the following questions, assume three threads execute `withdraw()` once each
 {nbsp} +
 {nbsp} +
 
-What would happen if a thread acquired the mutex but never released it?
+* What would happen if a thread acquired the mutex but never released it?
 
 {nbsp} +
 {nbsp} +
@@ -126,13 +126,6 @@ What would happen if a thread acquired the mutex but never released it?
 {nbsp} +
 {nbsp} +
 
-* Explain what the instruction `addq %rbx, %rax` does.
-
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
 
 ++++
 <div class="pagebreak"/>
@@ -140,170 +133,24 @@ What would happen if a thread acquired the mutex but never released it?
 
 ---
 [discrete]
-= Question 3: Assembly and Memory
+= Question 3: Condition Variables
 
-Consider the following x86-64 assembly code.
-
-Assume:
-
-* `%rbx = 0x2000`
-* `%rcx = 2`
-* Memory contains the following 8-byte values:
-
-
-[cols="1,1", options="header"]
-|===
-
-| Address | Value 
-
-| `0x2000` | 10
-| `0x2008` | 20
-| `0x2010` | 30
-| `0x2018` | 40
-|===
+Consider the following C code.
 
 [source]
 ----
-movq (%rbx, %rcx, 8), %rax
-addq $5, %rax
-movq %rax, 8(%rbx, %rcx, 8)
-----
+pthread_mutex_lock(&mutex);
 
-* What is the value of `%rax` after executing these instructions? Show your work.
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
-* Which memory address is modified, and what value is stored there?
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
-* Explain what the expression `(%rbx, %rcx, 8)` means.
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
----
-[discrete]
-= Question 4: Valid Assembly Instructions
-
-Consider the following x86-64 assembly instructions.
-
-For each instruction, determine whether it is **valid or invalid**. If it is invalid, briefly explain why.
-
-Assume all registers are 64-bit registers and any referenced memory addresses are accessible.
-
-* `movq $10, %rax`
-
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
-* `movq %rax, %rbx`
-
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
-* `movq (%rax), (%rbx)`
-
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
-* `movq $5, $10`
-
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
-* `movq 8(%rbx, %rcx, 4), %rax`
-
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
-* `movq %eax, %rbx`
-
-
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
----
-[discrete]
-= Question 5: Processes and `fork()`
-
-
-Consider the following C program. Assume all calls to `fork()` succeed and that each line of output is 
-written immediately without buffering.
-
-
-
-[source]
-----
-#include <stdio.h>
-#include <unistd.h>
-
-int main(void) {
-    int x = 1;
-
-    printf("A: %d\n", x);
-
-    pid_t p = fork();
-
-    if (p == 0) {
-        x += 2;
-        printf("B: %d\n", x);
-    } else {
-        x += 10;
-        printf("C: %d\n", x);
-
-        pid_t q = fork();
-
-        if (q == 0) {
-            x += 5;
-            printf("E: %d\n", x);
-        }
-    }
-
-    printf("D: %d\n", x);
-
-    return 0;
+while (!ready) {
+    pthread_cond_wait(&cond, &mutex);
 }
+
+process_data();
+
+pthread_mutex_unlock(&mutex);
 ----
 
-
-
-* How many total processes execute this program, including the original process?
+* What happens to the mutex while the thread waits?
 
 {nbsp} +
 {nbsp} +
@@ -312,7 +159,7 @@ int main(void) {
 {nbsp} +
 {nbsp} +
 
-* What is the final value of `x` in each process?
+* Why do we use `while` instead of `if`?
 
 {nbsp} +
 {nbsp} +
@@ -321,7 +168,7 @@ int main(void) {
 {nbsp} +
 {nbsp} +
 
-* Write one possible complete output of the program.
+* Does calling `pthread_cond_signal()` guarantee that the waiting thread will immediately run? Explain.
 
 {nbsp} +
 {nbsp} +
@@ -330,7 +177,39 @@ int main(void) {
 {nbsp} +
 {nbsp} +
 
-* Identify two ordering constraints that must hold for every possible output. Explain why.
+---
+[discrete]
+= Question 4: Deadlock
+
+Two threads execute the following:
+
+**Thread A**
+
+[source]
+----
+pthread_mutex_lock(&lock1);
+pthread_mutex_lock(&lock2);
+
+/* critical section */
+
+pthread_mutex_unlock(&lock2);
+pthread_mutex_unlock(&lock1);
+----
+
+**Thread B**
+
+[source]
+----
+pthread_mutex_lock(&lock2);
+pthread_mutex_lock(&lock1);
+
+/* critical section */
+
+pthread_mutex_unlock(&lock1);
+pthread_mutex_unlock(&lock2);
+----
+
+* Describe a possible execution that causes deadlock.
 
 {nbsp} +
 {nbsp} +
@@ -339,7 +218,7 @@ int main(void) {
 {nbsp} +
 {nbsp} +
 
-* Why does changing `x` in one process not change its value in the other processes?
+* Explain why neither thread can proceed.
 
 {nbsp} +
 {nbsp} +
@@ -347,6 +226,60 @@ int main(void) {
 {nbsp} +
 {nbsp} +
 {nbsp} +
+
+* Suggest one modification that prevents this deadlock.
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+---
+[discrete]
+= Question 5: Parallel Performance
+
+Suppose a program takes 20 seconds on one core.
+
+- Inherently sequential part: 5 seconds
+- Parallel part: 15 seconds
+- Assume no additional overhead
+
+{nbsp} +
+{nbsp} +
+
+Answer the following questions.
+
+
+* How long does the program take on 3 cores?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* What is the maximum possible speedup, even with infinitely many cores?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Explain why adding more cores eventually provides diminishing returns.
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+
 
 ---
 [discrete]
@@ -354,7 +287,7 @@ int main(void) {
 
 Answer each question briefly.
 
-* Explain the difference between `fork()` and `exec()`.
+* What is the difference between concurrency and parallelism?
 
 {nbsp} +
 {nbsp} +
@@ -363,7 +296,7 @@ Answer each question briefly.
 {nbsp} +
 {nbsp} +
 
-* Why might a parent process call `wait()` after creating a child?
+* Why should threads generally spend as little time as possible holding a mutex?
 
 {nbsp} +
 {nbsp} +
@@ -372,7 +305,7 @@ Answer each question briefly.
 {nbsp} +
 {nbsp} +
 
-* What does the operating system scheduler do?
+* Can a program have a race condition even if it never crashes? Explain.
 
 {nbsp} +
 {nbsp} +
@@ -381,12 +314,5 @@ Answer each question briefly.
 {nbsp} +
 {nbsp} +
 
-* What does it mean for processes to have separate virtual address spaces?
 
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
-{nbsp} +
 
