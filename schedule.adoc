@@ -193,6 +193,7 @@
 * Topics Serial vs parallel execution, theoretical vs measured speedup, efficiency, Amdahl's law, sync overhead & contention
 * (Async) Lab Nov 25: link:assts/async-performance-lab.html[Performance Practice]
 * Review video lecture and practice quiz 04 / solutions on your own
+* link:assts/practice04-f26.html[Practice Quiz 04] / Solutions
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
 
 |

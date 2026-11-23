@@ -1,0 +1,392 @@
+include::header.adoc[]
+
+:title: CS223: Systems Programming - Practice Quiz 4
+:Author Initials: KRS
+:Date:    2026-11-23
+:Revision: 0.1
+
+[discrete]
+= {title}
+
+
+
+Name: 
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+
+++++
+<div class="pagebreak"/>
+++++
+
+[discrete]
+= Question 1: Threads & Shared Memory
+
+Consider the following C program and then answer the questions relating to it below.
+
+[source]
+----
+int counter = 0;
+
+void *worker(void *arg) {
+    counter++;
+    return NULL;
+}
+
+int main(void) {
+    pthread_t t1, t2;
+
+    pthread_create(&t1, NULL, worker, NULL);
+    pthread_create(&t2, NULL, worker, NULL);
+
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
+
+    printf("%d\n", counter);
+    return 0;
+}
+----
+
+* What value would you expect if both increments execute correctly?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Why is the program not guaranteed to produce that value?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* How could you fix the problem?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+---
+[discrete]
+= Question 2: Mutexes
+
+Consider the following code.
+
+[source]
+----
+pthread_mutex_t lock =
+    PTHREAD_MUTEX_INITIALIZER;
+
+int balance = 100;
+
+void *withdraw(void *arg) {
+    pthread_mutex_lock(&lock);
+
+    if (balance >= 30) {
+        balance -= 30;
+    }
+
+    pthread_mutex_unlock(&lock);
+    return NULL;
+}
+----
+
+For the following questions, assume three threads execute `withdraw()` once each.
+
+* What is the final balance after all three threads finish?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Why is the mutex important?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+What would happen if a thread acquired the mutex but never released it?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Explain what the instruction `addq %rbx, %rax` does.
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+++++
+<div class="pagebreak"/>
+++++
+
+---
+[discrete]
+= Question 3: Assembly and Memory
+
+Consider the following x86-64 assembly code.
+
+Assume:
+
+* `%rbx = 0x2000`
+* `%rcx = 2`
+* Memory contains the following 8-byte values:
+
+
+[cols="1,1", options="header"]
+|===
+
+| Address | Value 
+
+| `0x2000` | 10
+| `0x2008` | 20
+| `0x2010` | 30
+| `0x2018` | 40
+|===
+
+[source]
+----
+movq (%rbx, %rcx, 8), %rax
+addq $5, %rax
+movq %rax, 8(%rbx, %rcx, 8)
+----
+
+* What is the value of `%rax` after executing these instructions? Show your work.
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Which memory address is modified, and what value is stored there?
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Explain what the expression `(%rbx, %rcx, 8)` means.
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+---
+[discrete]
+= Question 4: Valid Assembly Instructions
+
+Consider the following x86-64 assembly instructions.
+
+For each instruction, determine whether it is **valid or invalid**. If it is invalid, briefly explain why.
+
+Assume all registers are 64-bit registers and any referenced memory addresses are accessible.
+
+* `movq $10, %rax`
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* `movq %rax, %rbx`
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* `movq (%rax), (%rbx)`
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* `movq $5, $10`
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* `movq 8(%rbx, %rcx, 4), %rax`
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* `movq %eax, %rbx`
+
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+---
+[discrete]
+= Question 5: Processes and `fork()`
+
+
+Consider the following C program. Assume all calls to `fork()` succeed and that each line of output is 
+written immediately without buffering.
+
+
+
+[source]
+----
+#include <stdio.h>
+#include <unistd.h>
+
+int main(void) {
+    int x = 1;
+
+    printf("A: %d\n", x);
+
+    pid_t p = fork();
+
+    if (p == 0) {
+        x += 2;
+        printf("B: %d\n", x);
+    } else {
+        x += 10;
+        printf("C: %d\n", x);
+
+        pid_t q = fork();
+
+        if (q == 0) {
+            x += 5;
+            printf("E: %d\n", x);
+        }
+    }
+
+    printf("D: %d\n", x);
+
+    return 0;
+}
+----
+
+
+
+* How many total processes execute this program, including the original process?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* What is the final value of `x` in each process?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Write one possible complete output of the program.
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Identify two ordering constraints that must hold for every possible output. Explain why.
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Why does changing `x` in one process not change its value in the other processes?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+---
+[discrete]
+= Question 6: Operating System Concepts
+
+Answer each question briefly.
+
+* Explain the difference between `fork()` and `exec()`.
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* Why might a parent process call `wait()` after creating a child?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* What does the operating system scheduler do?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+* What does it mean for processes to have separate virtual address spaces?
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
