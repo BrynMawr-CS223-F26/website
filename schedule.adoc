@@ -192,8 +192,9 @@
 * Topics: Condition variables and producer / consumer pattern
 * Topics Serial vs parallel execution, theoretical vs measured speedup, efficiency, Amdahl's law, sync overhead & contention
 * (Async) Lab Nov 25: link:assts/async-performance-lab.html[Performance Practice]
-* Review video lecture and practice quiz 04 / solutions on your own
-* link:assts/practice04-f26.html[Practice Quiz 04] / Solutions
+* Review video lecture on parallel performance on your own, watch here
+* Review video lecture going over practice quiz 4 solutions, watch here
+* link:assts/practice04-f26.html[Practice Quiz 04] / link:assts/practice04-f26-solns.pdf[Solutions]
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
 
 |
