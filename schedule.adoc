@@ -159,8 +159,8 @@
 * Topics: processes vs threads, shared memory, pthreads, creating and joining threads
 * Topics: race conditions, interleavings, synchronization
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
-* Assignment 04: link:assts/asst04.html[GDB & Valgrind Practice] (due Nov 22 at midnight)
-* (Async) Lab November 11: link:assts/async-threads-lab.html[Pthreads & race conditions practice] (due Nov 24 at midnight)
+* Assignment 04: link:assts/asst04.html[GDB & Valgrind Practice] (due Nov 30 at midnight)
+* (Async) Lab November 11: link:assts/async-threads-lab.html[Pthreads & race conditions practice] (due Nov 30 at midnight)
 * link:assts/practice03-f26.html[Practice Quiz 3], link:assts/practice03-f26-solns.pdf[Solutions]
 
 |
@@ -191,7 +191,7 @@
 
 * Topics: Condition variables and producer / consumer pattern
 * Topics Serial vs parallel execution, theoretical vs measured speedup, efficiency, Amdahl's law, sync overhead & contention
-* (Async) Lab Nov 25: link:assts/async-performance-lab.html[Performance Practice]
+* (Async) Lab Nov 25: link:assts/async-performance-lab.html[Performance Practice] (due Dec 5)
 * Review video lecture on parallel performance on your own, watch here
 * Review video lecture going over practice quiz 4 solutions, watch here
 * link:assts/practice04-f26.html[Practice Quiz 04] / link:assts/practice04-f26-solns.pdf[Solutions]

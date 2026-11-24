@@ -9,6 +9,8 @@ include::header.adoc[]
 [discrete]
 = {title}
 
+**Due Nov 30 at midnight**
+
 
 
 {nbsp} +

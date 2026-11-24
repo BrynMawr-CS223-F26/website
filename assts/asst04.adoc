@@ -8,7 +8,7 @@ include::header.adoc[]
 
 = {title}
 
-**Due Sunday November 22, before midnight**
+**Due Nov 30, before midnight**
 
 
 :sectnums:
