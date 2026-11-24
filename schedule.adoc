@@ -195,6 +195,7 @@
 * Review video lecture on parallel performance on your own, watch here
 * Review video lecture going over practice quiz 4 solutions, watch here
 * link:assts/practice04-f26.html[Practice Quiz 04] / link:assts/practice04-f26-solns.pdf[Solutions]
+* link:assts/makeup-quiz-3-solutions.pdf[Makeup Quiz 4 Solutions]
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
 
 |
