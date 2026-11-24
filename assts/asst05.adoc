@@ -21,9 +21,6 @@ include::header.adoc[]
 
 In this assignment, you will implement two programs that divide computational work among multiple execution units.
 
-{nbsp} +
-{nbsp} +
-
 In Part 1, you will use **processes** to compute the sum of an array. In Part 2, you will use **threads** to compute a histogram and investigate parallel performance.
 
 {nbsp} +
@@ -46,7 +43,6 @@ By the end of this assignment, you should be able to:
 = Part 1: Multiprocess Array Sum
 
 {nbsp} +
-{nbsp} +
 
 [discrete]
 == Background
@@ -55,81 +51,105 @@ Recall that after a call to `fork()`, the parent and child have separate address
 
 This means that if we want multiple processes to compute parts of a result, we need a way to communicate their results back to the parent. For this problem, you will use **pipes**.
 
-
-[source]
-----
-gcc -O2 -Wall -Wextra -pthread parallel_sum.c -o parallel_sum
-----
-
-{nbsp} +
 {nbsp} +
 {nbsp} +
 
-The arguments specify the number of elements and number of threads:
-
-[source]
-----
-./parallel_sum 10000000 4
-----
-
-{nbsp} +
-{nbsp} +
-{nbsp} +
-
-
-
-
----
 [discrete]
-= Part 2: Measurements
+== Task
 
-Run with 1, 2, 4 and 8 threads. Keep the input size constant. Run each configuration three times and record the median time. If instructed to change input size, repeat all configurations with the new size.
+Write a program named `process_sum.c` that calculates the sum of an integer array using multiple child processes.
 
-[cols="7", options="header"]
+
+Your program should:
+
+1. Accept an array length `N` and a number of child processes `P` as command-line arguments.
+2. Allocate an array of `N` integers.
+3. Initialize each element using: `array[i] = (i % 100) + 1;`
+4. Divide the array into `P` contiguous, nonoverlapping segments.
+5. Create `P` child processes using `fork()`.
+6. Have each child compute the sum of its assigned segment.
+7. Have each child send its partial sum to the parent through a pipe.
+8. Have the parent collect the partial sums, wait for all children, and compute the total.
+9. Verify the result against a sequential sum calculated by the parent.
+
+Use `int64_t` for partial sums and totals to avoid integer overflow with large arrays.
+
+[discrete]
+== Example
+
+For an array containing: `1 2 3 4 5 6 7 8`
+
+and two processes:
+
+
+[cols="3", options="header"]
 |===
 
-| Threads | Run 1 | Run 2 | Run 3 | Median Time | Speedup | Efficiency (%)
+| Processes | Assigned Elements | Partial Sum 
 
-| 1
-|    
-|    
-|   
-|   
-|   
-|   
+| Child 0
+| 1, 2, 3, 4
+| 10
 
-| 2
-|
-|    
-|   
-|   
-|
-|
+| Child 1
+| 5, 6, 7, 8
+| 26
 
-| 4
-|    
-|   
-|   
-|
-|
-|
-
-| 8
-|    
-|   
-|   
-|
-|
-|
+| Parent
+| Combine partial sums
+| 36
 
 |===
 
+The parent should compute `10 + 26 = 36`.
 
 {nbsp} +
-{nbsp} +
+
+[discrete]
+== Requirements
+
+- Use `fork()` to create child processes.
+- Use `pipe()` for interprocess communication.
+- Use `waitpid()` to reap every child process.
+- Do not use shared memory.
+- Each child must compute only its assigned segment.
+- Close unused pipe descriptors.
+- Handle errors from system calls appropriately.
+- Handle cases where `N` is not evenly divisible by `P`.
+- For simplicity, require `N >= 1` and `1 <= P <= N`.
+
 {nbsp} +
 
-Use the one-thread median as your baseline.
+[discrete]
+== Example execution
+
+[source]
+----
+gcc -Wall -Wextra -std=c11 -o process_sum process_sum.c
+./process_sum 1000000 4
+----
+
+Example output:
+
+[source]
+----
+Sequential sum: 50500000
+Parallel sum:   50500000
+Correct: YES
+----
+
+Output wording may differ, but both totals and the correctness result must be clearly displayed.
+
+{nbsp} +
+
+[discrete]
+== Questions
+
+Answer the following in your README:
+
+1. Why can't each child simply add its partial sum to an ordinary variable in the parent?
+2. Why do we need both pipes and `waitpid()`? What different purposes do they serve?
+3. What would happen if the parent failed to close its unused write ends of the pipes before reading for end-of-file?
 
 [stem]
 ++++
