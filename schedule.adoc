@@ -201,6 +201,7 @@
 * Read: link:https://diveintosystems.org/singlepage/#_leveraging_shared_memory_in_the_multicore_era[Chapter 14] 
 
 |
+* link:lectures/week12lecture2.pdf[Week 13 Lecture]
 // * link:lectures/Lecture-Week12-April9-Malloc.pdf[Lecture April 14]
 // * link:lectures/Lecture-Week13-April16-CodeOpt.pdf[Lecture April 16]
 
@@ -211,7 +212,7 @@
 
 * Topics: Memory hierarchy, caching and locality, cache lines, hits, misses, capacity, latency, bandwidth
 * Topics: Compiler optimization levels, constant folding, dead code elimination, etc.
-* Assignment 05: link:assts/asst05.html[Multiprocessing & Multithreading] (due Dec 9 at midnight)
+// * Assignment 05: link:assts/asst05.html[Multiprocessing & Multithreading] (due Dec 9 at midnight)
 * Lab December 2: **Quiz 04**
 * Read: link:https://diveintosystems.org/singlepage/#_code_optimization[Chapter 12] 
 

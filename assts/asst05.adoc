@@ -158,17 +158,6 @@ S(N)=\frac{T_1}{T_N},\qquad E(N)=\frac{S(N)}{N}\times100\%
 
 Verify that the sum is the same across configurations.
 
----
-= Part 3: Analysis
-
-Answer the following questions:
-
-1. Which configuration produced the shortest execution time?
-2. Did doubling the thread count halve execution time? Explain using your measurements.
-3. Which configuration had the highest efficiency?
-4. Identify two possible reasons measured speedup differs from ideal linear speedup.
-5. Suppose 90% of serial execution time is parallelizable. Calculate the theoretical speedup with four workers using Amdahl's law.
-6. What is the theoretical maximum speedup for that program as the number of workers approaches infinity?
 
 = Submit your Work
 
