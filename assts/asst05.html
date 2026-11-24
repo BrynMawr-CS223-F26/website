@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
+<title>Multiprocessing &amp; Multithreading</title>
+<link rel="stylesheet" href="../style/cs21.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_part_3_analysis">Part 3: Analysis</a></li>
+<li><a href="#_submit_your_work">Submit your Work</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<h2 id="_multiprocessing_multithreading" class="discrete">Multiprocessing &amp; Multithreading</h2>
+<div class="paragraph">
+<p><strong>Due Dec 9 at midnight.</strong></p>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<h2 id="_overview" class="discrete">Overview</h2>
+<div class="paragraph">
+<p>In this assignment, you will implement two programs that divide computational work among multiple execution units.</p>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>In Part 1, you will use <strong>processes</strong> to compute the sum of an array. In Part 2, you will use <strong>threads</strong> to compute a histogram and investigate parallel performance.</p>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>By the end of this assignment, you should be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use <code>fork()</code> and <code>waitpid()</code> to coordinate child processes.</p>
+</li>
+<li>
+<p>Communicate between processes using pipes.</p>
+</li>
+<li>
+<p>Create and join POSIX threads.</p>
+</li>
+<li>
+<p>Partition an array into independent work units.</p>
+</li>
+<li>
+<p>Avoid data races using thread-local storage.</p>
+</li>
+<li>
+<p>Measure and interpret parallel speedup.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br></p>
+</div>
+<hr>
+<h2 id="_part_1_multiprocess_array_sum" class="discrete">Part 1: Multiprocess Array Sum</h2>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br></p>
+</div>
+<h3 id="_background" class="discrete">Background</h3>
+<div class="paragraph">
+<p>Recall that after a call to <code>fork()</code>, the parent and child have separate address spaces. Although the child initially receives a copy of the parent&#8217;s data, modifying a variable in one process does not modify that variable in another.</p>
+</div>
+<div class="paragraph">
+<p>This means that if we want multiple processes to compute parts of a result, we need a way to communicate their results back to the parent. For this problem, you will use <strong>pipes</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>gcc -O2 -Wall -Wextra -pthread parallel_sum.c -o parallel_sum</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>The arguments specify the number of elements and number of threads:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>./parallel_sum 10000000 4</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<hr>
+<h2 id="_part_2_measurements" class="discrete">Part 2: Measurements</h2>
+<div class="paragraph">
+<p>Run with 1, 2, 4 and 8 threads. Keep the input size constant. Run each configuration three times and record the median time. If instructed to change input size, repeat all configurations with the new size.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2858%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Threads</th>
+<th class="tableblock halign-left valign-top">Run 1</th>
+<th class="tableblock halign-left valign-top">Run 2</th>
+<th class="tableblock halign-left valign-top">Run 3</th>
+<th class="tableblock halign-left valign-top">Median Time</th>
+<th class="tableblock halign-left valign-top">Speedup</th>
+<th class="tableblock halign-left valign-top">Efficiency (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>&#160;<br>
+&#160;<br>
+&#160;<br></p>
+</div>
+<div class="paragraph">
+<p>Use the one-thread median as your baseline.</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[S(N)=\frac{T_1}{T_N},\qquad E(N)=\frac{S(N)}{N}\times100\%\]
+</div>
+</div>
+<div class="paragraph">
+<p>Verify that the sum is the same across configurations.</p>
+</div>
+<hr>
+<div class="sect1">
+<h2 id="_part_3_analysis">Part 3: Analysis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Answer the following questions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Which configuration produced the shortest execution time?</p>
+</li>
+<li>
+<p>Did doubling the thread count halve execution time? Explain using your measurements.</p>
+</li>
+<li>
+<p>Which configuration had the highest efficiency?</p>
+</li>
+<li>
+<p>Identify two possible reasons measured speedup differs from ideal linear speedup.</p>
+</li>
+<li>
+<p>Suppose 90% of serial execution time is parallelizable. Calculate the theoretical speedup with four workers using Amdahl&#8217;s law.</p>
+</li>
+<li>
+<p>What is the theoretical maximum speedup for that program as the number of workers approaches infinity?</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submit_your_work">Submit your Work</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Push you work to your Github homework repo to submit your work. Place your files in a new folder
+<code>/async-performance-lab</code>. Please provide:</p>
+</div>
+<div class="paragraph">
+<p>Submit your completed table and answers to the analysis questions. You can use a text file or upload a pdf
+or whatever format, as long as I can read it. No new C implementation is required.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2026-11-24 17:08:52 -0500
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

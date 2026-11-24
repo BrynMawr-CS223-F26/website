@@ -1,0 +1,160 @@
+include::header.adoc[]
+
+:title: Multiprocessing & Multithreading
+:Author Initials: KRS
+:Date:    2026-11-24
+:Revision: 0.1
+:stem: latexmath
+
+[discrete]
+= {title}
+
+**Due Dec 9 at midnight.**
+
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+[discrete]
+= Overview
+
+In this assignment, you will implement two programs that divide computational work among multiple execution units.
+
+{nbsp} +
+{nbsp} +
+
+In Part 1, you will use **processes** to compute the sum of an array. In Part 2, you will use **threads** to compute a histogram and investigate parallel performance.
+
+{nbsp} +
+{nbsp} +
+
+By the end of this assignment, you should be able to:
+
+- Use `fork()` and `waitpid()` to coordinate child processes.
+- Communicate between processes using pipes.
+- Create and join POSIX threads.
+- Partition an array into independent work units.
+- Avoid data races using thread-local storage.
+- Measure and interpret parallel speedup.
+
+{nbsp} +
+{nbsp} +
+
+---
+[discrete]
+= Part 1: Multiprocess Array Sum
+
+{nbsp} +
+{nbsp} +
+
+[discrete]
+== Background
+
+Recall that after a call to `fork()`, the parent and child have separate address spaces. Although the child initially receives a copy of the parent's data, modifying a variable in one process does not modify that variable in another.
+
+This means that if we want multiple processes to compute parts of a result, we need a way to communicate their results back to the parent. For this problem, you will use **pipes**.
+
+
+[source]
+----
+gcc -O2 -Wall -Wextra -pthread parallel_sum.c -o parallel_sum
+----
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+The arguments specify the number of elements and number of threads:
+
+[source]
+----
+./parallel_sum 10000000 4
+----
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+
+
+
+---
+[discrete]
+= Part 2: Measurements
+
+Run with 1, 2, 4 and 8 threads. Keep the input size constant. Run each configuration three times and record the median time. If instructed to change input size, repeat all configurations with the new size.
+
+[cols="7", options="header"]
+|===
+
+| Threads | Run 1 | Run 2 | Run 3 | Median Time | Speedup | Efficiency (%)
+
+| 1
+|    
+|    
+|   
+|   
+|   
+|   
+
+| 2
+|
+|    
+|   
+|   
+|
+|
+
+| 4
+|    
+|   
+|   
+|
+|
+|
+
+| 8
+|    
+|   
+|   
+|
+|
+|
+
+|===
+
+
+{nbsp} +
+{nbsp} +
+{nbsp} +
+
+Use the one-thread median as your baseline.
+
+[stem]
+++++
+S(N)=\frac{T_1}{T_N},\qquad E(N)=\frac{S(N)}{N}\times100\% 
+++++
+
+Verify that the sum is the same across configurations.
+
+---
+= Part 3: Analysis
+
+Answer the following questions:
+
+1. Which configuration produced the shortest execution time?
+2. Did doubling the thread count halve execution time? Explain using your measurements.
+3. Which configuration had the highest efficiency?
+4. Identify two possible reasons measured speedup differs from ideal linear speedup.
+5. Suppose 90% of serial execution time is parallelizable. Calculate the theoretical speedup with four workers using Amdahl's law.
+6. What is the theoretical maximum speedup for that program as the number of workers approaches infinity?
+
+= Submit your Work
+
+Push you work to your Github homework repo to submit your work. Place your files in a new folder 
+`/async-performance-lab`. Please provide:
+
+Submit your completed table and answers to the analysis questions. You can use a text file or upload a pdf
+or whatever format, as long as I can read it. No new C implementation is required.
+

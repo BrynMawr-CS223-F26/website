@@ -211,7 +211,7 @@
 
 * Topics: Memory hierarchy, caching and locality, cache lines, hits, misses, capacity, latency, bandwidth
 * Topics: Compiler optimization levels, constant folding, dead code elimination, etc.
-* Assignment 05: Concurrency & Performance (due Dec 9 at midnight)
+* Assignment 05: link:assts/asst05.html[Multiprocessing & Multithreading] (due Dec 9 at midnight)
 * Lab December 2: **Quiz 04**
 * Read: link:https://diveintosystems.org/singlepage/#_code_optimization[Chapter 12] 
 
